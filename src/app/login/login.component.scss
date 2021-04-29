@@ -1,0 +1,14 @@
+
+
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+.loginImage{
+    width:100%;
+    margin:auto;
+    @include media-breakpoint-up(sm){
+        width:576px;
+    }
+}
