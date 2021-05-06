@@ -1,3 +1,5 @@
+import { WeatherElementComponent } from './weather-element/weather-element.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
 import { LoginService } from './login.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,13 +13,14 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MainPageComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    SearchbarComponent,
+    WeatherElementComponent
   ],
   imports: [
     BrowserModule,
