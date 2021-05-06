@@ -5,10 +5,24 @@
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 
+#fillWholePage{
+    position:fixed;height:100%;width:100%;margin:0;padding:0; overflow-y: scroll;
+}
+#contentContainerParent{
+    padding:20px;
+}
+#contentContainer{
+    padding-top:20px;padding-bottom: 20px;
+}
 .loginImage{
-    width:100%;
+    width:80%;
     margin:auto;
     @include media-breakpoint-up(sm){
-        width:576px;
+        width:490px;
     }
+}
+.centeredWhiteBackground{
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
 }

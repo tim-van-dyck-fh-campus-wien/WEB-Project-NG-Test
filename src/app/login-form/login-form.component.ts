@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { LoginService } from './../login.service';
 import { LoginData } from './../models/LoginData.interface';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import{EventEmitter} from "@angular/core";
@@ -9,7 +11,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
-  constructor() {
+  constructor(private loginServ:LoginService,
+    private router:Router) {
 
   }
   @Input() firstName:string;
@@ -20,10 +23,15 @@ export class LoginFormComponent implements OnInit {
     this.firstNameBind=this.firstName;
   }
   onSubmit(f:NgForm){
-      let returnData:LoginData = f.value as LoginData;
-      this.submit.emit(returnData);
-      console.dir(returnData);
-      console.log(f.valid);
+      let data:LoginData = f.value as LoginData;
+      //this.submit.emit(returnData);
+      if(this.loginServ.validateCredentials(data)){//login sucessfull
+        alert("Login Success");
+        console.dir(data);
+        this.router.navigate(["main-page-component"]);
+    }else{
+
+    }
   }
 
 }

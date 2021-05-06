@@ -1,28 +1,37 @@
-<div role="heading" class="container-fluid ">
-    <div class="loginImage">
-        <img class="img-fluid" src="assets/WebStartLogoEvenWider@2x.png">
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-sm">
-            <button type="button" class="btn btn-outline-primary btn-lg btn-block" (click)="collapse.toggle()" [attr.aria-expanded]="!loginIsCollapsed">
-                Login
-            </button>
-        </div>
-        <div class="col-sm">
-            <button type="button" class="btn btn-outline-primary btn-lg btn-block">
-                Register
-            </button>
+
+<div class="row align-items-center" id="fillWholePage">
+    <div class="col-md-12" id="contentContainerParent">
+        <div class="container bg-light" id="contentContainer"  >
+                <div role="heading">
+                    <div class="loginImage">
+                        <img class="img-fluid" src="assets/WebStartLogoEvenWider@2x.png">
+                    </div>
+                </div>
+                <div >
+                    <div class="row">
+                        <div class="col-sm">
+                            <button type="button" class="btn btn-outline-primary btn-lg btn-block" (click)="collapse.toggle()" [attr.aria-expanded]="!loginIsCollapsed">
+                                Login
+                            </button>
+                        </div>
+                        <div class="col-sm">
+                            <button type="button" class="btn btn-outline-primary btn-lg btn-block">
+                                Register
+                            </button>
+                        </div>
+                        
+                    </div>
+                    <div #collapse="ngbCollapse" [(ngbCollapse)]="loginIsCollapsed">
+                        <login-form firstName="asdf" ></login-form>
+                    </div>
+                    
+                    
+                </div>
+            
         </div>
         
     </div>
-    <div #collapse="ngbCollapse" [(ngbCollapse)]="loginIsCollapsed">
-        <login-form firstName="asdf" (submit)="handleSubmit($event)"></login-form>
-    </div>
-    
-    
 </div>
-<div class="container">
+
     
-</div>
+

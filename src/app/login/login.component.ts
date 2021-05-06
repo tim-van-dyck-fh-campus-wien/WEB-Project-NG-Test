@@ -1,3 +1,4 @@
+import { LoginService } from './../login.service';
 import { LoginData } from './../models/LoginData.interface';
 import { Component, OnInit } from '@angular/core';
 
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
     this.zahl
   }
   handleSubmit(data:LoginData){
-    alert(data.email);
+    
+    
   }
 
 
