@@ -33,7 +33,7 @@ failedToLoad: boolean = false;
     //doesn't work within this
     //for now, will be changed to input value / automatic value binding with location
       this.route.paramMap.subscribe(route => {
-      this.city = route.get('city');
+      this.city = route.get('Wien');
       this.reset();
       this.weatherService.getCurrentWeather(this.city).subscribe
       (x => {

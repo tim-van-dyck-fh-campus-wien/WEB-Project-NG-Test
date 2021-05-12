@@ -7,7 +7,7 @@ import { WeatherElementComponent } from './weather-element/weather-element.compo
 const routes: Routes = [
   {path:'login-component',component:LoginComponent},
 {path:'main-page-component',component:MainPageComponent},
-/*{ path: 'city/:city', component: WeatherElementComponent }*/,
+/*{ path: 'city/:city', component: WeatherElementComponent }*/
 ];
 
 @NgModule({
