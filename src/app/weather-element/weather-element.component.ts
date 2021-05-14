@@ -17,7 +17,8 @@ temp = 0;
 weatherID:number=0;
 weatherDescription: string = 'none';
 sunrise: number = 0;
-isDay: true;
+sunset:Date;
+isDay: boolean;
 
 newCity!: string;
 //to check whether city exists
@@ -27,15 +28,12 @@ searching: boolean = false;
 
 //If the user input was not valid, the output will be error handled 
 failedToLoad: boolean = false;
+
+fontAwesome: HTMLElement;
   constructor(public weatherService: WeatherService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-
-    //get city from the angular route 
-    //doesn't work within this
-    //for now, will be changed to input value / automatic value binding with location
-      this.route.paramMap.subscribe(route => {
-     // this.city = route.get('Wien');
+     this.route.paramMap.subscribe(route => {
       this.reset();
       this.weatherService.getCurrentWeather(this.city).subscribe
       (x => {
@@ -43,8 +41,10 @@ failedToLoad: boolean = false;
         this.temp = x.temp;
         this.weatherID = x.weather.id;
         this.weatherDescription = this.getWeatherType(this.weatherID);
-        this.sunrise = x.sys.sunrise; 
-             
+        //this.sunrise = x.sys.sunrise; 
+        let sunsetTime = new Date(x.sys.sunset * 1000);
+        let currentDate = new Date; 
+        this.isDay = (currentDate.getTime() < sunsetTime.getTime());
       },
       //error handling, if user input invalid, connected to HTML *ngIf 
         error => {
@@ -57,6 +57,7 @@ failedToLoad: boolean = false;
   
    clickme(myCity:string){
      this.reset();
+     this.removeIcon();
      this.city = myCity; 
      //this.reset();
      this.weatherService.getCurrentWeather(this.city).subscribe
@@ -65,8 +66,10 @@ failedToLoad: boolean = false;
        this.temp = x.temp;
        this.weatherID = x.weather.id;
        this.weatherDescription = this.getWeatherType(this.weatherID);
-       this.sunrise = x.sys.sunrise; 
-            
+      // this.sunrise = x.sys.sunrise; 
+      let sunsetTime = new Date(x.sys.sunset * 1000);
+      let currentDate = new Date; 
+      this.isDay = (currentDate.getTime() < sunsetTime.getTime());     
      },
      //error handling, if user input invalid, connected to HTML *ngIf 
        error => {
@@ -85,7 +88,7 @@ failedToLoad: boolean = false;
     this.sunrise = 0;
   }
 
-  addCity() {
+ /* addCity() {
     this.failed = false;
     this.searching = true;
     const city = this.newCity;
@@ -93,17 +96,22 @@ failedToLoad: boolean = false;
     (x => {
       console.log('Successfully found city');
       this.searching = false;
-     // this.router.navigate(['/city/' + city]);
     },
       error => {
         console.log('Could not add city');
         this.failed = true;
         this.searching = false;
       });
+}*/
+
+removeIcon(){
+  var currentIcon = document.getElementById("icon"); 
+  currentIcon.remove();
 }
 
   getWeatherType(weatherID: number){
     if (weatherID >= 200 && weatherID < 300) {
+    
       return this.weatherDescription = "lightning";
     }
     if (weatherID >= 300 && weatherID < 600) {

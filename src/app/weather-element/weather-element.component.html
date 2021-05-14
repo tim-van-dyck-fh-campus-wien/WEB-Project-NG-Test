@@ -11,25 +11,22 @@
         <i class="fas fa-4x fa-cloud cloud"></i>
     </div>
 -->
-    <div class="weatherWidgetRow" [ngSwitch]="weatherDescription">
-        <div class="weatherWidgetRow"><i *ngSwitchCase ="'cloud'" class="fas fa-4x fa-cloud cloud"></i></div>
-        <div class="weatherWidgetRow"><i *ngSwitchCase="'fog'" class="fas fa-4x fa-smog smog"></i></div>
-        <div class="weatherWidgetRow"> <i *ngSwitchCase="'rain'" class="fas fa-4x fa-cloud-rain cloud-rain"></i></div>
-        <div class="weatherWidgetRow"><i *ngSwitchCase="'snow'" class="fas fa-4x fa-snowflake snowflake"></i></div>
-        <div class="weatherWidgetRow"> <i *ngSwitchCase="'lightning'" class="fas fa-4x fa-bolt bolt"></i></div>
-        <div class="weatherWidgetRow"> <i *ngSwitchCase="'clear'" class="fas fa-4x fa-sun sun"></i></div>
-        <div class="weatherWidgetRow"> <i *ngSwitchCase="'partialClear'" class="fas fa-4x fa-cloud-sun cloud-sun"></i></div>
+    <div class="weatherWidgetRow"  [ngSwitch]="weatherDescription">
+        <div class="weatherWidgetRow"><i id="icon" *ngSwitchCase ="'none'" class="fas fa-4x fa-cloud cloud"></i></div>
+        <div class="weatherWidgetRow"><i id="icon"*ngSwitchCase ="'cloud'" class="fas fa-4x fa-cloud cloud"></i></div>
+        <div class="weatherWidgetRow"><i id="icon"*ngSwitchCase="'fog'" class="fas fa-4x fa-smog smog"></i></div>
+        <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'rain'" class="fas fa-4x fa-cloud-rain cloud-rain"></i></div>
+        <div class="weatherWidgetRow"><i id="icon"*ngSwitchCase="'snow'" class="fas fa-4x fa-snowflake snowflake"></i></div>
+        <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'lightning'" class="fas fa-4x fa-bolt bolt"></i></div>
+     <div class="weatherWidgetRow" *ngSwitchCase="'clear'">
+         <i *ngIf="isDay" id="icon" class="fas fa-4x fa-sun sun"></i>
+        <i *ngIf="!isDay"id="icon" class="fas fa-4x fa-moon moon"></i>
+         </div>
+     <div class="weatherWidgetRow" *ngSwitchCase="'partialClear'"> 
+         <i *ngIf="isDay" id="icon" class="fas fa-4x fa-cloud-sun cloud-sun"></i>
+         <i *ngIf="!isDay" id="icon" class="fas fa-4x fa-cloud-moon cloud-moon"></i>
+        </div>
     </div>
-      <!--   <ng-container *ngSwitchCase="WeatherType.clear">
-                    <img *ngIf="isDay()" src="assets/sun.png" alt="clear day">
-                    <img *ngIf="!isDay()" src="assets/moon.png" alt="clear night">
-                </ng-container>
-    
-                <ng-container *ngSwitchCase="WeatherType.partialClear">
-                    <img *ngIf="isDay()" src="assets/partial-sun.png" alt="partial clear day">
-                    <img *ngIf="!isDay()" src="assets/partial-moon.png" alt="partial clear night">
-                </ng-container>
-    -->
     
     <div class="weatherWidgetRow"> {{weatherID}}</div>
     

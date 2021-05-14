@@ -26,6 +26,8 @@ export class WeatherService {
         const temp = response.main.temp; 
         const weatherID = response.weather.id;
         const x = {weather, temp};
+        const sunsetTime = new Date(response.sys.sunset * 1000);
+        
         return x;
       }));
     }
