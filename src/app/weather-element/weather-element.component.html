@@ -1,13 +1,13 @@
-<p>weather-element works!</p>
-
-
 
     <!--<img class="logo" src="assets/WebStartLogoEvenWider2x.png" alt="logo">-->
-    <div id="divWeatherMain">
-        <div class="weatherWidgetRow" >
-            <h1>{{city}}</h1>
-        </div>
-    <div class="weatherWidgetRow" [ngSwitch]="weatherDescription">
+    <div id='weatherContainer'>
+        <div class="weatherWidgetRow" ><h1>{{city}}</h1></div>
+     
+
+    <div class="weatherWidgetRow">
+            <i class="fas fa-3x fa-sun sun"></i>  
+    </div> 
+   <!-- <div class="weatherWidgetRow" [ngSwitch]="weatherDescription">
         <img *ngSwitchCase="'cloud'"  src="assets/weatherDrawings/cloud.jpeg" alt="cloud">
         <img *ngSwitchCase="'fog'"  src="assets/weatherDrawings/fog.jpeg" alt="fog">
         <img *ngSwitchCase="'rain'"  src="assets/weatherDrawings/rain.jpeg" alt="rain">
@@ -16,7 +16,7 @@
         <img *ngSwitchCase="'unknown'"  src="assets/weatherDrawings/unknown.jpeg" alt="unkown">
         <img *ngSwitchCase="'clear'"  src="assets/weatherDrawings/clearDay.jpeg" alt="clear Day">
         <img *ngSwitchCase="'partialClear'"  src="assets/weatherDrawings/partialClearDay.jpeg" alt="partial clear Day">
-    </div>
+    </div>-->
       <!--   <ng-container *ngSwitchCase="WeatherType.clear">
                     <img *ngIf="isDay()" src="assets/sun.png" alt="clear day">
                     <img *ngIf="!isDay()" src="assets/moon.png" alt="clear night">
@@ -33,43 +33,15 @@
     <div class="weatherWidgetRow"><h2>{{temp}} °C</h2></div>
     <div class="weatherWidgetRow">Weather description: {{weather}}</div>
     
-    <!--how to get a button to go back to add-city-module? -->
-    <div>
-        <button class="weatherWidgetRow" routerLink="/add-city">Different City</button>
-    </div>
-    <!--<button (click)="AddCityComponent.addCity()">See weather:</button>-->
-    
-    <!--<div class="weatherWidgetRow">weatherID: {{weatherID}}</div>-->
-    
     <!--If the cityName is not valid, f.e. connected to boolean error control -->
     <div class="weatherWidgetRow" *ngIf="failedToLoad">Weather is not available. Try looking out the window.</div>
  
-    <input class="weatherWidgetRow" type="text" placeholder="Your City here:" [(ngModel)]="newCity">
-    <button class="weatherWidgetRow" (click)="addCity()" [disabled]="searching">Add</button>
+    <!--TODO clear field after input use-->
+    <input class="weatherWidgetRow" type="text" placeholder="Your City here:" id="myCity" name="myCity" #myCity>
+   <button type="button" class="weatherWidgetRow" (click)="clickme(myCity.value)" [disabled]="searching">Search City</button>
 
     <div class="weatherWidgetRow" *ngIf="failed">Could not add the city.</div>
 
 </div>
-    
-    <!--
-    <div *ngIf="weather">
-       <div [ngSwitch]="WeatherType">
-            <img *ngSwitchCase="WeatherType.cloud" src="assets/weatherDrawings/cloud.jpeg" alt="cloud">
-            <img *ngSwitchCase="WeatherType.fog" src="assets/weatherDrawings/fog.jpeg" alt="fog">
-            <img *ngSwitchCase="WeatherType.rain" src="assets/weatherDrawings/rain.jpeg" alt="rain">
-            <img *ngSwitchCase="WeatherType.snow" src="assets/weatherDrawings/snow.jpeg" alt="snow">
-            <img *ngSwitchCase="WeatherType.lightning" src="assets/weatherDrawings/lightning.jpeg" alt="lightning">
-            <img *ngSwitchCase="WeatherType.unknown" src="assets/weatherDrawings/unknown.jpeg" alt="Look out the window.">
-            <ng-container *ngSwitchCase="WeatherType.clear">
-                <img *ngIf="isDay()" src="assets/weatherDrawings/clearDay.jpeg" alt="clear day">
-                <img *ngIf="!isDay()" src="assets/weatherDrawings/clearNight.jpeg" alt="clear night">
-            </ng-container>
-    
-            <ng-container *ngSwitchCase="WeatherType.partialClear">
-                <img *ngIf="isDay()" src="assets/weatherDrawings/partialClearDay.jpeg" alt="partial clear day">
-                <img *ngIf="!isDay()" src="assets/weatherDrawings/partialClearNight.jpeg" alt="partial clear night">
-            </ng-container>
-        </div>
-    -->
     
     

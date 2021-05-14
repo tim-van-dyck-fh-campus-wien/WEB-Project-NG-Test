@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { ActivatedRoute } from '@angular/router';
+import { textChangeRangeIsUnchanged } from 'typescript';
 
 @Component({
   selector: 'app-weather-element',
@@ -16,6 +17,7 @@ temp = 0;
 weatherID:number=0;
 weatherDescription: string = 'none';
 sunrise: number = 0;
+isDay: true;
 
 newCity!: string;
 //to check whether city exists
@@ -33,7 +35,7 @@ failedToLoad: boolean = false;
     //doesn't work within this
     //for now, will be changed to input value / automatic value binding with location
       this.route.paramMap.subscribe(route => {
-      this.city = route.get('Wien');
+     // this.city = route.get('Wien');
       this.reset();
       this.weatherService.getCurrentWeather(this.city).subscribe
       (x => {
@@ -53,6 +55,26 @@ failedToLoad: boolean = false;
    }
   
   
+   clickme(myCity:string){
+     this.city = myCity; 
+     this.reset();
+     this.weatherService.getCurrentWeather(this.city).subscribe
+     (x => {
+       this.weather = x.weather.description;
+       this.temp = x.temp;
+       this.weatherID = x.weather.id;
+       this.weatherDescription = this.getWeatherType(this.weatherID);
+       this.sunrise = x.sys.sunrise; 
+            
+     },
+     //error handling, if user input invalid, connected to HTML *ngIf 
+       error => {
+         console.log('error occured', error);
+         this.failedToLoad = true;
+       });
+    
+   }
+
    reset() {
     this.failedToLoad = false;
     this.weather = '?';

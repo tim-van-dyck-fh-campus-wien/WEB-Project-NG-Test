@@ -1,3 +1,22 @@
+/* Höhe ändert sich nach Inhaltsmenge, TODO: Höhe responsive aber fixiert gestalten.
+Breite responsive nach Größe des Display.*/
+
+#weatherContainer{
+    float: left;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: aqua;
+    width: 50%;
+    display: block;
+    text-align: center;
+}
+.sun{
+    margin-top: 10px;
+    color: yellow;
+    filter: drop-shadow(1px 1px 10px yellow);
+}
+
+
 
 
 /*

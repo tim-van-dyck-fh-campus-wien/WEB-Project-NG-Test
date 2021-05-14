@@ -27,7 +27,9 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/fontAwesomeIcons/all.js"
+            ]
           },
           "configurations": {
             "production": {
