@@ -18,14 +18,18 @@
         <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'rain'" class="fas fa-4x fa-cloud-rain cloud-rain"></i></div>
         <div class="weatherWidgetRow"><i id="icon"*ngSwitchCase="'snow'" class="fas fa-4x fa-snowflake snowflake"></i></div>
         <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'lightning'" class="fas fa-4x fa-bolt bolt"></i></div>
-     <div class="weatherWidgetRow" *ngSwitchCase="'clear'">
+        <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'clear'" class="fas fa-4x fa-sun sun"></i></div>
+        <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'partialClear'" class="fas fa-4x fa-cloud-moon cloud-moon"></i></div>
+    
+    
+    <!--   <div class="weatherWidgetRow" *ngSwitchCase="'clear'">
          <i *ngIf="isDay" id="icon" class="fas fa-4x fa-sun sun"></i>
         <i *ngIf="!isDay"id="icon" class="fas fa-4x fa-moon moon"></i>
          </div>
      <div class="weatherWidgetRow" *ngSwitchCase="'partialClear'"> 
          <i *ngIf="isDay" id="icon" class="fas fa-4x fa-cloud-sun cloud-sun"></i>
          <i *ngIf="!isDay" id="icon" class="fas fa-4x fa-cloud-moon cloud-moon"></i>
-        </div>
+        </div>--> 
     </div>
     
     <div class="weatherWidgetRow"> {{weatherID}}</div>

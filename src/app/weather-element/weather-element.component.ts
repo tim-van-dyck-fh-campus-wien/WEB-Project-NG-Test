@@ -69,7 +69,7 @@ fontAwesome: HTMLElement;
       // this.sunrise = x.sys.sunrise; 
       let sunsetTime = new Date(x.sys.sunset * 1000);
       let currentDate = new Date; 
-      this.isDay = (currentDate.getTime() < sunsetTime.getTime());     
+      this.isDay = (currentDate.getTime() < (sunsetTime.getTime()+4));     
      },
      //error handling, if user input invalid, connected to HTML *ngIf 
        error => {
