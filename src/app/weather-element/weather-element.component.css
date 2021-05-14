@@ -16,6 +16,30 @@ Breite responsive nach Größe des Display.*/
     filter: drop-shadow(1px 1px 10px yellow);
 }
 
+.moon{
+    margin-top: 10px;
+    color: white;
+    filter: drop-shadow(1px 1px 10px white);
+}
+
+.cloudDiv{
+    margin-top: -60px;
+}
+
+.cloud{
+    color: rgb(104, 175, 197);
+    filter: drop-shadow(1px 1px 5px rgb(104, 175, 197));
+    animation-name: cloudMovement;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+@keyframes cloudMovement{
+    from{margin-left: -55px;}
+    to{margin-left: 65px;}
+}
 
 
 

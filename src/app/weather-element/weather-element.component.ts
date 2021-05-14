@@ -56,8 +56,9 @@ failedToLoad: boolean = false;
   
   
    clickme(myCity:string){
-     this.city = myCity; 
      this.reset();
+     this.city = myCity; 
+     //this.reset();
      this.weatherService.getCurrentWeather(this.city).subscribe
      (x => {
        this.weather = x.weather.description;
