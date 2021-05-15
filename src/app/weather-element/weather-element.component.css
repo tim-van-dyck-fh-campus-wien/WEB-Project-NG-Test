@@ -5,7 +5,10 @@ Breite responsive nach Größe des Display.*/
     float: left;
     padding: 20px;
     border-radius: 10px;
-    background-color: aqua;
+    background-color: black;
+    background: linear-gradient(180deg, rgb(48, 2, 77) 0%, rgb(177, 2, 43));
+    color: white;
+    font-family: Futura;
     width: 50%;
     display: block;
     text-align: center;
@@ -27,8 +30,58 @@ Breite responsive nach Größe des Display.*/
 }
 
 .cloud{
-    color: rgb(104, 175, 197);
-    filter: drop-shadow(1px 1px 5px rgb(104, 175, 197));
+    color: rgb(139, 185, 199);
+    filter: drop-shadow(1px 1px 5px rgb(139, 185, 199));
+    animation-name: cloudMovement;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+.smog{
+    margin-top: 10px;
+    color: gray;
+    filter: drop-shadow(1px 1px 5px gray);
+    animation-name: cloudMovement;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+.cloud-rain{
+    margin-top: 10px;
+    color: rgb(62, 161, 191);
+    filter: drop-shadow(1px 1px 5px rgb(62, 161, 191));
+    animation-name: cloudMovement;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+.snowflake{
+    margin-top: 10px;
+    color: white;
+    filter: drop-shadow(1px 1px 10px white);
+    animation-name: cloudMovement;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+.bolt{
+    margin-top: 10px;
+    color: yellow;
+    filter: drop-shadow(1px 1px 10px yellow);
+}
+
+.cloud-moon{
+    margin-top: 10px;
+    color: white;
+    filter: drop-shadow(1px 1px 10px white);
     animation-name: cloudMovement;
     animation-iteration-count: infinite;
     animation-duration: 10s;
