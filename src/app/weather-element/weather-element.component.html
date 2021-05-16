@@ -12,15 +12,16 @@
     </div>
 -->
     <div class="weatherWidgetRow"  [ngSwitch]="weatherDescription">
-        <div class="weatherWidgetRow"><i id="icon" *ngSwitchCase ="'none'" class="fas fa-4x fa-cloud cloud"></i></div>
         <div class="weatherWidgetRow"><i id="icon"*ngSwitchCase ="'cloud'" class="fas fa-4x fa-cloud cloud"></i></div>
         <div class="weatherWidgetRow"><i id="icon"*ngSwitchCase="'fog'" class="fas fa-4x fa-smog smog"></i></div>
-        <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'rain'" class="fas fa-4x fa-cloud-rain cloud-rain"></i></div>
         <div class="weatherWidgetRow"><i id="icon"*ngSwitchCase="'snow'" class="fas fa-4x fa-snowflake snowflake"></i></div>
         <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'lightning'" class="fas fa-4x fa-bolt bolt"></i></div>
         <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'clear'" class="fas fa-4x fa-sun sun"></i></div>
-        <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'partialClear'" class="fas fa-4x fa-cloud-moon cloud-moon"></i></div>
-    
+        <div class="weatherWidgetRow cloudDiv"*ngSwitchCase="'partialClear'"> 
+       <!--<div class="weatherWidgetRow"*ngSwitchCase="'partialClear'">-->
+            <i *ngIf="isDay" id="icon" class="fas fa-4x fa-sun sun"></i>
+            <i id="icon" class="fas fa-4x fa-cloud cloud"></i></div> 
+        <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'rain'" class="fas fa-4x fa-cloud-rain cloud-rain"></i></div>
     
     <!--   <div class="weatherWidgetRow" *ngSwitchCase="'clear'">
          <i *ngIf="isDay" id="icon" class="fas fa-4x fa-sun sun"></i>
@@ -32,9 +33,10 @@
         </div>--> 
     </div>
     
-    <div class="weatherWidgetRow"> {{weatherID}}</div>
+    <!--<div class="weatherWidgetRow"> {{weatherID}}</div>-->
     
     <div class="weatherWidgetRow"><h2>{{temp}} °C</h2></div>
+    <div class="weatherWidgetRow"><p>Min Temp: {{temp_min}} °C / Max Temp: {{temp_max}} °C </p></div>
     <!--<div class="weatherWidgetRow">Weather description: {{weather}}</div>-->
     
     <!--If the cityName is not valid, f.e. connected to boolean error control -->
@@ -42,7 +44,7 @@
  
     <!--TODO clear field after input use-->
     <input class="weatherWidgetRow" type="text" placeholder="Your City here:" id="myCity" name="myCity" #myCity>
-   <button type="button" class="weatherWidgetRow" (click)="clickme(myCity.value)" [disabled]="searching">Search City</button>
+    <button type="button" class="weatherWidgetRow" (click)="clickme(myCity.value)" [disabled]="searching">Search City</button>
 
     <div class="weatherWidgetRow" *ngIf="failed">Could not add the city.</div>
 

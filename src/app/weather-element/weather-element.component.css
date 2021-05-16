@@ -13,8 +13,13 @@ Breite responsive nach Größe des Display.*/
     display: block;
     text-align: center;
 }
+.cloudDiv{
+  /*  margin-top: 40px;
+    padding-top: 50px;*/
+}
 .sun{
     margin-top: 10px;
+    margin-left: -20px;
     color: yellow;
     filter: drop-shadow(1px 1px 10px yellow);
 }
@@ -25,9 +30,9 @@ Breite responsive nach Größe des Display.*/
     filter: drop-shadow(1px 1px 10px white);
 }
 
-.cloudDiv{
+/*.cloudDiv{
     margin-top: -60px;
-}
+}*/
 
 .cloud{
     color: rgb(139, 185, 199);
@@ -82,6 +87,7 @@ Breite responsive nach Größe des Display.*/
     margin-top: 10px;
     color: white;
     filter: drop-shadow(1px 1px 10px white);
+    background-color: darkblue;
     animation-name: cloudMovement;
     animation-iteration-count: infinite;
     animation-duration: 10s;
@@ -90,55 +96,8 @@ Breite responsive nach Größe des Display.*/
 }
 
 @keyframes cloudMovement{
-    from{margin-left: -55px;}
-    to{margin-left: 65px;}
+    from{margin-left: -35px;}
+    to{margin-left: 35px;}
 }
 
 
-
-/*
-
-Nur eingefügt zur Bearbeitung, Desgin sieht dann anders aus. 
-
-
-.logo{
-    width:60%;
-    margin:auto;
-    @include media-breakpoint-up(sm){
-        width:576px;
-    }
-}1
-
-
-#divWeatherMain{
-    /*display: block;
-    float: left;
-    left: 0;
-    border-radius: 10px;
-    width: 500px;
-    height: 400px;
-    /*background: rgba(226, 94, 226, 0.822);
-    background: linear-gradient(180deg, rgb(240, 20, 20) 0%, rgb(250, 8, 250) 75%, rgb(240, 20, 20) 100%);
-    color: rgb(14, 4, 4);;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 3% 3%;
-    padding: 1%;
-    border: 2px solid black;
-    box-shadow:2px 2px rgb(250, 8, 250);
-}
-
-.weatherWidgetRow{
-    display:block;
-    margin: 2% auto;
-    width: fit-content;
-}
-
-img{
-    width: 200px;
-    height: 150px;
-   /* margin:auto%;
-  //  @include media-breakpoint-up(sm){
-  //      width:576px;
-    }
-   border-radius: 20px;
-}*/

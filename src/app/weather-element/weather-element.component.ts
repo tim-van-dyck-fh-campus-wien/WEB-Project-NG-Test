@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { ActivatedRoute } from '@angular/router';
-import { textChangeRangeIsUnchanged } from 'typescript';
+import { NgForm } from '@angular/forms';
+import { WeatherData } from './../models/Weather.interface';
 
 @Component({
   selector: 'app-weather-element',
@@ -11,16 +12,18 @@ import { textChangeRangeIsUnchanged } from 'typescript';
 export class WeatherElementComponent implements OnInit {
 
    //initialize data that is updated by WeatherService
-city: string | null = 'Wien';
-weather : string = '?';
+city: string | null;
+
 temp = 0;
 weatherID:number=0;
 weatherDescription: string = 'none';
 sunrise: number = 0;
 sunset:Date;
-isDay: boolean;
+isDay: boolean = true;
+temp_min: number;
+temp_max: number;
 
-newCity!: string;
+
 //to check whether city exists
 failed: boolean = false;
 //to not resend data on multiple clicks when already searching
@@ -29,80 +32,66 @@ searching: boolean = false;
 //If the user input was not valid, the output will be error handled 
 failedToLoad: boolean = false;
 
-fontAwesome: HTMLElement;
-  constructor(public weatherService: WeatherService, private route: ActivatedRoute) { }
+
+  constructor(public weatherService: WeatherService) { }
 
   ngOnInit() {
-     this.route.paramMap.subscribe(route => {
-      this.reset();
-      this.weatherService.getCurrentWeather(this.city).subscribe
+     this.city = 'Vienna';
+     let myData = this.weatherService.getCurrentWeather(this.city).subscribe
       (x => {
-        this.weather = x.weather.description;
-        this.temp = x.temp;
+        this.temp = x.temp.toFixed(0);
         this.weatherID = x.weather.id;
+        this.temp_min = x.temp_min.toFixed(0);
+        this.temp_max = x.temp_max.toFixed(0);
         this.weatherDescription = this.getWeatherType(this.weatherID);
+        //this.weatherService.saveWeatherData(myData); - sollte Daten nur in einem Array abspeichern -> löst aber zweifach Icon aus
+        console.log('Initialize: ', myData);
         //this.sunrise = x.sys.sunrise; 
-        let sunsetTime = new Date(x.sys.sunset * 1000);
-        let currentDate = new Date; 
-        this.isDay = (currentDate.getTime() < sunsetTime.getTime());
+        //let sunsetTime = new Date(x.sys.sunset * 1000);
+        //let currentDate = new Date; 
+        //this.isDay = (currentDate.getTime() < sunsetTime.getTime());
       },
       //error handling, if user input invalid, connected to HTML *ngIf 
         error => {
           console.log('error occured', error);
           this.failedToLoad = true;
         });
-    });
+   this.reset();
    }
   
   
    clickme(myCity:string){
-     this.reset();
      this.removeIcon();
      this.city = myCity; 
-     //this.reset();
      this.weatherService.getCurrentWeather(this.city).subscribe
      (x => {
-       this.weather = x.weather.description;
-       this.temp = x.temp;
-       this.weatherID = x.weather.id;
-       this.weatherDescription = this.getWeatherType(this.weatherID);
+      this.temp = x.temp.toFixed(0);
+      this.weatherID = x.weather.id;
+      this.temp_min = x.temp_min.toFixed(0);
+      this.temp_max = x.temp_max.toFixed(0);
+      this.weatherDescription = this.getWeatherType(this.weatherID);
       // this.sunrise = x.sys.sunrise; 
-      let sunsetTime = new Date(x.sys.sunset * 1000);
-      let currentDate = new Date; 
-      this.isDay = (currentDate.getTime() < (sunsetTime.getTime()+4));     
+      //let sunsetTime = new Date(x.sys.sunset * 1000);
+      //let currentDate = new Date; 
+      //this.isDay = (currentDate.getTime() < (sunsetTime.getTime()+4));     
      },
      //error handling, if user input invalid, connected to HTML *ngIf 
        error => {
          console.log('error occured', error);
          this.failedToLoad = true;
        });
-    
+       this.reset();
    }
 
    reset() {
     this.failedToLoad = false;
-    this.weather = '?';
+    this.temp_min = 0;
+    this.temp_max = 0; 
     this.temp = 0;
     this.weatherID = 0;
-    this.weatherDescription = "unknown"
-    this.sunrise = 0;
+    this.weatherDescription = "unknown";
+    //this.sunrise = 0;
   }
-
- /* addCity() {
-    this.failed = false;
-    this.searching = true;
-    const city = this.newCity;
-    this.weatherService.getCurrentWeather(city).subscribe
-    (x => {
-      console.log('Successfully found city');
-      this.searching = false;
-    },
-      error => {
-        console.log('Could not add city');
-        this.failed = true;
-        this.searching = false;
-      });
-}*/
 
 removeIcon(){
   var currentIcon = document.getElementById("icon"); 
@@ -111,7 +100,6 @@ removeIcon(){
 
   getWeatherType(weatherID: number){
     if (weatherID >= 200 && weatherID < 300) {
-    
       return this.weatherDescription = "lightning";
     }
     if (weatherID >= 300 && weatherID < 600) {
