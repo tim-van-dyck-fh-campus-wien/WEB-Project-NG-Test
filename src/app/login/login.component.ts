@@ -18,6 +18,7 @@ import {
   animations:[
     trigger('toggleVisbilityLoginButtons',[
       state('visible',style({
+        height:"auto",
         transform:"scaleY(1)",
         visibility:"visible"
       })),
