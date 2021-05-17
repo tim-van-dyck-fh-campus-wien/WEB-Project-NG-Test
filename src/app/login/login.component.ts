@@ -18,19 +18,20 @@ import {
   animations:[
     trigger('toggleVisbilityLoginButtons',[
       state('visible',style({
-        height:"auto",
+        height:"*",
         transform:"scaleY(1)",
         visibility:"visible"
       })),
       state('hidden',style({
+        opacity:"1",
         height:"0px",
-        transform:"scaleY(0)"
+        overflow:"hidden"
       })),
       transition('visible => hidden',[
-        animate('0.3s')
+        animate('0.3s ease-in-out')
       ]),
       transition('hidden => visible', [
-        animate('0.3s')
+        animate('0.3s ease-in-out')
       ]),
     ]),
 
