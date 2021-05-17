@@ -8,30 +8,35 @@
                     </div>
                 </div>
                 <div >
-                    <div class="row">
-                        <div class="col-sm">
-                            <button type="button" class="btn btn-outline-primary btn-lg btn-block" (click)="collapse.toggle()" [attr.aria-expanded]="!loginIsCollapsed">
+                    <div class="row" [@toggleVisbilityLoginButtons]=" loginIsCollapsed && registerIsCollapsed? 'visible':'hidden'">
+                        <div class="col-sm my-1">
+                            <button type="button" class="btn btn-outline-primary btn-lg btn-block" (click)=" showLoginForm();" [attr.aria-expanded]="!loginIsCollapsed">
                                 Login
                             </button>
                         </div>
-                        <div class="col-sm">
-                            <button type="button" class="btn btn-outline-primary btn-lg btn-block">
+                        <div class="col-sm my-1" >
+                            <button type="button" class="btn btn-outline-primary btn-lg btn-block" (click)=" showRegisterForm();" [attr.aria-expanded]="!registerIsCollapsed">
                                 Register
                             </button>
                         </div>
-                        
+
                     </div>
                     <div #collapse="ngbCollapse" [(ngbCollapse)]="loginIsCollapsed">
-                        <login-form firstName="asdf" ></login-form>
+                        <login-form [initialData]="initialData" (registerClicked)="onLoginFormRegisterClicked(initialData)" firstName="asdf" ></login-form>
                     </div>
-                    
-                    
+                    <div #collapse="ngbCollapse" [(ngbCollapse)]="registerIsCollapsed">
+                      <register-form [initialData]="initialData" (loginClicked)="onRegisterFormLoginClicked(initialData)" ></register-form>
+                    </div>
+
+
+
+
                 </div>
-            
+
         </div>
-        
+
     </div>
 </div>
 
-    
+
 
