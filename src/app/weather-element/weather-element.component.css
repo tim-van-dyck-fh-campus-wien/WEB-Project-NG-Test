@@ -1,6 +1,8 @@
 /* Höhe ändert sich nach Inhaltsmenge, TODO: Höhe responsive aber fixiert gestalten.
 Breite responsive nach Größe des Display.*/
-
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 #weatherContainer{
     float: left;
     padding: 20px;
@@ -13,9 +15,12 @@ Breite responsive nach Größe des Display.*/
     display: block;
     text-align: center;
 }
-.cloudDiv{
-  /*  margin-top: 40px;
-    padding-top: 50px;*/
+#cityButton{
+    height: 35px;
+    background-color: rgb(53, 2, 75);
+    color: antiquewhite; 
+    border-radius: 7px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .sun{
     margin-top: 10px;
@@ -96,6 +101,7 @@ Breite responsive nach Größe des Display.*/
 }
 .cityTextfield{
     width: 80%;
+    border-radius: 7px;
 }
 
 

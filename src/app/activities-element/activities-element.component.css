@@ -1,3 +1,7 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .activitiesWidget{
     float: right;
     padding: 20px;
@@ -19,4 +23,11 @@
 .iconPicture:hover{
     cursor: pointer;
     filter: drop-shadow(1px 1px 10px white);
+}
+.reload{
+    height: 25px;
+    background-color: rgb(53, 2, 75);
+    color: antiquewhite; 
+    border-radius: 7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

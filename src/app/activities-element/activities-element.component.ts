@@ -32,14 +32,16 @@ searching: boolean = false;
 
 //If the user input was not valid, the output will be error handled 
 failedToLoad: boolean = false;
-  temperatureForActivities:number;
-  weatherDescripForActivities:string; 
+temperatureForActivities:number;
+weatherDescripForActivities:string; 
 
   ngOnInit(): void {
-  //  this.city = 'Vienna';
-   this.updateCity('Vienna');
-   this.weatherService.getWeatherData();
-   
+   this.updateCity('Vienna'); //initial standard value for now
+   this.temperatureForActivities = this.weatherService.tempForActivity;
+   this.weatherDescripForActivities = this.weatherService.weatherdesc; 
+   console.log('onInit Activities', this.temperatureForActivities, this.weatherDescripForActivities);
+  // this.weatherService.getWeatherData();
+   this.getActivities(this.temperatureForActivities, this.weatherDescripForActivities);
    // this.temperatureForActivities = this.weatherElement.temp;
    // this.weatherDescripForActivities = this.weatherElement.weatherDescription; 
   }
@@ -54,10 +56,11 @@ failedToLoad: boolean = false;
     //this.sunrise = 0;
   }
 
-removeIcon(){
-  var currentIcon = document.getElementById("icon"); 
-  currentIcon.remove();
-}
+  updateActivities(){
+    //this.temperatureForActivities = this.weatherService.tempForActivity; 
+    //this.weatherDescripForActivities = this.weatherService.weatherdesc; 
+    this.getActivities(this.temperatureForActivities, this.weatherDescripForActivities);
+  }
 
 updateCity(city:string){
   this.city = city;
@@ -71,23 +74,25 @@ updateCity(city:string){
     this.weatherDescription = this.weatherService.getWeatherType(this.weatherID);
     this.timezone = x.timezone;
     this.weatherService.calculateTime(this.timezone);
-    //this.weatherService.saveWeatherData(myData); - sollte Daten nur in einem Array abspeichern -> löst aber zweifach Icon aus
-    console.log('Initialize: ', myData);
-    this.weatherDescripForActivities = this.getActivities(this.temp, this.weatherDescription);
+    this.temperatureForActivities = this.weatherService.tempForActivity;
+    this.weatherDescripForActivities = this.weatherService.weatherdesc; 
+    this.getActivities(this.temp, this.weatherDescription);
   },
   //error handling, if user input invalid, connected to HTML *ngIf 
     error => {
       console.log('error occured', error);
       this.failedToLoad = true;
+      this.reset();
     });
-this.reset();
-
+    this.temperatureForActivities = this.weatherService.tempForActivity;
+    this.weatherDescripForActivities = this.weatherService.weatherdesc; 
+    //this.reset();
 }
 
 getActivities(temp:number, weatherDescription:string){
   if (weatherDescription == 'snow'){
-   return this.weatherDescripForActivities = "snow"; 
-}
+    return this.weatherDescripForActivities = "snow"; 
+  }
   if(weatherDescription == 'rain' ||weatherDescription == 'lightning' ||weatherDescription == 'fog'){
     return this.weatherDescripForActivities = "insideActivities";
   }

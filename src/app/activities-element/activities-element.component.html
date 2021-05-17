@@ -1,5 +1,5 @@
 <div class="activitiesWidget">
-    <div><h2>Activities today:</h2></div>
+    <div><h2>Activities today:</h2><button type="submit" class="reload" (click)="updateActivities()">Reload Activities</button></div>
 
     <div [ngSwitch]="weatherDescripForActivities" >
        <div *ngSwitchCase ="'outsideHot'" class="activity-Icon hot"> 

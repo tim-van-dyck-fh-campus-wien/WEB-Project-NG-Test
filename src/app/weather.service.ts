@@ -16,7 +16,7 @@ export class WeatherService {
   apiKey = 'ffbb344287855685985d58e95dd1262f';
   unit = 'metric'; //define format of numbers returned
   weatherdesc:string;
-
+  tempForActivity:number;
 
   getCurrentWeather(city: string | null): Observable<any> {
     //do API call with current city

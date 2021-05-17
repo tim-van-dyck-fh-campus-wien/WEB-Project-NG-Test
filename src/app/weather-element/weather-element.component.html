@@ -1,16 +1,7 @@
 
-    <!--<img class="logo" src="assets/WebStartLogoEvenWider2x.png" alt="logo">-->
     <div id='weatherContainer'>
         <div class="weatherWidgetRow" ><h1>{{city}}</h1></div>
-     
 
-  <!--  <div class="weatherWidgetRow">
-            <i class="fas fa-3x fa-sun sun"></i> 
-    </div> 
-    <div class="weatherWidgetRow cloudDiv">
-        <i class="fas fa-4x fa-cloud cloud"></i>
-    </div>
--->
     <div class="weatherWidgetRow"  [ngSwitch]="weatherDescription">
         <div class="weatherWidgetRow"><i id="icon"*ngSwitchCase ="'cloud'" class="fas fa-4x fa-cloud cloud"></i></div>
         <div class="weatherWidgetRow"><i id="icon"*ngSwitchCase="'fog'" class="fas fa-4x fa-smog smog"></i></div>
@@ -18,7 +9,6 @@
         <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'lightning'" class="fas fa-4x fa-bolt bolt"></i></div>
         <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'clear'" class="fas fa-4x fa-sun sun"></i></div>
         <div class="weatherWidgetRow cloudDiv"*ngSwitchCase="'partialClear'"> 
-       <!--<div class="weatherWidgetRow"*ngSwitchCase="'partialClear'">-->
             <i *ngIf="isDay" id="icon" class="fas fa-4x fa-sun sun"></i>
             <i id="icon" class="fas fa-4x fa-cloud cloud"></i></div> 
         <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'rain'" class="fas fa-4x fa-cloud-rain cloud-rain"></i></div>
@@ -37,28 +27,15 @@
 
     <div class="weatherWidgetRow"><h2>{{temp}} °C</h2></div>
     <div class="weatherWidgetRow"><p>Min Temp: {{temp_min}} °C / Max Temp: {{temp_max}} °C </p></div>
-    <div class="weatherWidgetRow"><p>Timezone {{timezone}} </p></div>
-    <!--<div class="weatherWidgetRow">Weather description: {{weather}}</div>-->
-    
+   
     <!--If the cityName is not valid, f.e. connected to boolean error control -->
     <div class="weatherWidgetRow" *ngIf="failedToLoad">Weather is not available. Try looking out the window.</div>
  
     <!--TODO clear field after input use-->
-    <input class="weatherWidgetRow cityTextfield" type="text" placeholder="Your City here:" id="myCity" name="myCity" #myCity>
-    <button type="button" class="weatherWidgetRow" (click)="clickme(myCity.value)" [disabled]="searching">Search City</button>
+    <input class="weatherWidgetRow cityTextfield" type="text" onfocus="this.value=''" placeholder="Your City here:" id="myCity" name="myCity" #myCity>
+    <button type="button" id="cityButton" class="weatherWidgetRow" (click)="clickme(myCity.value)" [disabled]="searching">Search City</button>
 
     <div class="weatherWidgetRow" *ngIf="failed">Could not add the city.</div>
-
-    <!--
-    <h1>Test Icons</h1>
-    <i id="icon" class="fas fa-4x fa-cloud cloud"></i><br>
-    <i id="icon" class="fas fa-4x fa-smog smog"></i><br>
-    <i id="icon" class="fas fa-4x fa-cloud-rain cloud-rain"></i><br>
-    <i id="icon" class="fas fa-4x fa-snowflake snowflake"></i><br>
-    <i id="icon" class="fas fa-4x fa-bolt bolt"></i><br>
-    <i id="icon" class="fas fa-4x fa-sun sun"></i><br>
-    <i id="icon" class="fas fa-4x fa-cloud-moon cloud-moon"></i><br>
-    -->
 
 </div>
     
