@@ -15,16 +15,15 @@ export class LoginFormComponent implements OnInit {
     private router:Router) {
 
   }
-  @Input() firstName:string;
+  @Input() initialData:LoginData;
   @Output() submit = new EventEmitter<LoginData>();
+  @Output() registerClicked = new EventEmitter<LoginData>();
   firstNameBind:string;
 
   ngOnInit(): void {
-    this.firstNameBind=this.firstName;
   }
   onSubmit(f:NgForm){
       let data:LoginData = f.value as LoginData;
-      //this.submit.emit(returnData);
       if(this.loginServ.validateCredentials(data)){//login sucessfull
         alert("Login Success");
         console.dir(data);
@@ -32,6 +31,10 @@ export class LoginFormComponent implements OnInit {
     }else{
 
     }
+  }
+  onRegisterClicked(f:NgForm){
+    let data:LoginData=f.value as LoginData;
+    this.registerClicked.emit(data);
   }
 
 }
