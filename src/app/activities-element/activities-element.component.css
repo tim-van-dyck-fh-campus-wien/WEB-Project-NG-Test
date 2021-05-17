@@ -1,0 +1,22 @@
+.activitiesWidget{
+    float: right;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: black;
+    background: linear-gradient(180deg, rgb(48, 2, 77) 0%, rgb(177, 2, 43));
+    color: white;
+    font-family: Futura;
+    width: 50%;
+    display: block;
+    text-align: center;
+}
+.iconPicture{
+    border-radius: 10px; 
+    height: 90px; 
+    width: 90px;
+    margin: 25px;
+}
+.iconPicture:hover{
+    cursor: pointer;
+    filter: drop-shadow(1px 1px 10px white);
+}

@@ -3,6 +3,7 @@ import { WeatherService } from '../weather.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { WeatherData } from './../models/Weather.interface';
+import {ActivitiesElementComponent} from '../activities-element/activities-element.component'
 
 @Component({
   selector: 'app-weather-element',
@@ -22,7 +23,7 @@ sunset:Date;
 isDay: boolean = true;
 temp_min: number;
 temp_max: number;
-displayCity: string|null;
+APICity: string|null;
 timezone: number|Date;
 
 
@@ -35,26 +36,22 @@ searching: boolean = false;
 failedToLoad: boolean = false;
 
 
-  constructor(public weatherService: WeatherService) { }
+  constructor(public weatherService: WeatherService, /*public activies:ActivitiesElementComponent*/) { }
 
   ngOnInit() {
      this.city = 'Vienna';
      let myData = this.weatherService.getCurrentWeather(this.city).subscribe
       (x => {
-       // this.displayCity = x.name; //Test
+        this.APICity = x.name;
         this.temp = x.temp.toFixed(0);
         this.weatherID = x.weather.id;
         this.temp_min = x.temp_min.toFixed(0);
         this.temp_max = x.temp_max.toFixed(0);
-        this.weatherDescription = this.getWeatherType(this.weatherID);
+        this.weatherDescription = this.weatherService.getWeatherType(this.weatherID);
         this.timezone = x.timezone;
         this.weatherService.calculateTime(this.timezone);
-        //this.weatherService.saveWeatherData(myData); - sollte Daten nur in einem Array abspeichern -> löst aber zweifach Icon aus
+        this.weatherService.saveWeatherData(myData);// - sollte Daten nur in einem Array abspeichern -> löst aber zweifach Icon aus
         console.log('Initialize: ', myData);
-        //this.sunrise = x.sys.sunrise; 
-        //let sunsetTime = new Date(x.sys.sunset * 1000);
-        //let currentDate = new Date; 
-        //this.isDay = (currentDate.getTime() < sunsetTime.getTime());
       },
       //error handling, if user input invalid, connected to HTML *ngIf 
         error => {
@@ -68,19 +65,17 @@ failedToLoad: boolean = false;
    clickme(myCity:string){
      this.removeIcon();
      this.city = myCity; 
-     this.weatherService.getCurrentWeather(this.city).subscribe
+     let newData = this.weatherService.getCurrentWeather(this.city).subscribe
      (x => {
-     // this.displayCity = x.name; //Test
+      this.APICity = x.name; //Test
       this.temp = x.temp.toFixed(0);
       this.weatherID = x.weather.id;
       this.temp_min = x.temp_min.toFixed(0);
       this.temp_max = x.temp_max.toFixed(0);
-      this.weatherDescription = this.getWeatherType(this.weatherID);
+      this.weatherDescription = this.weatherService.getWeatherType(this.weatherID);
       this.timezone = x.timezone; 
-      // this.sunrise = x.sys.sunrise; 
-      //let sunsetTime = new Date(x.sys.sunset * 1000);
-      //let currentDate = new Date; 
-      //this.isDay = (currentDate.getTime() < (sunsetTime.getTime()+4));     
+      this.weatherService.saveWeatherData(newData);   
+     // anthis.activies.updateCity(this.city);  
      },
      //error handling, if user input invalid, connected to HTML *ngIf 
        error => {
@@ -105,30 +100,6 @@ removeIcon(){
   currentIcon.remove();
 }
 
-getWeatherType(weatherID: number){
-    if (weatherID >= 200 && weatherID < 300) {
-      return this.weatherDescription = "lightning";
-    }
-    if (weatherID >= 300 && weatherID < 600) {
-      return this.weatherDescription = "rain";
-    }
-    if (weatherID >= 600 && weatherID < 700) {
-      return this.weatherDescription = "snow";
-    }
-    if (weatherID >= 700 && weatherID < 800) {
-      return this.weatherDescription = "fog";
-    }
-    if (weatherID === 800) {
-      return this.weatherDescription = "clear";
-    }
-    if (weatherID >= 801 && weatherID < 803) {
-      return this.weatherDescription = "partialClear";
-    }
-    if (weatherID >= 803 && weatherID < 900) {
-      return this.weatherDescription = "cloud";
-    }
-    return this.weatherDescription = "unknown";
-  }
 }
 
 

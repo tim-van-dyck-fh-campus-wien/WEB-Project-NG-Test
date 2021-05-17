@@ -15,6 +15,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { ActivitiesElementComponent } from './activities-element/activities-element.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     SearchbarComponent,
     WeatherElementComponent,
     RegisterFormComponent,
+    ActivitiesElementComponent,
   ],
   imports: [
     BrowserModule,

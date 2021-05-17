@@ -10,4 +10,5 @@ export interface WeatherData{
  //sunrise: number;
 // sunset:Date;
  isDay: boolean;
+ APIcityForActivities:string|null;
  }
