@@ -37,13 +37,14 @@
     
     <div class="weatherWidgetRow"><h2>{{temp}} °C</h2></div>
     <div class="weatherWidgetRow"><p>Min Temp: {{temp_min}} °C / Max Temp: {{temp_max}} °C </p></div>
+    <div class="weatherWidgetRow"><p>Timezone {{timezone}} </p></div>
     <!--<div class="weatherWidgetRow">Weather description: {{weather}}</div>-->
     
     <!--If the cityName is not valid, f.e. connected to boolean error control -->
     <div class="weatherWidgetRow" *ngIf="failedToLoad">Weather is not available. Try looking out the window.</div>
  
     <!--TODO clear field after input use-->
-    <input class="weatherWidgetRow" type="text" placeholder="Your City here:" id="myCity" name="myCity" #myCity>
+    <input class="weatherWidgetRow cityTextfield" type="text" placeholder="Your City here:" id="myCity" name="myCity" #myCity>
     <button type="button" class="weatherWidgetRow" (click)="clickme(myCity.value)" [disabled]="searching">Search City</button>
 
     <div class="weatherWidgetRow" *ngIf="failed">Could not add the city.</div>

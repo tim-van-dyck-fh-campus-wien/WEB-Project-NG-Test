@@ -22,6 +22,8 @@ sunset:Date;
 isDay: boolean = true;
 temp_min: number;
 temp_max: number;
+displayCity: string|null;
+timezone: number|Date;
 
 
 //to check whether city exists
@@ -39,11 +41,14 @@ failedToLoad: boolean = false;
      this.city = 'Vienna';
      let myData = this.weatherService.getCurrentWeather(this.city).subscribe
       (x => {
+       // this.displayCity = x.name; //Test
         this.temp = x.temp.toFixed(0);
         this.weatherID = x.weather.id;
         this.temp_min = x.temp_min.toFixed(0);
         this.temp_max = x.temp_max.toFixed(0);
         this.weatherDescription = this.getWeatherType(this.weatherID);
+        this.timezone = x.timezone;
+        this.weatherService.calculateTime(this.timezone);
         //this.weatherService.saveWeatherData(myData); - sollte Daten nur in einem Array abspeichern -> löst aber zweifach Icon aus
         console.log('Initialize: ', myData);
         //this.sunrise = x.sys.sunrise; 
@@ -65,11 +70,13 @@ failedToLoad: boolean = false;
      this.city = myCity; 
      this.weatherService.getCurrentWeather(this.city).subscribe
      (x => {
+     // this.displayCity = x.name; //Test
       this.temp = x.temp.toFixed(0);
       this.weatherID = x.weather.id;
       this.temp_min = x.temp_min.toFixed(0);
       this.temp_max = x.temp_max.toFixed(0);
       this.weatherDescription = this.getWeatherType(this.weatherID);
+      this.timezone = x.timezone; 
       // this.sunrise = x.sys.sunrise; 
       //let sunsetTime = new Date(x.sys.sunset * 1000);
       //let currentDate = new Date; 
@@ -98,7 +105,7 @@ removeIcon(){
   currentIcon.remove();
 }
 
-  getWeatherType(weatherID: number){
+getWeatherType(weatherID: number){
     if (weatherID >= 200 && weatherID < 300) {
       return this.weatherDescription = "lightning";
     }

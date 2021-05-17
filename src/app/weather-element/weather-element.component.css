@@ -94,6 +94,10 @@ Breite responsive nach Größe des Display.*/
     animation-timing-function: ease-in-out;
     animation-direction: alternate;
 }
+.cityTextfield{
+    width: 80%;
+}
+
 
 @keyframes cloudMovement{
     from{margin-left: -35px;}

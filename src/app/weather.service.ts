@@ -30,7 +30,8 @@ export class WeatherService {
         const weatherID = response.weather.id;
         const temp_min = response.main.temp_min;
         const temp_max = response.main.temp_max;  
-        const x = {weather, temp, weatherID, temp_min, temp_max};
+        const timezone = response.timezone; 
+        const x = {weather, temp, weatherID, temp_min, temp_max, timezone};
        // const sunsetTime = new Date(response.sys.sunset * 1000);
         return x;
       }));
@@ -40,5 +41,12 @@ export class WeatherService {
       let arrWeather: Array<WeatherData> = [];
       //puts Data into array
       arrWeather.push(WeatherData);
+    }
+
+    calculateTime(timezone:any){
+      timezone = (timezone / 3600); 
+      let localTime = new Date();
+      localTime = (localTime.getTime() + timezone.toLocaleTimeString()); 
+      return localTime;
     }
   }
