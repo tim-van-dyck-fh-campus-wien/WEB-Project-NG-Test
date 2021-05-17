@@ -22,7 +22,8 @@ import {
         visibility:"visible"
       })),
       state('hidden',style({
-        transform:"scaleY(0)",
+        height:"0px",
+        transform:"scaleY(0)"
       })),
       transition('visible => hidden',[
         animate('0.3s')
