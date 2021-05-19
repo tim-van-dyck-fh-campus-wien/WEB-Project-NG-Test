@@ -35,41 +35,40 @@ failedToLoad: boolean = false;
   constructor(public weatherService: WeatherService) { }
 
   ngOnInit() {
-    //works on second click
     this.city = 'Vienna';
     this.makeAPIcall(this.city);
-
-    //Test for weather - activity binding
+    //update WeatherService variables for activities
     this.weatherService.weatherdesc = this.weatherDescription;
-    this.weatherService.tempForActivity = this.temp; 
+    this.weatherService.tempForActivity = this.temp;
+    this.weatherService.cityForActivity = this.city; 
     console.log('OnInitUpdate: WeatherElement', this.weatherService.weatherdesc, this.weatherService.tempForActivity);
    }
   
-   //makes a new API call
+   //makes a new API call for city entered
   clickme(myCity:string){
     this.removeIcon();
     this.makeAPIcall(myCity);
     this.weatherService.weatherdesc = this.weatherDescription;
     this.weatherService.tempForActivity = this.temp; 
+    this.weatherService.cityForActivity = myCity; 
     console.log('Double Update: WeatherElement', this.weatherService.weatherdesc, this.weatherService.tempForActivity);
    }
 
+   //takes care of API call itself
   makeAPIcall(myCity){
     this.city = myCity; 
     let newData = this.weatherService.getCurrentWeather(this.city).subscribe
     (x => {
-     this.APICity = x.name; //Test
+ //    this.APICity = x.name; //Test
      this.temp = x.temp.toFixed(0);
      this.weatherID = x.weather.id;
      this.temp_min = x.temp_min.toFixed(0);
      this.temp_max = x.temp_max.toFixed(0);
      this.weatherDescription = this.weatherService.getWeatherType(this.weatherID);
      this.timezone = x.timezone; 
-     //Test for Update with API Call
      this.weatherService.weatherdesc = this.weatherDescription;
      this.weatherService.tempForActivity = this.temp; 
-     console.log("WeatherElement: ", this.weatherService.weatherdesc, this.weatherService.tempForActivity); 
-    // this.weatherService.saveWeatherData(newData);  
+     console.log("WeatherElement: ", this.weatherService.weatherdesc, this.weatherService.tempForActivity);  
     },
     //error handling, if user input invalid, connected to HTML *ngIf 
       error => {
@@ -77,19 +76,16 @@ failedToLoad: boolean = false;
         this.failedToLoad = true;
         this.reset;
       });
-    //  this.weatherService.weatherdesc = this.weatherDescription;
-      //this.weatherService.tempForActivity = this.temp; 
-      //console.log("WeatherElement: ", this.weatherService.weatherdesc, this.weatherService.tempForActivity); 
-     // this.reset();
    }
 
+   //reset in case of failure
   reset() {
     this.failedToLoad = false;
     this.temp_min = 0;
     this.temp_max = 0; 
     this.temp = 0;
     this.weatherID = 0;
-   // this.weatherDescription = "unknown";
+    this.weatherDescription = "unknown";
   }
 
   //with city update, new icon might be needed

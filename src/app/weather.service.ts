@@ -16,8 +16,11 @@ export class WeatherService {
   //apiKey = 'ffbb344287855685985d58e95dd1262f';
   apiKey = '5e3281564a5218651547aa65485f14c0';
   unit = 'metric'; //define format of numbers returned
+  
+  //variables to be updated by weatherElement to be used by activitiesElement
   weatherdesc:string;
   tempForActivity:number;
+  cityForActivity:string;
 
   getCurrentWeather(city: string | null): Observable<any> {
     //do API call with current city
@@ -27,19 +30,17 @@ export class WeatherService {
       map(response => {
         console.log('apiResponse', response); 
         //found in the JSON file, the api is responding with
-        const APIcity = response.name;
         const weather = response.weather[0];
         const temp = response.main.temp; 
         const weatherID = response.weather.id;
         const temp_min = response.main.temp_min;
         const temp_max = response.main.temp_max;  
         const timezone = response.timezone; 
-        const x = {weather, temp, weatherID, temp_min, temp_max, timezone, APIcity};
-       // const sunsetTime = new Date(response.sys.sunset * 1000);
+        const x = {weather, temp, weatherID, temp_min, temp_max, timezone};
         return x;
       }));
     }
- 
+ /*
     arrWeather: Array<WeatherData> = [];
     saveWeatherData(WeatherData){
       //puts Data into array
@@ -48,12 +49,9 @@ export class WeatherService {
     }
     getWeatherData(){
       return this.arrWeather;
-    }
+    }*/
 
-   // currentAPIcity(WeatherData){
-     // return WeatherData.APIcityForActivities;
-    //}
-
+//work in progress to differentiate day/nighttime
     calculateTime(timezone:any){
       timezone = (timezone / 3600); 
       let localTime = new Date();
@@ -61,7 +59,7 @@ export class WeatherService {
       return localTime;
     }
 
-    
+ //roughly map weatherID to a self defined weather description for the weather Icon/activity mapping   
 getWeatherType(weatherID: number){
   if (weatherID >= 200 && weatherID < 300) {
     return this.weatherdesc = "lightning";
