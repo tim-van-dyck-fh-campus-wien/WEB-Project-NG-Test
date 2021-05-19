@@ -24,13 +24,10 @@ temp_min: number;
 temp_max: number;
 APICity: string|null;
 timezone: number|Date;
-
-
 //to check whether city exists
 failed: boolean = false;
 //to not resend data on multiple clicks when already searching
 searching: boolean = false; 
-
 //If the user input was not valid, the output will be error handled 
 failedToLoad: boolean = false;
 
@@ -38,10 +35,17 @@ failedToLoad: boolean = false;
   constructor(public weatherService: WeatherService) { }
 
   ngOnInit() {
+    //works on second click
     this.city = 'Vienna';
     this.makeAPIcall(this.city);
+
+    //Test for weather - activity binding
+    this.weatherService.weatherdesc = this.weatherDescription;
+    this.weatherService.tempForActivity = this.temp; 
+    console.log('OnInitUpdate: WeatherElement', this.weatherService.weatherdesc, this.weatherService.tempForActivity);
    }
   
+   //makes a new API call
   clickme(myCity:string){
     this.removeIcon();
     this.makeAPIcall(myCity);
@@ -61,6 +65,10 @@ failedToLoad: boolean = false;
      this.temp_max = x.temp_max.toFixed(0);
      this.weatherDescription = this.weatherService.getWeatherType(this.weatherID);
      this.timezone = x.timezone; 
+     //Test for Update with API Call
+     this.weatherService.weatherdesc = this.weatherDescription;
+     this.weatherService.tempForActivity = this.temp; 
+     console.log("WeatherElement: ", this.weatherService.weatherdesc, this.weatherService.tempForActivity); 
     // this.weatherService.saveWeatherData(newData);  
     },
     //error handling, if user input invalid, connected to HTML *ngIf 
@@ -69,9 +77,9 @@ failedToLoad: boolean = false;
         this.failedToLoad = true;
         this.reset;
       });
-      this.weatherService.weatherdesc = this.weatherDescription;
-      this.weatherService.tempForActivity = this.temp; 
-      console.log("WeatherElement: ", this.weatherService.weatherdesc, this.weatherService.tempForActivity); 
+    //  this.weatherService.weatherdesc = this.weatherDescription;
+      //this.weatherService.tempForActivity = this.temp; 
+      //console.log("WeatherElement: ", this.weatherService.weatherdesc, this.weatherService.tempForActivity); 
      // this.reset();
    }
 
@@ -84,6 +92,7 @@ failedToLoad: boolean = false;
    // this.weatherDescription = "unknown";
   }
 
+  //with city update, new icon might be needed
   removeIcon(){
     var currentIcon = document.getElementById("icon"); 
     if (currentIcon != null){

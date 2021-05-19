@@ -12,10 +12,9 @@ export class ActivitiesElementComponent implements OnInit {
 constructor(private weatherService:WeatherService) { }
 
 city: string | null;
-
 temp = 0;
 weatherID:number=0;
-weatherDescription: string = 'none';
+weatherDescription: string;
 sunrise: number = 0;
 sunset:Date;
 isDay: boolean = true;
@@ -23,8 +22,6 @@ temp_min: number;
 temp_max: number;
 displayCity: string|null;
 timezone: number|Date;
-
-
 //to check whether city exists
 failed: boolean = false;
 //to not resend data on multiple clicks when already searching
@@ -35,12 +32,13 @@ failedToLoad: boolean = false;
 temperatureForActivities:number;
 weatherDescripForActivities:string; 
 
-  ngOnInit(): void {
-   this.updateCity('Vienna'); //initial standard value for now
+  ngOnInit() {
+   //this.updateCity('Vienna'); //initial standard value for now // should work without an extra API call
+   //probably the API call should happen at mainpage / loginclick to get values in time 
    this.temperatureForActivities = this.weatherService.tempForActivity;
    this.weatherDescripForActivities = this.weatherService.weatherdesc; 
    console.log('onInit Activities', this.temperatureForActivities, this.weatherDescripForActivities);
-  // this.weatherService.getWeatherData();
+  // this.weatherService.getWeatherData(); gets weather description 
    this.getActivities(this.temperatureForActivities, this.weatherDescripForActivities);
    // this.temperatureForActivities = this.weatherElement.temp;
    // this.weatherDescripForActivities = this.weatherElement.weatherDescription; 
@@ -56,12 +54,18 @@ weatherDescripForActivities:string;
     //this.sunrise = 0;
   }
 
+  //upon button click, the activities should update for currently searched city based on weather/temp (gets data from weatherService)
+  //(city update could be nice, to get href links with the specific city searched in the weather widget)
   updateActivities(){
-    //this.temperatureForActivities = this.weatherService.tempForActivity; 
-    //this.weatherDescripForActivities = this.weatherService.weatherdesc; 
+    //supposed to get the current values of temperature / weatherdescription 
+    //from the weatherService to update activities if needed
+    this.temperatureForActivities = this.weatherService.tempForActivity; 
+    this.weatherDescripForActivities = this.weatherService.weatherdesc; 
     this.getActivities(this.temperatureForActivities, this.weatherDescripForActivities);
   }
 
+
+  //second API call for the activities -> should be avoided in longterm -> API overkill 
 updateCity(city:string){
   this.city = city;
   let myData = this.weatherService.getCurrentWeather(this.city).subscribe
@@ -89,6 +93,8 @@ updateCity(city:string){
     //this.reset();
 }
 
+
+//set keywords for activities
 getActivities(temp:number, weatherDescription:string){
   if (weatherDescription == 'snow'){
     return this.weatherDescripForActivities = "snow"; 
