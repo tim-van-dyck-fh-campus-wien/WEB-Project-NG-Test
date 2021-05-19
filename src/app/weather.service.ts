@@ -13,7 +13,8 @@ export class WeatherService {
 
   constructor(private httpClient: HttpClient) { }
   //define my API Key which is used for the calls
-  apiKey = 'ffbb344287855685985d58e95dd1262f';
+  //apiKey = 'ffbb344287855685985d58e95dd1262f';
+  apiKey = '5e3281564a5218651547aa65485f14c0';
   unit = 'metric'; //define format of numbers returned
   weatherdesc:string;
   tempForActivity:number;
