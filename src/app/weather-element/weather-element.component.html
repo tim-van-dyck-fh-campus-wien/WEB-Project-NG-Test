@@ -10,7 +10,7 @@
         <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'clear'" class="fas fa-4x fa-sun sun"></i></div>
         <div class="weatherWidgetRow cloudDiv"*ngSwitchCase="'partialClear'"> 
             <i *ngIf="isDay" id="icon" class="fas fa-4x fa-sun sun"></i>
-            <i id="icon" class="fas fa-4x fa-cloud cloud"></i></div> 
+            <i *ngIf="isDay" id="icon" class="fas fa-4x fa-cloud cloud"></i></div> 
         <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'rain'" class="fas fa-4x fa-cloud-rain cloud-rain"></i></div>
     
     <!--   <div class="weatherWidgetRow" *ngSwitchCase="'clear'">

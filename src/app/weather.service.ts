@@ -84,4 +84,8 @@ getWeatherType(weatherID: number){
   }
   return this.weatherdesc = "unknown";
 }
+
+
+// TODO Aktivities Update als Observable Struktur automatisieren 
+// Angular Observables Structure
   }

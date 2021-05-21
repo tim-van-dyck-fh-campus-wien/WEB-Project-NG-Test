@@ -20,6 +20,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { ActivitiesElementComponent } from './activities-element/activities-element.component';
 import { ShortcutElementComponent } from './shortcut-element/shortcut-element.component';
 import { ShortcutGroupComponent } from './shortcut-group/shortcut-group.component';
+import { WeatherService } from './weather.service';
 
 
 @NgModule({
@@ -43,7 +44,7 @@ import { ShortcutGroupComponent } from './shortcut-group/shortcut-group.componen
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [LoginService,LogoRetrievalService,ShortcutGroupService],
+  providers: [LoginService,LogoRetrievalService,ShortcutGroupService, WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

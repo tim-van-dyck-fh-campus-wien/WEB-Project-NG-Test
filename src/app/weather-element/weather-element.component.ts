@@ -46,12 +46,12 @@ failedToLoad: boolean = false;
   
    //makes a new API call for city entered
   clickme(myCity:string){
-    this.removeIcon();
+    this.removeIcon();// Test im API
     this.makeAPIcall(myCity);
     this.weatherService.weatherdesc = this.weatherDescription;
     this.weatherService.tempForActivity = this.temp; 
     this.weatherService.cityForActivity = myCity; 
-    console.log('Double Update: WeatherElement', this.weatherService.weatherdesc, this.weatherService.tempForActivity);
+    console.log('Update: WeatherElement', this.weatherService.weatherdesc, this.weatherService.tempForActivity);
    }
 
    //takes care of API call itself
@@ -66,8 +66,12 @@ failedToLoad: boolean = false;
      this.temp_max = x.temp_max.toFixed(0);
      this.weatherDescription = this.weatherService.getWeatherType(this.weatherID);
      this.timezone = x.timezone; 
+  /*   if (this.weatherDescription != this.weatherService.weatherdesc){
+       this.removeIcon();
+     }*/
      this.weatherService.weatherdesc = this.weatherDescription;
      this.weatherService.tempForActivity = this.temp; 
+    
      console.log("WeatherElement: ", this.weatherService.weatherdesc, this.weatherService.tempForActivity);  
     },
     //error handling, if user input invalid, connected to HTML *ngIf 
@@ -91,9 +95,10 @@ failedToLoad: boolean = false;
   //with city update, new icon might be needed
   removeIcon(){
     var currentIcon = document.getElementById("icon"); 
-    if (currentIcon != null){
+   if (currentIcon != null){
       currentIcon.remove();
     }
+    //currentIcon.remove();
   }
 
 }
