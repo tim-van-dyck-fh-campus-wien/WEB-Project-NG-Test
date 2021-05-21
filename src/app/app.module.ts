@@ -1,3 +1,5 @@
+import { ShortcutGroupService } from './shortcut-group.service';
+import { LogoRetrievalService } from './logo-retrieval.service';
 import { WeatherElementComponent } from './weather-element/weather-element.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { LoginService } from './login.service';
@@ -16,6 +18,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ActivitiesElementComponent } from './activities-element/activities-element.component';
+import { ShortcutElementComponent } from './shortcut-element/shortcut-element.component';
+import { ShortcutGroupComponent } from './shortcut-group/shortcut-group.component';
 
 
 @NgModule({
@@ -28,6 +32,8 @@ import { ActivitiesElementComponent } from './activities-element/activities-elem
     WeatherElementComponent,
     RegisterFormComponent,
     ActivitiesElementComponent,
+    ShortcutElementComponent,
+    ShortcutGroupComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,7 @@ import { ActivitiesElementComponent } from './activities-element/activities-elem
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [LoginService],
+  providers: [LoginService,LogoRetrievalService,ShortcutGroupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

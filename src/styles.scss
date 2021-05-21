@@ -5,6 +5,9 @@
     margin:auto;
     color:dimgray;
 }
+.noPadding{
+    padding:0px;
+}
 
 body::before {
     background: url(/assets/login-background.jpg) repeat center center fixed;

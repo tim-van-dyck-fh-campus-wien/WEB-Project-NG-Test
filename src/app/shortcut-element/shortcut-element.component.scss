@@ -1,0 +1,45 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+.shortcutImage{
+    width:50px;
+    @include media-breakpoint-up(sm){
+        width:60px;
+    }
+    @include media-breakpoint-up(lg){
+        width:75px;
+    }
+}
+.shortcutName{
+    width:50px;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    margin-bottom:0px;
+    font-size: x-small;
+    @include media-breakpoint-up(sm){
+        font-size: small;
+        width:60px;
+    }
+    @include media-breakpoint-up(lg){
+        font-size: medium;
+        width:75px;
+    }
+}
+.shortcutParentContainer{
+    width:60px;
+    padding:5px;
+    margin:10px;
+    background-color: white;
+    @include media-breakpoint-up(sm){
+        width:70px;
+    }
+    @include media-breakpoint-up(lg){
+        width:85px;
+    }
+
+}
+.shortcutContainer{
+    width:75px;
+}
