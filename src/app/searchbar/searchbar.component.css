@@ -1,51 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-}
-
-body {
-  background: #e0dbef;
-}
 
 .wrapper {
-<<<<<<< Updated upstream
   min-height: 100vh;
-=======
->>>>>>> Stashed changes
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .search_box {
-<<<<<<< Updated upstream
-  background: #643fef;
-=======
-  background: #ef3f3f;
->>>>>>> Stashed changes
+  margin:10px;
+  background: #cf0553;
   position: relative;
   padding: 15px;
   border-radius: 50px;
   display: flex;
-<<<<<<< Updated upstream
-  width: 700px;
-=======
->>>>>>> Stashed changes
 }
 
 .search_box .search_btn {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #7a5cf0;
+  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: #000;
   margin-right: 15px;
   cursor: pointer;
 }
@@ -53,39 +33,22 @@ body {
 .search_box .input_search {
   outline: none;
   border: 0;
-<<<<<<< Updated upstream
-  background: #7a5cf0;
-  border-radius: 50px;
-  padding: 15px 20px;
-  width: 600px;
-  height: 50px;
-  color: #fff;
-}
-
-::placeholder {
-  color: #fff;
-}
-
-::-webkit-input-placeholder {
-  color: #fff;
-=======
-  background: #ffffff;
+  background: #fff;
   border-radius: 50px;
   padding: 15px 20px;
   height: 50px;
   width:100%;
-  color:#000;
+  color: #000;
 }
 
 ::placeholder {
-  color:#000;
+  color: #000;
 }
 
 ::-webkit-input-placeholder {
   color: #000;
->>>>>>> Stashed changes
 }
 
 :-ms-input-placeholder {
-  color: #fff;
+  color: #000;
 }
