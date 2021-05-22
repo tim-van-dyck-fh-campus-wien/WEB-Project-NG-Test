@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <form action="https://www.google.com/search" target="_blank">
   <div class="wrapper">
     <div class="search_box">
@@ -13,3 +14,23 @@
     </div>
   </div>
 </form>
+=======
+    <div class="row ">
+        <div class="col ">
+            <div class="search_box shadow-sm" style="margin:20px;">
+                <button class="search_btn" (click)="searchTerm()">
+                  <i class="fas fa-search"></i>
+                </button>
+                <input  
+                    [(ngModel)]="searchPhrase"
+                    #ctrl="ngModel"
+                  type="text"
+                  class="input_search"
+                  placeholder="What are you looking for?"
+                  name="q"
+                />
+              </div>
+        </div>
+     
+    </div>
+>>>>>>> Stashed changes

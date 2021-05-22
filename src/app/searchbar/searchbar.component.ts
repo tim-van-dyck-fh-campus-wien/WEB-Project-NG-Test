@@ -8,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class SearchbarComponent implements OnInit {
 
   constructor() { }
-
+  searchPhrase:string;
   ngOnInit(): void {
   }
-
+  searchTerm(){
+    window.open("https://www.google.com/search?q="+this.searchPhrase);
+  }
 }
