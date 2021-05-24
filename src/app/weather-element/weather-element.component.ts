@@ -41,13 +41,14 @@ failedToLoad: boolean = false;
     this.weatherService.weatherdesc = this.weatherDescription;
     this.weatherService.tempForActivity = this.temp;
     this.weatherService.cityForActivity = this.city; 
-    console.log('OnInitUpdate: WeatherElement', this.weatherService.weatherdesc, this.weatherService.tempForActivity);
+    console.log('OnInit: WeatherElement', this.weatherService.weatherdesc, this.weatherService.tempForActivity);
    }
   
    //makes a new API call for city entered
   clickme(myCity:string){
-    this.removeIcon();// Test im API
+    //this.removeIcon(); Test
     this.makeAPIcall(myCity);
+    //Test
     this.weatherService.weatherdesc = this.weatherDescription;
     this.weatherService.tempForActivity = this.temp; 
     this.weatherService.cityForActivity = myCity; 
@@ -64,12 +65,15 @@ failedToLoad: boolean = false;
      this.weatherID = x.weather.id;
      this.temp_min = x.temp_min.toFixed(0);
      this.temp_max = x.temp_max.toFixed(0);
+     console.log("API: ", this.weatherDescription, this.weatherService.getWeatherType(this.weatherID))
+    if (this.weatherDescription == this.weatherService.getWeatherType(this.weatherID)){
+    } else {
+      this.removeIcon();
+    } 
      this.weatherDescription = this.weatherService.getWeatherType(this.weatherID);
      this.timezone = x.timezone; 
-  /*   if (this.weatherDescription != this.weatherService.weatherdesc){
-       this.removeIcon();
-     }*/
-     this.weatherService.weatherdesc = this.weatherDescription;
+      this.weatherService.weatherdesc = this.weatherService.getWeatherType(this.weatherID);
+     // this.weatherDescription;
      this.weatherService.tempForActivity = this.temp; 
     
      console.log("WeatherElement: ", this.weatherService.weatherdesc, this.weatherService.tempForActivity);  
@@ -98,7 +102,6 @@ failedToLoad: boolean = false;
    if (currentIcon != null){
       currentIcon.remove();
     }
-    //currentIcon.remove();
   }
 
 }

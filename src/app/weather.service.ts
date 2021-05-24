@@ -36,6 +36,8 @@ export class WeatherService {
         const temp_min = response.main.temp_min;
         const temp_max = response.main.temp_max;  
         const timezone = response.timezone; 
+        this.weatherdesc = this.getWeatherType(weatherID);
+        this.tempForActivity = temp;
         const x = {weather, temp, weatherID, temp_min, temp_max, timezone};
         return x;
       }));

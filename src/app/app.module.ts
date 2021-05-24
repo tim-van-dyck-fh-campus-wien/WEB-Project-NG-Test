@@ -44,7 +44,7 @@ import { WeatherService } from './weather.service';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [LoginService,LogoRetrievalService,ShortcutGroupService, WeatherService],
+  providers: [LoginService,LogoRetrievalService,ShortcutGroupService, WeatherService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
