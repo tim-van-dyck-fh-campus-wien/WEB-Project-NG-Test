@@ -26,4 +26,14 @@ body::before {
     -ms-filter: blur(5px);
     filter: blur(5px);
   }
+  @import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+.loginImage{
+    width:80%;
+    margin:auto;
+    @include media-breakpoint-up(sm){
+        width:490px;
+    }
+}
   
