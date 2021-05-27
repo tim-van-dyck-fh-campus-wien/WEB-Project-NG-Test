@@ -46,9 +46,7 @@ failedToLoad: boolean = false;
   
    //makes a new API call for city entered
   clickme(myCity:string){
-    //this.removeIcon(); Test
     this.makeAPIcall(myCity);
-    //Test
     this.weatherService.weatherdesc = this.weatherDescription;
     this.weatherService.tempForActivity = this.temp; 
     this.weatherService.cityForActivity = myCity; 

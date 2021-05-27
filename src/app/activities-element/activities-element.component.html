@@ -1,36 +1,47 @@
-<div class="activitiesWidget">
+<div class="activitiesWidget shadow-sm rounded">
     <div><h2>Activities today:</h2><button type="submit" class="reload" (click)="updateActivities()">(re)Load Activities</button></div>
 
      <div [ngSwitch]="weatherDescripForActivities" >
        <div *ngSwitchCase ="'outsideHot'" class="activity-Icon hot"> 
-          <a [href]="'https://www.google.com/search?q=Icecream+Store+nearby ' + currentCityForActivities"> <img class="iconPicture" src='./assets/png/007-ice-cream.png'></a>
-          <a [href]="'https://www.google.com/search?q=Best+BBQ+Recipes ' + currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/008-barbecue.png'></a>
-          <br>
-          <a [href]="'https://www.google.com/search?q=swimming+places+nearby ' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/006-sunbed.png'></a>
-          <a [href]="'https://www.google.com/search?q=concerts+near+me+today '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/009-festival.png'></a>
+         <div class="row align-self-center">
+         <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=Icecream+Store ' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/007-ice-cream.png'></a></div>
+          <div class="col align-self-end"><a [href]="'https://www.google.com/search?q=Best+BBQ+Recipes'" target="_blank"><img class="iconPicture" src='./assets/png/008-barbecue.png'></a></div>
        </div>
+         <div class="row align-self-end">
+          <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=swimming+places+' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/006-sunbed.png'></a></div>
+          <div class="col align-self-end"><a [href]="'https://www.google.com/search?q=concerts+today '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/009-festival.png'></a></div>
+         </div>
+   </div>
     
        <div *ngSwitchCase ="'outsideWarm'" class="activity-Icon warm"> 
-          <a [href]="'https://www.google.com/search?q=Hiking+Trails+near+me ' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/004-wanderer.png'></a>
-          <a [href]="'https://www.google.com/search?q=Fair+Fashion+near+me ' + currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/002-online-shopping.png'></a>
-          <br>
-          <a [href]="'https://www.google.com/search?q=Best+iced+coffee+in+town ' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/001-eiskaffee.png'></a>
-          <a [href]="'https://www.google.com/search?q=Cycling+Trails+near+me '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/005-bicycle.png'></a>
-       </div>
+          <div class="row align-self-center">
+          <div class="col align self-start"><a [href]="'https://www.google.com/search?q=Hiking+Trails+ ' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/004-wanderer.png'></a></div>
+          <div class="col align-self-end"> <a [href]="'https://www.google.com/search?q=Fair+Fashion' + currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/002-online-shopping.png'></a></div>
+         </div>
+         <div class="row align-self-end">
+         <div class="col align-self-start"> <a [href]="'https://www.google.com/search?q=Best+iced+coffee+in' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/001-eiskaffee.png'></a></div>
+          <div class="col align-self-end"> <a [href]="'https://www.google.com/search?q=Cycling+Trails'+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/005-bicycle.png'></a></div>
+            </div>
+         </div>
 
       <div *ngSwitchCase ="'insideActivities'" class="activity-Icon inside"> 
-          <a [href]="'https://www.google.com/search?q=Museum+nearby ' + currentCityForActivities" target="_blank">  <img class="iconPicture" src='./assets/png/011-museum.png'></a>
-          <a href="https://www.google.com/search?q=Awesome+Cake+Recipes" target="_blank"> <img class="iconPicture" src='./assets/png/013-bake.png'></a>
-          <br>
-          <a [href]="'https://www.google.com/search?q=Local+Libraries '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/014-world-book-day.png'></a>
-          <a [href]="'https://www.google.com/search?q=Cinema+nearby '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/010-cinema.png'></a>
-      </div>
+         <div class="row align-self-center">
+            <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=Museum+' + currentCityForActivities" target="_blank">  <img class="iconPicture" src='./assets/png/011-museum.png'></a></div>
+               <div class="col align-self-end"><a href="https://www.google.com/search?q=Awesome+Cake+Recipes" target="_blank"> <img class="iconPicture" src='./assets/png/013-bake.png'></a></div>
+         </div>
+         <div class="row align-self-end">
+          <div class="col align-self-start"> <a [href]="'https://www.google.com/search?q=Local+Libraries '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/014-world-book-day.png'></a></div>
+            <div class="col align-self-end"> <a [href]="'https://www.google.com/search?q=Cinema+in '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/010-cinema.png'></a></div>
+         </div>
+         </div>
      <div *ngSwitchCase ="'snow'" class="activity-Icon snowy"> 
-          <a [href]="'https://www.google.com/search?q=Ice+Skating+nearby '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/018-ice-skate.png'></a>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"> <img class="iconPicture" src='./assets/png/010-snowman.png'></a>
-          <br>
-          <a [href]="'https://www.google.com/search?q=Thermal+Bath+near+me '+ currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/020-sauna.png'></a>
-          <a [href]="'https://www.google.com/search?q=Best+Skiing+near+me '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/015-skiing.png'></a>
+      <div class="row align-self-center">
+         <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=Ice+Skating'+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/018-ice-skate.png'></a></div>
+            <div class="col align-self-end"> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"> <img class="iconPicture" src='./assets/png/010-snowman.png'></a>  </div>
+      </div>
+          <div class="row align-self-end">
+            <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=Thermal+Bath '+ currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/020-sauna.png'></a></div>
+               <div class="col align-self-end"><a [href]="'https://www.google.com/search?q=Best+Skiing '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/015-skiing.png'></a></div>
       </div>
    </div>
 <!--

@@ -1,3 +1,8 @@
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
 *{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -15,11 +20,28 @@
     text-align: center;
 }
 .iconPicture{
-    border-radius: 10px; 
+    width:70px;
+    margin: 25px;
+    @include media-breakpoint-up(sm){
+        width:60px;
+        margin: 15px;
+    }
+    @include media-breakpoint-up(lg){
+        width:90px;
+        margin: 35px;
+    }
+}
+  /*  border-radius: 10px; 
     height: 90px; 
     width: 90px;
     margin: 25px;
-}
+    @include media-breakpoint-up(sm){
+        width:60px;
+    }
+    @include media-breakpoint-up(lg){
+        width:75px;
+    }*/
+
 .iconPicture:hover{
     cursor: pointer;
     filter: drop-shadow(1px 1px 10px white);

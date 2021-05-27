@@ -5,7 +5,7 @@ import { WeatherService } from '../weather.service';
 @Component({
   selector: 'app-activities-element',
   templateUrl: './activities-element.component.html',
-  styleUrls: ['./activities-element.component.css']
+  styleUrls: ['./activities-element.component.scss']
 })
 export class ActivitiesElementComponent implements OnInit {
 
