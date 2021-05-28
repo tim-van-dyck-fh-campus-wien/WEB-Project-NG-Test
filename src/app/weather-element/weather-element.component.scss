@@ -1,26 +1,78 @@
 /* Höhe ändert sich nach Inhaltsmenge, TODO: Höhe responsive aber fixiert gestalten.
 Breite responsive nach Größe des Display.*/
-*{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+h1 {
+    margin-bottom:0px;
+    font-size: 15px;
+    display: block;
+    @include media-breakpoint-up(sm){
+        font-size: 20px;
+    }
+    @include media-breakpoint-up(lg){
+        font-size: 25px;
+    }
+}
+h2 {
+    margin-bottom:0px;
+    font-size: 20px;
+    @include media-breakpoint-up(sm){
+        font-size: 30px;
+    }
+    @include media-breakpoint-up(lg){
+        font-size: 40px;
+    }
+
+}
+p {
+    margin-bottom:0px;
+    font-size: 15px;
+    @include media-breakpoint-up(sm){
+        font-size: 15px;
+    }
+    @include media-breakpoint-up(lg){
+        font-size: 20px;
+    }
+}
+.weatherWidgetRow {
+    margin: 5px;
 }
 #weatherContainer{
-    float: left;
-    padding: 20px;
+    margin: 10px;
+    padding: 10px;
     border-radius: 10px;
     background-color: black;
-    background: linear-gradient(180deg, rgb(48, 2, 77) 0%, rgb(177, 2, 43));
+    background: linear-gradient(180deg, #cf0553 0%,  rgb(48, 2, 77));
     color: white;
-    font-family: Futura;
-    width: 50%;
+    width: 100%;
     display: block;
     text-align: center;
+    @include media-breakpoint-up(sm){
+        width: 46%;
+        float:left;
+        height: 340px;
+    }
+    @include media-breakpoint-up(lg){
+        width: 30%;
+        float:left; 
+        height: 370px;
+    }
+  /*  @include media-breakpoint-up(sm){
+        width:33%;
+        
+    }*/
 }
 #cityButton{
     height: 35px;
-    background-color: rgb(53, 2, 75);
-    color: antiquewhite; 
-    border-radius: 7px;
+    background-color: #cf0553;
+    color: whitesmoke; 
+    border-radius: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100px;
+    filter: drop-shadow(white);
+  //  padding-top: 5px;
 }
 .sun{
     margin-top: 10px;
@@ -34,10 +86,6 @@ Breite responsive nach Größe des Display.*/
     color: white;
     filter: drop-shadow(1px 1px 10px white);
 }
-
-/*.cloudDiv{
-    margin-top: -60px;
-}*/
 
 .cloud{
     color: rgb(139, 185, 199);
@@ -101,13 +149,17 @@ Breite responsive nach Größe des Display.*/
 }
 .cityTextfield{
     width: 80%;
-    border-radius: 7px;
+    border-radius: 20px;
+    border: none;
+  //  padding: 10px; 
+    color: black;
+    padding: 5px 20px;
+    margin-bottom: 10px;;
 }
 
-
 @keyframes cloudMovement{
-    from{margin-left: -35px;}
-    to{margin-left: 35px;}
+    from{margin-left: -30px;}
+    to{margin-left: 30px;}
 }
 
 

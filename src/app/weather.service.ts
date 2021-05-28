@@ -1,14 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of, Subject, throwError } from 'rxjs';
 import { map, delay, materialize, dematerialize } from 'rxjs/operators';
 import { WeatherData } from './../app/models/Weather.interface';
 import { WeatherElementComponent } from './weather-element/weather-element.component';
+import { Data } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 
+@Injectable()
 export class WeatherService {
 
   constructor(private httpClient: HttpClient) { }
@@ -21,6 +23,16 @@ export class WeatherService {
   weatherdesc:string;
   tempForActivity:number;
   cityForActivity:string;
+/*
+  completeWeatherData : WeatherData = {
+    temp: 0,
+    weatherDescription: "none",
+    currentlyDisplayedCity: "none",
+    temp_min: 0,
+    temp_max: 0, 
+    id: 0,
+    }
+*/
 
   getCurrentWeather(city: string | null): Observable<any> {
     //do API call with current city
@@ -29,29 +41,17 @@ export class WeatherService {
     return this.httpClient.get<any>(apiCall).pipe(
       map(response => {
         console.log('apiResponse', response); 
-        //found in the JSON file, the api is responding with
+        const updatedCity = response.name;
         const weather = response.weather[0];
         const temp = response.main.temp; 
-        const weatherID = response.weather.id;
         const temp_min = response.main.temp_min;
         const temp_max = response.main.temp_max;  
-        const timezone = response.timezone; 
-        this.weatherdesc = this.getWeatherType(weatherID);
-        this.tempForActivity = temp;
-        const x = {weather, temp, weatherID, temp_min, temp_max, timezone};
+        const timezone = response.timezone;
+        const x = {weather, temp, temp_min, temp_max, timezone, updatedCity};
+        console.log("Logging updated Data in WeatherService:", x)
         return x;
       }));
     }
- /*
-    arrWeather: Array<WeatherData> = [];
-    saveWeatherData(WeatherData){
-      //puts Data into array
-      this.arrWeather.push(WeatherData);
-      console.log(this.arrWeather);
-    }
-    getWeatherData(){
-      return this.arrWeather;
-    }*/
 
 //work in progress to differentiate day/nighttime
     calculateTime(timezone:any){
@@ -87,7 +87,4 @@ getWeatherType(weatherID: number){
   return this.weatherdesc = "unknown";
 }
 
-
-// TODO Aktivities Update als Observable Struktur automatisieren 
-// Angular Observables Structure
   }

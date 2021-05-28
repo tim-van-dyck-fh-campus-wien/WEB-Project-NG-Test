@@ -8,7 +8,7 @@ import {ActivitiesElementComponent} from '../activities-element/activities-eleme
 @Component({
   selector: 'app-weather-element',
   templateUrl: './weather-element.component.html',
-  styleUrls: ['./weather-element.component.css']
+  styleUrls: ['./weather-element.component.scss']
 })
 export class WeatherElementComponent implements OnInit {
 
@@ -22,7 +22,6 @@ sunset:Date;
 isDay: boolean = true;
 temp_min: number;
 temp_max: number;
-APICity: string|null;
 timezone: number|Date;
 //to check whether city exists
 failed: boolean = false;
@@ -31,56 +30,44 @@ searching: boolean = false;
 //If the user input was not valid, the output will be error handled 
 failedToLoad: boolean = false;
 
+activitiesWeatherDescription: string;
 
-  constructor(public weatherService: WeatherService) { }
+
+  constructor(public weatherService: WeatherService) { 
+  }
 
   ngOnInit() {
     this.city = 'Vienna';
     this.makeAPIcall(this.city);
-    //update WeatherService variables for activities
-    this.weatherService.weatherdesc = this.weatherDescription;
-    this.weatherService.tempForActivity = this.temp;
-    this.weatherService.cityForActivity = this.city; 
-    console.log('OnInit: WeatherElement', this.weatherService.weatherdesc, this.weatherService.tempForActivity);
-   }
+  }
   
    //makes a new API call for city entered
   clickme(myCity:string){
     this.makeAPIcall(myCity);
-    this.weatherService.weatherdesc = this.weatherDescription;
-    this.weatherService.tempForActivity = this.temp; 
-    this.weatherService.cityForActivity = myCity; 
-    console.log('Update: WeatherElement', this.weatherService.weatherdesc, this.weatherService.tempForActivity);
-   }
+  }
 
    //takes care of API call itself
   makeAPIcall(myCity){
     this.city = myCity; 
     let newData = this.weatherService.getCurrentWeather(this.city).subscribe
     (x => {
- //    this.APICity = x.name; //Test
+     this.city = x.updatedCity;
      this.temp = x.temp.toFixed(0);
      this.weatherID = x.weather.id;
      this.temp_min = x.temp_min.toFixed(0);
-     this.temp_max = x.temp_max.toFixed(0);
-     console.log("API: ", this.weatherDescription, this.weatherService.getWeatherType(this.weatherID))
+     this.temp_max = x.temp_max.toFixed(0); 
     if (this.weatherDescription == this.weatherService.getWeatherType(this.weatherID)){
     } else {
       this.removeIcon();
     } 
      this.weatherDescription = this.weatherService.getWeatherType(this.weatherID);
-     this.timezone = x.timezone; 
-      this.weatherService.weatherdesc = this.weatherService.getWeatherType(this.weatherID);
-     // this.weatherDescription;
-     this.weatherService.tempForActivity = this.temp; 
-    
-     console.log("WeatherElement: ", this.weatherService.weatherdesc, this.weatherService.tempForActivity);  
+     this.activitiesWeatherDescription = this.getActivities(this.temp, this.weatherDescription);
     },
     //error handling, if user input invalid, connected to HTML *ngIf 
       error => {
         console.log('error occured', error);
         this.failedToLoad = true;
-        this.reset;
+        this.reset();
       });
    }
 
@@ -101,6 +88,25 @@ failedToLoad: boolean = false;
       currentIcon.remove();
     }
   }
+
+  //with each API call, activities get updated & passed to activities-element
+  getActivities(temp:number, weatherDescription:string){
+    if (weatherDescription == 'snow'){
+     return this.activitiesWeatherDescription = "snow"; 
+    }
+    if(weatherDescription == 'rain' ||weatherDescription == 'lightning' ||weatherDescription == 'fog'){
+      return this.activitiesWeatherDescription = "insideActivities";
+    }
+    if (weatherDescription == 'clear'||weatherDescription == 'partialClear'||weatherDescription == 'cloud'){
+        if (temp <= 20){
+          return this.activitiesWeatherDescription = "outsideWarm"; 
+          }
+        if (temp > 20){
+          return this.activitiesWeatherDescription = "outsideHot";
+          }
+     }
+ }
+
 
 }
 

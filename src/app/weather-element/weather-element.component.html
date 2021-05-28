@@ -1,6 +1,8 @@
 
-    <div id='weatherContainer'>
-        <div class="weatherWidgetRow" ><h1>{{city}}</h1></div>
+ <app-activities-element [weatherDescripForActivities] = "activitiesWeatherDescription" [currentCityForActivities] = "city"></app-activities-element>
+
+   <div id='weatherContainer'>
+        <div class="weatherWidgetRow" ><h1>The weather in {{city}} right now:</h1></div>
 
     <div class="weatherWidgetRow"  [ngSwitch]="weatherDescription">
         <div class="weatherWidgetRow"><i id="icon"*ngSwitchCase ="'cloud'" class="fas fa-4x fa-cloud cloud"></i></div>
@@ -23,17 +25,17 @@
         </div>--> 
     </div>
     
-    <!--<div class="weatherWidgetRow"> {{weatherID}}</div>-->
-
+    <div class="weatherWidgetRow">
     <div class="weatherWidgetRow"><h2>{{temp}} °C</h2></div>
-    <div class="weatherWidgetRow"><p>Min Temp: {{temp_min}} °C / Max Temp: {{temp_max}} °C </p></div>
-   
+    <div class="weatherWidgetRow"><p>Minimum Temp: {{temp_min}} °C</p>
+        <p> Maximum Temp: {{temp_max}} °C </p></div>
+    </div>
     <!--If the cityName is not valid, f.e. connected to boolean error control -->
     <div class="weatherWidgetRow" *ngIf="failedToLoad">Weather is not available. Try looking out the window.</div>
  
     <!--TODO clear field after input use-->
-    <input class="weatherWidgetRow cityTextfield" type="text" onfocus="this.value=''" placeholder="Your City here:" id="myCity" name="myCity" #myCity>
-    <button type="button" id="cityButton" class="weatherWidgetRow" (click)="clickme(myCity.value)" [disabled]="searching">Search City</button>
+    <div  class="weatherWidgetRow"><input class="cityTextfield" type="text" onfocus="this.value=''" placeholder="Another city, please." id="myCity" name="myCity" #myCity></div>
+    <div class="weatherWidgetRow"><button type="button" id="cityButton"  (click)="clickme(myCity.value)" [disabled]="searching"><i class="fas fa-search"></i></button></div>
 
     <div class="weatherWidgetRow" *ngIf="failed">Could not add the city.</div>
 

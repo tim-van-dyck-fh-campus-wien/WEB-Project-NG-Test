@@ -1,5 +1,5 @@
-<div class="activitiesWidget shadow-sm rounded">
-    <div><h2>Activities today:</h2><button type="submit" class="reload" (click)="updateActivities()">(re)Load Activities</button></div>
+<div id='activitiesWidget'>
+    <div><h1>Todays suggestions for activities in {{currentCityForActivities}} are:</h1></div>
 
      <div [ngSwitch]="weatherDescripForActivities" >
        <div *ngSwitchCase ="'outsideHot'" class="activity-Icon hot"> 
