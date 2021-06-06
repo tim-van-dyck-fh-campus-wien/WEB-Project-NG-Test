@@ -42,6 +42,19 @@ h1 {
         height: 370px;
     }
 }
+.confused{
+    width:140px;
+    margin: 10px;
+    @include media-breakpoint-up(sm){
+        width:100px;
+        margin:10px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+    @include media-breakpoint-up(lg){
+        width:160px;
+    }
+}
 .iconPicture{
     width:70px;
     margin: 10px;

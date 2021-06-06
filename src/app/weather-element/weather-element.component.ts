@@ -12,21 +12,18 @@ import {ActivitiesElementComponent} from '../activities-element/activities-eleme
 })
 export class WeatherElementComponent implements OnInit {
 
-   //initialize data that is updated by WeatherService
+//initialize data that is updated by WeatherService
 city: string | null;
 temp:number = 0;
 weatherID:number=0;
 weatherDescription: string = 'none';
-sunrise: number = 0;
-sunset:Date;
-isDay: boolean = true;
 temp_min: number;
 temp_max: number;
 timezone: number|Date;
 //to check whether city exists
 failed: boolean = false;
 //to not resend data on multiple clicks when already searching
-searching: boolean = false; 
+//searching: boolean = false; 
 //If the user input was not valid, the output will be error handled 
 failedToLoad: boolean = false;
 
@@ -51,6 +48,7 @@ activitiesWeatherDescription: string;
     this.city = myCity; 
     let newData = this.weatherService.getCurrentWeather(this.city).subscribe
     (x => {
+     this.failed = false;
      this.city = x.updatedCity;
      this.temp = x.temp.toFixed(0);
      this.weatherID = x.weather.id;
@@ -66,14 +64,18 @@ activitiesWeatherDescription: string;
     //error handling, if user input invalid, connected to HTML *ngIf 
       error => {
         console.log('error occured', error);
-        this.failedToLoad = true;
+       // this.failedToLoad = true;
+        this.weatherDescription = "unknown";
+        this.temp = 0;
+        this.activitiesWeatherDescription = this.getActivities(this.temp, this.weatherDescription);
+        this.failed = true;
         this.reset();
       });
    }
 
    //reset in case of failure
   reset() {
-    this.failedToLoad = false;
+   // this.failedToLoad = false;
     this.temp_min = 0;
     this.temp_max = 0; 
     this.temp = 0;
@@ -91,6 +93,9 @@ activitiesWeatherDescription: string;
 
   //with each API call, activities get updated & passed to activities-element
   getActivities(temp:number, weatherDescription:string){
+    if (weatherDescription == 'unknown'){
+      return this.activitiesWeatherDescription = "notAvailable";
+    }
     if (weatherDescription == 'snow'){
      return this.activitiesWeatherDescription = "snow"; 
     }

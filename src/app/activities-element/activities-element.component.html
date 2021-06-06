@@ -1,48 +1,53 @@
 <div id='activitiesWidget'>
-    <div><h1>Todays suggestions for activities in {{currentCityForActivities}} are:</h1></div>
+    <div *ngIf="!failedAPIcall"><h1>Todays suggestions for activities in {{currentCityForActivities}} are:</h1></div>
+    <div *ngIf="failedAPIcall"><h1>Sorry, we couldn't find suggestions for the current city: {{currentCityForActivities}} </h1></div>
 
      <div [ngSwitch]="weatherDescripForActivities" >
+      <div *ngSwitchCase="'notAvailable'" class="confusedFace">
+         <div><img class="confused" src='./assets/png/confused.png'alt="confused face"></div>
+      </div>
        <div *ngSwitchCase ="'outsideHot'" class="activity-Icon hot"> 
          <div class="row align-self-center">
-         <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=Icecream+Store ' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/007-ice-cream.png'></a></div>
-          <div class="col align-self-end"><a [href]="'https://www.google.com/search?q=Best+BBQ+Recipes'" target="_blank"><img class="iconPicture" src='./assets/png/008-barbecue.png'></a></div>
+         <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=Icecream+Store ' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/007-ice-cream.png' alt="Icecream"></a></div>
+          <div class="col align-self-end"><a [href]="'https://www.google.com/search?q=Best+BBQ+Recipes'" target="_blank"><img class="iconPicture" src='./assets/png/008-barbecue.png' alt="BBQ"></a></div>
        </div>
          <div class="row align-self-end">
-          <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=swimming+places+' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/006-sunbed.png'></a></div>
-          <div class="col align-self-end"><a [href]="'https://www.google.com/search?q=concerts+today '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/009-festival.png'></a></div>
+          <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=swimming+places+' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/006-sunbed.png' alt="sunbed"></a></div>
+          <div class="col align-self-end"><a [href]="'https://www.google.com/search?q=concerts+today '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/009-festival.png' alt="concert"></a></div>
          </div>
    </div>
     
        <div *ngSwitchCase ="'outsideWarm'" class="activity-Icon warm"> 
           <div class="row align-self-center">
-          <div class="col align self-start"><a [href]="'https://www.google.com/search?q=Hiking+Trails+ ' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/004-wanderer.png'></a></div>
-          <div class="col align-self-end"> <a [href]="'https://www.google.com/search?q=Fair+Fashion' + currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/002-online-shopping.png'></a></div>
+          <div class="col align self-start"><a [href]="'https://www.google.com/search?q=Hiking+Trails+ ' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/004-wanderer.png' alt="hiking"></a></div>
+          <div class="col align-self-end"> <a [href]="'https://www.google.com/search?q=Fair+Fashion' + currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/002-online-shopping.png' alt="shop local"></a></div>
          </div>
          <div class="row align-self-end">
-         <div class="col align-self-start"> <a [href]="'https://www.google.com/search?q=Best+iced+coffee+in' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/001-eiskaffee.png'></a></div>
-          <div class="col align-self-end"> <a [href]="'https://www.google.com/search?q=Cycling+Trails'+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/005-bicycle.png'></a></div>
+         <div class="col align-self-start"> <a [href]="'https://www.google.com/search?q=Best+iced+coffee+in' + currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/001-eiskaffee.png' alt="iced coffee"></a></div>
+          <div class="col align-self-end"> <a [href]="'https://www.google.com/search?q=Cycling+Trails'+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/005-bicycle.png' alt="biking"></a></div>
             </div>
          </div>
 
       <div *ngSwitchCase ="'insideActivities'" class="activity-Icon inside"> 
          <div class="row align-self-center">
-            <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=Museum+' + currentCityForActivities" target="_blank">  <img class="iconPicture" src='./assets/png/011-museum.png'></a></div>
-               <div class="col align-self-end"><a href="https://www.google.com/search?q=Awesome+Cake+Recipes" target="_blank"> <img class="iconPicture" src='./assets/png/013-bake.png'></a></div>
+            <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=Museum+' + currentCityForActivities" target="_blank">  <img class="iconPicture" src='./assets/png/011-museum.png' alt="museum"></a></div>
+               <div class="col align-self-end"><a href="https://www.google.com/search?q=Awesome+Cake+Recipes" target="_blank"> <img class="iconPicture" src='./assets/png/013-bake.png' alt="bake a cake"></a></div>
          </div>
          <div class="row align-self-end">
-          <div class="col align-self-start"> <a [href]="'https://www.google.com/search?q=Local+Libraries '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/014-world-book-day.png'></a></div>
-            <div class="col align-self-end"> <a [href]="'https://www.google.com/search?q=Cinema+in '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/010-cinema.png'></a></div>
+          <div class="col align-self-start"> <a [href]="'https://www.google.com/search?q=Local+Libraries '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/014-world-book-day.png' alt="visit library"></a></div>
+            <div class="col align-self-end"> <a [href]="'https://www.google.com/search?q=Cinema+in '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/010-cinema.png' alt="cinema"></a></div>
          </div>
          </div>
      <div *ngSwitchCase ="'snow'" class="activity-Icon snowy"> 
       <div class="row align-self-center">
-         <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=Ice+Skating'+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/018-ice-skate.png'></a></div>
-            <div class="col align-self-end"> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"> <img class="iconPicture" src='./assets/png/010-snowman.png'></a>  </div>
+         <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=Ice+Skating'+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/018-ice-skate.png' alt="iceskating"></a></div>
+            <div class="col align-self-end"> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"> <img class="iconPicture" src='./assets/png/010-snowman.png' alt="snowman"></a>  </div>
       </div>
           <div class="row align-self-end">
-            <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=Thermal+Bath '+ currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/020-sauna.png'></a></div>
-               <div class="col align-self-end"><a [href]="'https://www.google.com/search?q=Best+Skiing '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/015-skiing.png'></a></div>
+            <div class="col align-self-start"><a [href]="'https://www.google.com/search?q=Thermal+Bath '+ currentCityForActivities" target="_blank"> <img class="iconPicture" src='./assets/png/020-sauna.png' alt="thermal bath"></a></div>
+               <div class="col align-self-end"><a [href]="'https://www.google.com/search?q=Best+Skiing '+ currentCityForActivities" target="_blank"><img class="iconPicture" src='./assets/png/015-skiing.png' alt ="skiing"></a></div>
       </div>
+   
    </div>
 <!--
 Activities Icon Sources 

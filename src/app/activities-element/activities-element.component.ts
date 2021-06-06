@@ -12,6 +12,7 @@ export class ActivitiesElementComponent implements OnInit {
 
   @Input() weatherDescripForActivities:string; 
   @Input() currentCityForActivities:string;
+  @Input() failedAPIcall:boolean;
 
   ngOnInit(){}
   

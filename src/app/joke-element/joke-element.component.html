@@ -1,0 +1,8 @@
+<div id='jokeContainer'>
+    <div class="jokeRow"><h1>Your Joke of the day:</h1><img class="smiley" src='./assets/png/laughing.png' alt="funny joke face"></div>
+        <div class="jokeRow"><h2>{{jokeSetup}}</h2></div>
+        <div class="jokeRow"><button type="button" id="punchlineButton"  (click)="showPunchline()" *ngIf="!answer">Show Answer</button></div>
+        <div class="jokeRow" *ngIf="answer"><h1>{{jokePunchline}}</h1></div>
+</div>
+
+<!--<div>Icons made by <a href="" title="Pixelmeetup">Pixelmeetup</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>-->

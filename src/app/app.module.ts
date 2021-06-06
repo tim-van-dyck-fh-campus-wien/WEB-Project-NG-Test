@@ -21,6 +21,8 @@ import { ActivitiesElementComponent } from './activities-element/activities-elem
 import { ShortcutElementComponent } from './shortcut-element/shortcut-element.component';
 import { ShortcutGroupComponent } from './shortcut-group/shortcut-group.component';
 import { WeatherService } from './weather.service';
+import { JokeService } from './joke.service';
+import { JokeElementComponent } from './joke-element/joke-element.component';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { WeatherService } from './weather.service';
     ActivitiesElementComponent,
     ShortcutElementComponent,
     ShortcutGroupComponent,
+    JokeElementComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,7 @@ import { WeatherService } from './weather.service';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [LoginService,LogoRetrievalService,ShortcutGroupService, WeatherService,],
+  providers: [LoginService,LogoRetrievalService,ShortcutGroupService, WeatherService,JokeService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

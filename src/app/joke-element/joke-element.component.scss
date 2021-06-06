@@ -1,0 +1,74 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+h1 {
+    margin-bottom:0px;
+    font-size: 15px;
+    display: block;
+    @include media-breakpoint-up(sm){
+        font-size: 20px;
+    }
+    @include media-breakpoint-up(lg){
+        font-size: 25px;
+    }
+}
+h2 {
+    margin-bottom:0px;
+    font-size: 20px;
+    @include media-breakpoint-up(sm){
+        font-size: 30px;
+    }
+    @include media-breakpoint-up(lg){
+        font-size: 40px;
+    }
+
+}
+.jokeRow{
+    margin: 5px;
+}
+#jokeContainer{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: black;
+    background: linear-gradient(180deg, #cf0553 0%,  rgb(48, 2, 77));
+    color: white;
+    width: 100%;
+    display: block;
+    text-align: center;
+    @include media-breakpoint-up(sm){
+        width: 46%;
+      //  float:left;
+        //height: 340px;
+    }
+    @include media-breakpoint-up(lg){
+        width: 30%;
+       // float:left; 
+       // height: 370px;
+    }
+}
+#punchlineButton{
+        height: 35px;
+        background-color: #cf0553;
+        color: whitesmoke; 
+        border-radius: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        width: 200px;
+        filter: drop-shadow(white);
+      //  padding-top: 5px;
+}
+
+.smiley{
+    width:70px;
+    margin: 10px;
+    @include media-breakpoint-up(sm){
+        width:60px;
+        margin:10px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+    @include media-breakpoint-up(lg){
+        width:80px;
+    }
+}

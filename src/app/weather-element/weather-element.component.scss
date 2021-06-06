@@ -161,5 +161,17 @@ p {
     from{margin-left: -30px;}
     to{margin-left: 30px;}
 }
+.confusedFace{
+    width:70px;
+    @include media-breakpoint-up(sm){
+        width:60px;
+        margin:10px;
+      //  padding-top: 20px;
+      //  padding-bottom: 10px;
+    }
+    @include media-breakpoint-up(lg){
+        width:80px;
+    }
+}
 
 
