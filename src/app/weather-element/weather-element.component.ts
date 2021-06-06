@@ -66,8 +66,11 @@ activitiesWeatherDescription: string;
         console.log('error occured', error);
        // this.failedToLoad = true;
         this.weatherDescription = "unknown";
-        this.temp = 0;
-        this.activitiesWeatherDescription = this.getActivities(this.temp, this.weatherDescription);
+        if (this.weatherDescription == this.weatherService.getWeatherType(this.weatherID)){
+        } else {
+          this.removeIcon();
+        } 
+         this.activitiesWeatherDescription = this.getActivities(this.temp, this.weatherDescription);
         this.failed = true;
         this.reset();
       });

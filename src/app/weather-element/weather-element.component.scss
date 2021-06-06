@@ -38,31 +38,26 @@ p {
 }
 .weatherWidgetRow {
     margin: 5px;
+
 }
 #weatherContainer{
-    margin: 10px;
-    padding: 10px;
-    border-radius: 10px;
+    //border: gray 2px solid;
+    border-radius: 5px;
     background-color: black;
     background: linear-gradient(180deg, #cf0553 0%,  rgb(48, 2, 77));
     color: white;
     width: 100%;
     display: block;
     text-align: center;
+    padding-bottom: 2px;
     @include media-breakpoint-up(sm){
-        width: 46%;
+        width: 49%;
         float:left;
         height: 340px;
+    } 
+    @include media-breakpoint-up(lg){ 
+        height: 350px;
     }
-    @include media-breakpoint-up(lg){
-        width: 30%;
-        float:left; 
-        height: 370px;
-    }
-  /*  @include media-breakpoint-up(sm){
-        width:33%;
-        
-    }*/
 }
 #cityButton{
     height: 35px;
@@ -72,7 +67,6 @@ p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 100px;
     filter: drop-shadow(white);
-  //  padding-top: 5px;
 }
 .sun{
     margin-top: 10px;
@@ -151,7 +145,6 @@ p {
     width: 80%;
     border-radius: 20px;
     border: none;
-  //  padding: 10px; 
     color: black;
     padding: 5px 20px;
     margin-bottom: 10px;;
@@ -166,8 +159,6 @@ p {
     @include media-breakpoint-up(sm){
         width:60px;
         margin:10px;
-      //  padding-top: 20px;
-      //  padding-bottom: 10px;
     }
     @include media-breakpoint-up(lg){
         width:80px;

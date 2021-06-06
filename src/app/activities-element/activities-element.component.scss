@@ -11,35 +11,28 @@ h1 {
     @include media-breakpoint-up(sm){
         font-size: 20px;
     }
-    @include media-breakpoint-up(lg){
+ /*   @include media-breakpoint-up(lg){
         font-size: 25px;
-    }
+    }*/
 }
 
 #activitiesWidget{
-    margin: 10px;
-    padding: 10px;
-    border-radius: 10px;
+    //border: gray 2px solid;
+    border-radius: 5px;
     background-color: black;
-    background: linear-gradient(180deg, rgb(48, 2, 77) 0%, rgb(177, 2, 43));
+    background: linear-gradient(180deg, #cf0553 0%,  rgb(48, 2, 77));
     color: white;
     width: 100%;
-    text-align: center;
     display: block;
-  /*  @include media-breakpoint-up(sm){
-        width:33%;
-        float:right;
-        height: 350px;
-    }*/
+    text-align: center;
     @include media-breakpoint-up(sm){
-        width: 46%;
+        width: 49%;
         float:right;
         height: 340px;
+     //   margin-bottom: 5px;
     }
-    @include media-breakpoint-up(lg){
-        width: 30%;
-        float:right; 
-        height: 370px;
+    @include media-breakpoint-up(lg){ 
+        height: 350px;
     }
 }
 .confused{
@@ -56,16 +49,11 @@ h1 {
     }
 }
 .iconPicture{
-    width:70px;
+    width:100px;
     margin: 10px;
-    @include media-breakpoint-up(sm){
-        width:60px;
-        margin:10px;
-        padding-top: 20px;
-        padding-bottom: 10px;
-    }
+    padding:10px;
     @include media-breakpoint-up(lg){
-        width:80px;
+        width:110px;
     }
 }
 .iconPicture:hover{
@@ -73,10 +61,4 @@ h1 {
     cursor: pointer;
    
 }
-/*.reload{
-    height: 25px;
-    background-color: rgb(53, 2, 75);
-    color: antiquewhite; 
-    border-radius: 7;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}*/
+

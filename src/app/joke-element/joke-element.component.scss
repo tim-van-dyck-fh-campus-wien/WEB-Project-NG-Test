@@ -28,9 +28,10 @@ h2 {
     margin: 5px;
 }
 #jokeContainer{
-    margin: 10px;
+    margin-top: 10px;
     padding: 10px;
-    border-radius: 10px;
+   // border: gray 2px solid;
+    border-radius: 5px;
     background-color: black;
     background: linear-gradient(180deg, #cf0553 0%,  rgb(48, 2, 77));
     color: white;
@@ -38,15 +39,12 @@ h2 {
     display: block;
     text-align: center;
     @include media-breakpoint-up(sm){
-        width: 46%;
-      //  float:left;
-        //height: 340px;
+        margin-top: 5px;
+        width: 49%;
     }
-    @include media-breakpoint-up(lg){
-        width: 30%;
-       // float:left; 
-       // height: 370px;
-    }
+   /* @include media-breakpoint-up(lg){
+        width: 32%;
+    }*/
 }
 #punchlineButton{
         height: 35px;
@@ -56,7 +54,6 @@ h2 {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         width: 200px;
         filter: drop-shadow(white);
-      //  padding-top: 5px;
 }
 
 .smiley{

@@ -19,20 +19,13 @@ export class WeatherService {
   apiKey = '5e3281564a5218651547aa65485f14c0';
   unit = 'metric'; //define format of numbers returned
   
-  //variables to be updated by weatherElement to be used by activitiesElement
+  //get Icon for cur Weather
   weatherdesc:string;
-  tempForActivity:number;
-  cityForActivity:string;
-/*
-  completeWeatherData : WeatherData = {
-    temp: 0,
-    weatherDescription: "none",
-    currentlyDisplayedCity: "none",
-    temp_min: 0,
-    temp_max: 0, 
-    id: 0,
-    }
-*/
+
+  //test for weather
+  activitiesWeatherDescription:string;
+  tempAct:number;
+
 
   getCurrentWeather(city: string | null): Observable<any> {
     //do API call with current city
@@ -87,4 +80,4 @@ getWeatherType(weatherID: number){
   return this.weatherdesc = "unknown";
 }
 
-  }
+}

@@ -1,5 +1,6 @@
 <div id='activitiesWidget'>
-    <div *ngIf="!failedAPIcall"><h1>Todays suggestions for activities in {{currentCityForActivities}} are:</h1></div>
+    <div *ngIf="!failedAPIcall"><h1>Todays suggestions for activities </h1>
+      <h1>in {{currentCityForActivities}} are:</h1></div>
     <div *ngIf="failedAPIcall"><h1>Sorry, we couldn't find suggestions for the current city: {{currentCityForActivities}} </h1></div>
 
      <div [ngSwitch]="weatherDescripForActivities" >
