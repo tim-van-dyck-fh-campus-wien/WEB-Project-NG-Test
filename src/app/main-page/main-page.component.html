@@ -1,5 +1,7 @@
 <div class="fixedBackgroundContainer  ">
     <div class="bg-light whiteBackgroundContainer">
+      <p>Hi {{userData.firstname}} {{userData.lastname}} with email {{userData.email}}! Nice to see you again!</p>
+      <button type="button" class="btn btn-secondary"(click)="logOutClicked()">log out</button>
       <div class="loginImage">
         <img class="img-fluid" src="assets/WebStartLogoEvenWider@2x.png">
 
@@ -15,12 +17,14 @@
       </div>
     
         
-        
+        <!--DISPLAY ALL REMAINING WIDGETS-->
+
         <div class="row">
-            <div class="col-xl-4 col-md-6 col-sm-12" *ngFor="let shortcut of shortcutArr">
-                <shortcut-group [data]=shortcut></shortcut-group>
-            </div>
-            
+          <!--Iterate over Widget List-->
+            <div class="col-xl-4 col-md-6 col-sm-12" *ngFor="let widget of widgetList">
+                <shortcut-group *ngIf="widget.type=='ShortcutGroup'"[data]=widget.data></shortcut-group>
+                <!--TODO Add more widgets!-->
+              </div>
         </div>
     </div>
    

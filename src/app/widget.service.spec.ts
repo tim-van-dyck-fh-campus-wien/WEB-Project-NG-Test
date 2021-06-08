@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ShortcutGroupService } from './shortcut-group.service';
+import { WidgetService } from './widget.service';
 
-describe('ShortcutGroupService', () => {
-  let service: ShortcutGroupService;
+describe('WidgetService', () => {
+  let service: WidgetService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ShortcutGroupService);
+    service = TestBed.inject(WidgetService);
   });
 
   it('should be created', () => {

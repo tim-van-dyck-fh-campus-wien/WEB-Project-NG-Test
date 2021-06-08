@@ -22,7 +22,17 @@ export class RegisterFormComponent implements OnInit {
   }
   onSubmit(f:NgForm){
     let data:RegisterData = f.value as RegisterData;
+    this.loginServ.registerAccount(data).then((suceeded)=>{
+      if(suceeded){
+        alert("Login Success");
+        console.dir(data);
+        this.router.navigate(["main-page-component"]);
+      }else{
+        alert("Error while registering account");
+      }
+    })
     //this.submit.emit(returnData);
+    /*
     if(!this.loginServ.registerAccount(data)){
       alert("Error while registering account");
     }
@@ -33,7 +43,7 @@ export class RegisterFormComponent implements OnInit {
   }else{
 
   }
-
+*/
 }
 onLoginClicked(f:NgForm){
     let data:RegisterData = f.value as RegisterData;

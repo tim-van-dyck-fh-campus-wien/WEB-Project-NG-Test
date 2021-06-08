@@ -12,13 +12,15 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(){
-      if(!this.loginService.isLoggedIn()){
-        //for convenience
-        this.router.navigate(['main-page-component']);
-        //  this.router.navigate(['login-component']);
+    this.loginService.isLoggedIn().then((_isLoggedIn)=>{
+      if(!_isLoggedIn){
+        this.router.navigate(['login-component']);
       }else{
         this.router.navigate(["main-page-component"]);
       }
+    }).catch((err)=>{
+        alert(err);
+    })
   }
 
   title = 'bootsrapNGTest';

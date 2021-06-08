@@ -1,4 +1,4 @@
-import { ShortcutGroupService } from './shortcut-group.service';
+import { WidgetService } from './widget.service';
 import { LogoRetrievalService } from './logo-retrieval.service';
 import { WeatherElementComponent } from './weather-element/weather-element.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
@@ -34,7 +34,7 @@ import { WeatherService } from './weather.service';
     RegisterFormComponent,
     ActivitiesElementComponent,
     ShortcutElementComponent,
-    ShortcutGroupComponent,
+    ShortcutGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +44,7 @@ import { WeatherService } from './weather.service';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [LoginService,LogoRetrievalService,ShortcutGroupService, WeatherService,],
+  providers: [LoginService,LogoRetrievalService, WeatherService,WidgetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
