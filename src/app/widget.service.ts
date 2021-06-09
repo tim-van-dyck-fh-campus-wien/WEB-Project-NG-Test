@@ -1,3 +1,4 @@
+import { ShortcutGroup } from './models/ShortcutGroup.interface';
 import { environment } from './../environments/environment';
 import { Widget } from './models/Widget.interface';
 import { LoginService } from './login.service';
@@ -32,6 +33,32 @@ export class WidgetService {
     }
     throw "You may not be logged in,please log in!";    
   }
+
+    public async createShortcutGroup(shortcutGroup:ShortcutGroup):Promise<boolean>{
+      console.dir(JSON.stringify(shortcutGroup))
+      
+      if(await this.loginService.isLoggedIn()){
+        let json  = JSON.stringify(shortcutGroup, (key,val)=>{//Exclude all id fields!
+          if(key!="_id"){
+            return val;
+          }
+        });
+
+          const response = await fetch(environment.apiBaseUrl + "/user/widgets/shortcutgroup", {
+            method: 'post',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body:json,
+            credentials: 'include',
+          });
+          if(response.ok){
+            return true;
+          }
+        }
+        return false;
+    }
+
 
 
 

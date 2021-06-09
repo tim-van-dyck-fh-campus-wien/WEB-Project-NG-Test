@@ -1,0 +1,13 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+.addWidgetImage{
+    height:136px;
+    @include media-breakpoint-up(sm){
+        height:150px;
+    }
+    @include media-breakpoint-up(lg){
+        height:170px;
+    }
+
+}

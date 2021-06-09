@@ -25,8 +25,11 @@
                 <shortcut-group *ngIf="widget.type=='ShortcutGroup'"[data]=widget.data></shortcut-group>
                 <!--TODO Add more widgets!-->
             </div>
-            <div class="col-xl-4 col-md-6 col-sm-12" >
-              <create-shortcut-group></create-shortcut-group>
+            <div class="col-xl-4 col-md-6 col-sm-12" *ngIf="isCreatingShortcut">
+              <create-shortcut-group  (shortcutGroupCreated)="onShortcutGroupCreated($event)"></create-shortcut-group>
+            </div>
+            <div class="col-xl-4 col-md-6 col-sm-12" *ngIf="!isCreatingShortcut">
+              <add-widget  (widgetCreateRequest)="createWidget($event)"></add-widget>
             </div>
         </div>
     </div>

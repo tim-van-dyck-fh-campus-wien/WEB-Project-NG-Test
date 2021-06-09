@@ -23,6 +23,7 @@ import { ShortcutGroupComponent } from './shortcut-group/shortcut-group.componen
 import { WeatherService } from './weather.service';
 import { CreateShortcutGroupComponent } from './create-shortcut-group/create-shortcut-group.component';
 import { CreateShortcutElemenentComponent } from './create-shortcut-elemenent/create-shortcut-elemenent.component';
+import { AddWidgetComponent } from './add-widget/add-widget.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CreateShortcutElemenentComponent } from './create-shortcut-elemenent/cr
     ShortcutElementComponent,
     ShortcutGroupComponent,
     CreateShortcutGroupComponent,
-    CreateShortcutElemenentComponent
+    CreateShortcutElemenentComponent,
+    AddWidgetComponent
   ],
   imports: [
     BrowserModule,

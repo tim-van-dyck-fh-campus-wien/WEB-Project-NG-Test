@@ -21,6 +21,8 @@ export class MainPageComponent implements OnInit {
   
   widgetList:Widget[];
   userData: UserData = { firstname: "", lastname: "", email: "" };//Contains basic Userinfo
+
+  isCreatingShortcut:boolean=false;
   ngOnInit(): void {
     //Get Info of logged in user
     this.loginService.getUserData().then((dat: UserData) => {
@@ -29,8 +31,11 @@ export class MainPageComponent implements OnInit {
       alert("You don't seem to be logged in!");
       this.router.navigate(['login-component']);
     })
-
+  
     //Get Widget List
+    this.getWidgetList();
+  }
+  getWidgetList(){
     this.widgetService.getListOfWidgets().then((res)=>{
       this.widgetList=res;
       console.log("WIDGET LIST");
@@ -41,5 +46,23 @@ export class MainPageComponent implements OnInit {
     this.loginService.logOut();
     this.router.navigate(['login-component']);
   }
+  //Called when clicking the "plus" icon to add a widget
+  createWidget(data:{type:string}){
+      if(data.type=="ShortcutGroup"){
+        this.isCreatingShortcut=true;//Show the widget for creating a shortcut group
+      }
+  }
+  onShortcutGroupCreated(shortcutGroup:ShortcutGroup){
+    if(shortcutGroup==null){//if null => creation was cancelled
+      this.isCreatingShortcut=false;
+    }else{
+      this.widgetService.createShortcutGroup(shortcutGroup).then((sucess)=>{
+        if(sucess){
+          this.getWidgetList();
+          this.isCreatingShortcut=false;
+        }
+      })
+    }
+    }
 
 }
