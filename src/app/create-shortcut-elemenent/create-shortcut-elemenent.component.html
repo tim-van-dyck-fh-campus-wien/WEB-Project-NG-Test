@@ -1,0 +1,39 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Create a shortcut</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form #form="ngForm" id="createShortcutForm" (ngSubmit)="onSubmit(form)">
+            <div class="form-group">
+                <label for="shortcutTitle">Title</label>
+                  <input id="shortcutTitle" name="name" ngModel required [(ngModel)]="shortcutDat.name"  class="form-control" type="text">
+                  <label for="shortcutUrl"  >Url</label>
+      
+                  <input id="shortcutUrl" ngModel required  [(ngModel)]="shortcutDat.url" name="url" class="form-control" type="url">
+                </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" form="createShortcutForm" [disabled]="!form.form.valid" class="btn btn-outline-dark" >Save</button>
+    </div>
+  </ng-template>
+
+
+<div class="shortcutParentContainer shadow-sm rounded" >
+    <div class="shortcutContainer noPadding" (click)="open(content)" >
+        <div class="row">
+            <div class="col" >
+                <img class="shortcutImage" src="http://simpleicon.com/wp-content/uploads/plus.png">
+            </div>
+        </div>
+        <div class="row noPadding">
+            <div class="col">
+                <p class="shortcutName"></p>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -24,7 +24,10 @@
             <div class="col-xl-4 col-md-6 col-sm-12" *ngFor="let widget of widgetList">
                 <shortcut-group *ngIf="widget.type=='ShortcutGroup'"[data]=widget.data></shortcut-group>
                 <!--TODO Add more widgets!-->
-              </div>
+            </div>
+            <div class="col-xl-4 col-md-6 col-sm-12" >
+              <create-shortcut-group></create-shortcut-group>
+            </div>
         </div>
     </div>
    

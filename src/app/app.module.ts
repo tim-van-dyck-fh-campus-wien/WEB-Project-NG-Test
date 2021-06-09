@@ -21,6 +21,8 @@ import { ActivitiesElementComponent } from './activities-element/activities-elem
 import { ShortcutElementComponent } from './shortcut-element/shortcut-element.component';
 import { ShortcutGroupComponent } from './shortcut-group/shortcut-group.component';
 import { WeatherService } from './weather.service';
+import { CreateShortcutGroupComponent } from './create-shortcut-group/create-shortcut-group.component';
+import { CreateShortcutElemenentComponent } from './create-shortcut-elemenent/create-shortcut-elemenent.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { WeatherService } from './weather.service';
     RegisterFormComponent,
     ActivitiesElementComponent,
     ShortcutElementComponent,
-    ShortcutGroupComponent
+    ShortcutGroupComponent,
+    CreateShortcutGroupComponent,
+    CreateShortcutElemenentComponent
   ],
   imports: [
     BrowserModule,
