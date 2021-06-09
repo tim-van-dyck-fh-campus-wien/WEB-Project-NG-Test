@@ -1,0 +1,25 @@
+<div class="bg-white shadow shortcutGroupContainer">
+    <div (click)="saveClicked()">
+        <i class="fas fa-2x fa-check check float-right" ></i>
+    </div>
+    <div (click)="cancelClicked()">
+        <i class="fas fa-2x fa-times times float-left"></i>
+    </div>
+    
+    <div class="form-group centered align-items-center m-0">
+            <div class="col-5 m-0">
+                <input type="text"  [(ngModel)]="shortcutGroup.name" class="form-control" id="shortcutGroupTitle" placeholder="Group Title">
+            </div>
+    </div>
+    <div class="d-flex flex-wrap">
+        <div class="fa-solid fa-circle-check"></div>
+
+        <div *ngFor="let element of shortcutGroup.elements">
+            <shortcut-element [shortcutData]="element"></shortcut-element>
+        </div>
+       
+        <create-shortcut-element (shortcutCreated)="onShortcutCreated($event)"></create-shortcut-element>
+    </div>
+
+
+</div>

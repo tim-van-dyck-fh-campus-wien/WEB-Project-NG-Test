@@ -1,6 +1,8 @@
 import { LoginData } from "./LoginData.interface";
 
 export interface RegisterData extends LoginData{
-  firstName:string;
-  lastName:string;
+  firstname:string;
+  lastname:string;
+  email:string;
+  password:string;
 }

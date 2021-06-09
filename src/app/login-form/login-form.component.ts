@@ -24,13 +24,15 @@ export class LoginFormComponent implements OnInit {
   }
   onSubmit(f:NgForm){
       let data:LoginData = f.value as LoginData;
-      if(this.loginServ.validateCredentials(data)){//login sucessfull
-        alert("Login Success");
-        console.dir(data);
-        this.router.navigate(["main-page-component"]);
-    }else{
-
-    }
+      this.loginServ.validateCredentials(data).then((success)=>{
+        if(success){
+          alert("Login Success");
+          console.dir(data);
+          this.router.navigate(["main-page-component"]);
+        }else{
+          alert("Could not login, try again");
+        }
+      })
   }
   onRegisterClicked(f:NgForm){
     let data:LoginData=f.value as LoginData;

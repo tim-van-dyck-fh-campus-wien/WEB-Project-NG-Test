@@ -1,4 +1,4 @@
-import { ShortcutGroupService } from './shortcut-group.service';
+import { WidgetService } from './widget.service';
 import { LogoRetrievalService } from './logo-retrieval.service';
 import { WeatherElementComponent } from './weather-element/weather-element.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
@@ -23,6 +23,9 @@ import { ShortcutGroupComponent } from './shortcut-group/shortcut-group.componen
 import { WeatherService } from './weather.service';
 import { JokeService } from './joke.service';
 import { JokeElementComponent } from './joke-element/joke-element.component';
+import { CreateShortcutGroupComponent } from './create-shortcut-group/create-shortcut-group.component';
+import { CreateShortcutElemenentComponent } from './create-shortcut-elemenent/create-shortcut-elemenent.component';
+import { AddWidgetComponent } from './add-widget/add-widget.component';
 
 
 @NgModule({
@@ -38,6 +41,9 @@ import { JokeElementComponent } from './joke-element/joke-element.component';
     ShortcutElementComponent,
     ShortcutGroupComponent,
     JokeElementComponent,
+    CreateShortcutGroupComponent,
+    CreateShortcutElemenentComponent,
+    AddWidgetComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,7 @@ import { JokeElementComponent } from './joke-element/joke-element.component';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [LoginService,LogoRetrievalService,ShortcutGroupService, WeatherService,JokeService,],
+  providers: [LoginService,LogoRetrievalService, WeatherService,WidgetService,JokeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
