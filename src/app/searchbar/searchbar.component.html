@@ -1,8 +1,22 @@
-  
-  <div class="row">
+<!--Low BW version-->  
+  <div *ngIf='lowBandwidth'>
+    <div>
+      <button  class=".lowBWsearch_btn" (click)="searchTerm()" type="submit">Search</button>
+    <input
+    [(ngModel)]="searchPhrase"
+      type="text"
+      placeholder="What are you searching?"
+      name="q"
+    />
+  </div>
+</div>
+
+
+<!--Fancy UI-->
+  <div class="row" *ngIf='!lowBandwidth'>
       <div class="col">
         <div class="search_box shadow-lg" >
-            <button class="search_btn" (click)="searchTerm()" type="submit">
+            <button  class="search_btn" (click)="searchTerm()" type="submit">
               <i class="fas fa-search"></i>
             </button>
             <input
@@ -13,6 +27,7 @@
               name="q"
             />
           </div>
-      </div>
-    
+      </div>   
   </div>
+
+

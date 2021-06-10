@@ -1,0 +1,38 @@
+
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+
+#fillWholePage{
+    position:fixed;height:100%;width:100%;margin:0;padding:0; overflow-y: scroll;
+}
+#contentContainerParent{
+    padding:20px;
+}
+#contentContainer{
+    padding-top:20px;padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+.centeredWhiteBackground{
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 10px;
+}
+#bandwidthButton{
+    height: 35px;
+    background-color: #cf0553;
+    color: whitesmoke; 
+    border-radius: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 200px;
+    filter: drop-shadow(white);
+   // padding-bottom: 2px;
+    margin-bottom:5px;
+}
+.buttonsDiv{
+    text-align: center;
+}

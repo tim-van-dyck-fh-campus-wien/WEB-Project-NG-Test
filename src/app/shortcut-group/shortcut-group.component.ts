@@ -11,6 +11,8 @@ export class ShortcutGroupComponent implements OnInit {
   constructor() { }
   @Input() data:ShortcutGroup;
  
+  //added for low BW version
+  @Input() lowBandwidth:boolean;
 
       
 

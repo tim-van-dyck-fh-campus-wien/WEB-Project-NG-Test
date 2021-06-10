@@ -1,8 +1,22 @@
-<div class="shortcutParentContainer shadow-sm rounded">
-    <div class="shortcutContainer noPadding" (click)="openUrl()">
+<!--Low BW version-->
+
+<div *ngIf='lowBandwidthElement'  class='lowBWContainer'>
+    <div class="shortcut" (click)="openUrl()">
+        <div>
+            <div >
+                <p >{{shortcutData.name}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Fancy BW version-->
+
+<div *ngIf='!lowBandwidthElement' class="shortcutParentContainer shadow-sm rounded">
+    <div class="shortcutContainer noPadding" class="shortcut" (click)="openUrl()">
         <div class="row">
             <div class="col" >
-                <img class="shortcutImage" [src]="imageUrl">
+                <img  class="shortcutImage" [src]="imageUrl">
             </div>
         </div>
         <div class="row noPadding">

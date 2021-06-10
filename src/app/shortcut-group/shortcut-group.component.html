@@ -1,8 +1,23 @@
-<div class="bg-white shadow shortcutGroupContainer">
+
+<!--Low UI version-->
+
+<div *ngIf='lowBandwidth' class="shortcutGroupContainerLow">
+    <h3 >{{data.name}}</h3>
+    <div class="d-flex flex-wrap">
+        <div *ngFor="let element of data.elements">
+            <shortcut-element [lowBandwidthElement] = "lowBandwidth" [shortcutData]="element"></shortcut-element>
+        </div>
+    </div>           
+</div>
+
+
+
+<!--Fancy UI version-->
+<div *ngIf='!lowBandwidth' class="bg-white shadow shortcutGroupContainer">
     <h3 class="text-center">{{data.name}}</h3>
     <div class="d-flex flex-wrap">
         <div *ngFor="let element of data.elements">
-            <shortcut-element [shortcutData]="element"></shortcut-element>
+            <shortcut-element [lowBandwidthElement] = "lowBandwidth" [shortcutData]="element"></shortcut-element>
         </div>
     
     </div>    

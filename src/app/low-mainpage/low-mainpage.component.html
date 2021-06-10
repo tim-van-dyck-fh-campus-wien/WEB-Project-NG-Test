@@ -1,0 +1,46 @@
+<div class="fixedBackgroundContainer  ">
+<div id='lowMainpageContainer' >
+      <div class="lowMainpageContainerRow"><p>Hi {{userData.firstname}} {{userData.lastname}} with email {{userData.email}}! Nice to see you again!<button type="button"(click)="logOutClicked()">log out</button></p></div>
+      <div class="lowMainpageContainerRow"><app-searchbar [lowBandwidth] = "lowBandwidthSearchbar"></app-searchbar></div>
+      <div class="lowMainpageContainerRow"> 
+        <div class="col-xl-6 col-md-6 col-sm-12" *ngFor="let widget of widgetList">
+            <shortcut-group  [lowBandwidth] = "lowBandwidthSearchbar" *ngIf="widget.type=='ShortcutGroup'"[data]=widget.data></shortcut-group>
+      </div>
+      </div>
+      <div class="lowMainpageContainerRow"><p>Please remember, to get all our features click 'no' when asked for low bandwidth version.</p></div>
+</div> 
+</div>
+
+
+      
+    
+ <!--      
+      <div style="overflow:hidden">
+         <app-weather-element></app-weather-element>
+      </div>
+      <div>
+        
+      </div>
+    
+    -->
+        
+        <!--DISPLAY ALL REMAINING WIDGETS-->
+
+   <!--    <div class="row">
+       
+       
+            <div class="col-xl-6 col-md-6 col-sm-12" *ngFor="let widget of widgetList">
+                <shortcut-group *ngIf="widget.type=='ShortcutGroup'"[data]=widget.data></shortcut-group>
+          
+            </div>
+            <div class="col-xl-6 col-md-6 col-sm-12" *ngIf="isCreatingShortcut">
+              <create-shortcut-group  (shortcutGroupCreated)="onShortcutGroupCreated($event)"></create-shortcut-group>
+            </div>
+            <div class="col-xl-6 col-md-6 col-sm-12" *ngIf="!isCreatingShortcut">
+              <add-widget  (widgetCreateRequest)="createWidget($event)"></add-widget>
+            </div>-->
+         <!--   <div class="col-xl-6 col-md-6 col-sm-12">
+              <app-joke-element ></app-joke-element>
+            </div>
+        </div>-->
+    

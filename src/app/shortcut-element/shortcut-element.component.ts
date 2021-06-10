@@ -11,10 +11,15 @@ export class ShortcutElementComponent implements OnInit {
 
   constructor(private logoRetrieval:LogoRetrievalService) { }
 
+   //added for low BW
+   @Input() lowBandwidthElement:boolean;
+
   @Input() shortcutData:ShortcutElement;
   imageUrl:string;
   ngOnInit(): void {
+    if(!this.lowBandwidthElement){
       this.imageUrl=this.logoRetrieval.getLogoFromUrl(this.shortcutData.url);
+    }
   }
   openUrl():void{
     window.open(this.shortcutData.url);

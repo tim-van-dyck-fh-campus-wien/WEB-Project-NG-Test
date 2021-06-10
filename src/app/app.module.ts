@@ -26,6 +26,8 @@ import { JokeElementComponent } from './joke-element/joke-element.component';
 import { CreateShortcutGroupComponent } from './create-shortcut-group/create-shortcut-group.component';
 import { CreateShortcutElemenentComponent } from './create-shortcut-elemenent/create-shortcut-elemenent.component';
 import { AddWidgetComponent } from './add-widget/add-widget.component';
+import { LowbandwidthComponent } from './lowbandwidth/lowbandwidth.component';
+import { LowMainpageComponent } from './low-mainpage/low-mainpage.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { AddWidgetComponent } from './add-widget/add-widget.component';
     JokeElementComponent,
     CreateShortcutGroupComponent,
     CreateShortcutElemenentComponent,
-    AddWidgetComponent
+    AddWidgetComponent,
+    LowbandwidthComponent,
+    LowMainpageComponent
   ],
   imports: [
     BrowserModule,

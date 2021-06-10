@@ -49,7 +49,7 @@ p {
     width: 100%;
     display: block;
     text-align: center;
-    padding-bottom: 2px;
+    //padding-bottom: 2px;
     @include media-breakpoint-up(sm){
         width: 49%;
         float:left;
@@ -67,6 +67,7 @@ p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 100px;
     filter: drop-shadow(white);
+    margin-bottom:5px;
 }
 .sun{
     margin-top: 10px;

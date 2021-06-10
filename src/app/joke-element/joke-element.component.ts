@@ -36,7 +36,15 @@ export class JokeElementComponent implements OnInit {
     this.answer = false;
   }
 
+
   showPunchline(){
     this.answer = true;
+  }
+
+  nextJoke(){
+    //this.makeJokeAPICall(); 
+    this.jokeSetup ="What do you get from a pampered cow?";
+    this.jokePunchline ="Spoiled milk."
+    this.answer = false;
   }
 }

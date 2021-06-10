@@ -28,7 +28,8 @@ export class LoginFormComponent implements OnInit {
         if(success){
           alert("Login Success");
           console.dir(data);
-          this.router.navigate(["main-page-component"]);
+          this.router.navigate(["lowbandwidth"]);
+          //this.router.navigate(["main-page-component"]);
         }else{
           alert("Could not login, try again");
         }

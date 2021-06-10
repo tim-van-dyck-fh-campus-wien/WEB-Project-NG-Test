@@ -16,7 +16,8 @@ export class AppComponent implements OnInit {
       if(!_isLoggedIn){
         this.router.navigate(['login-component']);
       }else{
-        this.router.navigate(["main-page-component"]);
+        this.router.navigate(["lowbandwidth"]);
+      //  this.router.navigate(["main-page-component"]);
       }
     }).catch((err)=>{
         alert(err);
