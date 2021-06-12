@@ -28,6 +28,7 @@ import { CreateShortcutElemenentComponent } from './create-shortcut-elemenent/cr
 import { AddWidgetComponent } from './add-widget/add-widget.component';
 import { LowbandwidthComponent } from './lowbandwidth/lowbandwidth.component';
 import { LowMainpageComponent } from './low-mainpage/low-mainpage.component';
+import { TodoElementComponent } from './todo-element/todo-element.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { LowMainpageComponent } from './low-mainpage/low-mainpage.component';
     CreateShortcutElemenentComponent,
     AddWidgetComponent,
     LowbandwidthComponent,
-    LowMainpageComponent
+    LowMainpageComponent,
+    TodoElementComponent
   ],
   imports: [
     BrowserModule,

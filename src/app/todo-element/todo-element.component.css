@@ -1,0 +1,34 @@
+
+h1{
+    text-align: center;
+    color: white;
+}
+.trash{
+    color: black;
+}
+.trash:hover{
+    color: #cf0553;
+}
+.plus{
+    color: white;
+}
+.big-checkbox {
+    width: 25px; 
+    height: 25px;
+    display: block;
+}
+#container-todo-list{
+    border-radius: 5px;
+    background: linear-gradient(180deg, #cf0553 0%,  rgb(48, 2, 77));
+}
+.my-row{
+    padding: 5px;
+}
+
+.todo-task{
+    width: 100%;
+}
+#last-row{
+    width: 100%;
+    text-align: center;
+}
