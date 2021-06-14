@@ -7,6 +7,8 @@ import { ShortcutGroup } from '../models/ShortcutGroup.interface';
   styleUrls: ['./shortcut-group.component.css']
 })
 export class ShortcutGroupComponent implements OnInit {
+ //added by visual studio
+  [x: string]: any;
 
   constructor() { }
   @Input() data:ShortcutGroup;
@@ -18,5 +20,6 @@ export class ShortcutGroupComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }

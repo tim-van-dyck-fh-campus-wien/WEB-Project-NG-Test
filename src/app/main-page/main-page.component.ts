@@ -65,4 +65,32 @@ export class MainPageComponent implements OnInit {
     }
     }
 
+    //hide a widget - deleted for User while in this session! 
+    //TODO - hide shortCutGroup based on title 
+    visibleShortcut:boolean = true;
+    hideShortcutWidget(){
+      this.visibleShortcut = this.visibleShortcut?false:true; 
+    }
+
+    visibleWeather:boolean = true;
+    hideWeatherWidget(){
+      this.visibleWeather = this.visibleWeather?false:true; 
+    }
+
+    
+    visibleJoke:boolean = true;
+    hideJokeWidget(){
+      this.visibleJoke = this.visibleJoke?false:true; 
+    }
+
+
+    visibleAddWidget:boolean = true;
+    hideAddWidget(){
+      this.visibleAddWidget = this.visibleAddWidget?false:true; 
+    }
+
+    visibleToDoWidget:boolean = true;
+    hideToDoWidget(){
+      this.visibleToDoWidget = this.visibleToDoWidget?false:true; 
+    }
 }

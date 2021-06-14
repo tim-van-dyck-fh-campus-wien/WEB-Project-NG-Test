@@ -11,7 +11,10 @@
       
     
         
-      <div style="overflow:hidden">
+      <div style="overflow:hidden"  *ngIf="visibleWeather">
+        <div class='buttonDiv'>
+          <button type="button" (click)="hideWeatherWidget()" id="hideButton">Hide Weather & Activities</button>
+        </div>
          <app-weather-element></app-weather-element>
       </div>
       <div>
@@ -24,20 +27,33 @@
 
         <div class="row">
           <!--Iterate over Widget List-->
-            <div class="col-xl-6 col-md-6 col-sm-12" *ngFor="let widget of widgetList">
+        <div *ngIf="visibleShortcut" class="col-xl-6 col-md-6 col-sm-12">
+            <div *ngFor="let widget of widgetList">
+             <div class='buttonDiv'>
+               <button type="button" (click)="hideShortcutWidget()" id="hideButton">Hide Shortcuts</button></div>
                 <shortcut-group *ngIf="widget.type=='ShortcutGroup'"[data]=widget.data></shortcut-group>
                 <!--TODO Add more widgets!-->
             </div>
+          </div>
             <div class="col-xl-6 col-md-6 col-sm-12" *ngIf="isCreatingShortcut">
               <create-shortcut-group  (shortcutGroupCreated)="onShortcutGroupCreated($event)"></create-shortcut-group>
             </div>
             <div class="col-xl-6 col-md-6 col-sm-12" *ngIf="!isCreatingShortcut">
+              <div class='buttonDiv' *ngIf="visibleAddWidget">
+                <button type="button" (click)="hideAddWidget()" id="hideButton">Hide + Widget</button>
+              </div>
               <add-widget  (widgetCreateRequest)="createWidget($event)"></add-widget>
             </div>
             <div class="col-xl-6 col-md-6 col-sm-12">
-              <app-joke-element ></app-joke-element>
+              <div class='buttonDiv' *ngIf="visibleJoke">
+                <button type="button" (click)="hideJokeWidget()" id="hideButton">Hide Jokes</button>
+              </div>
+              <app-joke-element></app-joke-element>
             </div>
             <div class="col-xl-6 col-md-6 col-sm-12">
+              <div class='buttonDiv' *ngIf="visibleToDoWidget">
+                <button type="button" (click)="hideToDoWidget()" id="hideButton">Hide + Widget</button>
+              </div>
               <app-todo-element></app-todo-element>
             </div>
         </div>

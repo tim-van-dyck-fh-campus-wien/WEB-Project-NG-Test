@@ -22,6 +22,7 @@ h1{
     background: linear-gradient(180deg, #cf0553 0%,  rgb(48, 2, 77));
 }
 .my-row{
+    margin: 5px;
     padding: 5px;
 }
 

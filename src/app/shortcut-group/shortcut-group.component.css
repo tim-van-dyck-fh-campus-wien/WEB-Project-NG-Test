@@ -5,3 +5,10 @@
 .shortcutGroupContainerLow{
     border: black 1px solid;
 }
+/*.close{
+    display: none;
+}
+.close:hover{
+    display: inline-block;
+    cursor: pointer;
+}*/
