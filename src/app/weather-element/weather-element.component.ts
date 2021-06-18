@@ -35,7 +35,7 @@ activitiesWeatherDescription: string;
 
   ngOnInit() {
     this.city = 'Vienna';
-    this.makeAPIcall(this.city);
+   // this.makeAPIcall(this.city);
   }
   
    //makes a new API call for city entered

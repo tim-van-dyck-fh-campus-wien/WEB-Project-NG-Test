@@ -3,6 +3,8 @@ import { environment } from './../environments/environment';
 import { Widget } from './models/Widget.interface';
 import { LoginService } from './login.service';
 import { Injectable } from '@angular/core';
+import { JsonpClientBackend } from '@angular/common/http';
+import { SimpleOuterSubscriber } from 'rxjs/internal/innerSubscribe';
 
 @Injectable({
   providedIn: 'root'
@@ -59,8 +61,30 @@ export class WidgetService {
         return false;
     }
 
+    widgetID = { _id: ""};
+    public async deleteShortcutGroup(shortcutGroup:ShortcutGroup):Promise<boolean>{
+      this.widgetID._id = shortcutGroup._id;
+      let json  = JSON.stringify(this.widgetID);
+      console.log(json);
+      //works bec isloggedin returns boolean promise too
+  /*
+      if(await this.loginService.isLoggedIn()){
+        const APIresponse = await fetch(environment.apiBaseUrl + "/user/widgets/id/", {
+            method: 'delete',
+            headers:{
+              'Content-Type' : 'application/json'
+            }, 
+            body:json,
+            credentials:'include'
+          })
+        if(APIresponse.ok){
+          return true;
+        }
+        return false;
+      }*/
+    
 
 
-
-
+      return true;
+}
 }

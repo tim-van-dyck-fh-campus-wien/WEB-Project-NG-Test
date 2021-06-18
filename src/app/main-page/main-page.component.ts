@@ -21,7 +21,7 @@ export class MainPageComponent implements OnInit {
   
   widgetList:Widget[];
   userData: UserData = { firstname: "", lastname: "", email: "" };//Contains basic Userinfo
-
+  
   isCreatingShortcut:boolean=false;
   ngOnInit(): void {
     //Get Info of logged in user
@@ -63,6 +63,24 @@ export class MainPageComponent implements OnInit {
         }
       })
     }
+    }
+
+    shortcutGroupID:string;
+    //use event!!!
+    deleteThisShortcutWidget(shortcutGroup:ShortcutGroup){
+     // alert("somethings happening");
+      console.log(shortcutGroup._id);
+      //this.shortcutGroupID = "_id: "+shortcutGroup._id;
+   //   console.log(this.shortcutGroupID)
+      this.widgetService.deleteShortcutGroup(shortcutGroup).then((success) =>{
+        if(success){
+          this.getWidgetList();
+          console.log(this.widgetList);
+        }
+      }, error =>
+        console.log(error));
+         
+    
     }
 
     //hide a widget - deleted for User while in this session! 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ShortcutGroup } from '../models/ShortcutGroup.interface';
 
 @Component({
@@ -7,11 +7,13 @@ import { ShortcutGroup } from '../models/ShortcutGroup.interface';
   styleUrls: ['./shortcut-group.component.css']
 })
 export class ShortcutGroupComponent implements OnInit {
- //added by visual studio
-  [x: string]: any;
+ 
 
   constructor() { }
   @Input() data:ShortcutGroup;
+
+  //to delete shortcutGroup 
+  @Output() deleteShortcutGroup = new EventEmitter<ShortcutGroup>();
  
   //added for low BW version
   @Input() lowBandwidth:boolean;
@@ -21,5 +23,9 @@ export class ShortcutGroupComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onDeleteShortcutGroupClicked(){
+    this.deleteShortcutGroup.emit(this.data);
+    //console.log(this.data);
+  }
 
 }
