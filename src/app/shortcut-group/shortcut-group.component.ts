@@ -11,9 +11,10 @@ export class ShortcutGroupComponent implements OnInit {
 
   constructor() { }
   @Input() data:ShortcutGroup;
+  @Input() id:String;
 
   //to delete shortcutGroup 
-  @Output() deleteShortcutGroup = new EventEmitter<ShortcutGroup>();
+  @Output() deleteShortcutGroup = new EventEmitter<String>();
  
   //added for low BW version
   @Input() lowBandwidth:boolean;
@@ -24,7 +25,7 @@ export class ShortcutGroupComponent implements OnInit {
   }
 
   onDeleteShortcutGroupClicked(){
-    this.deleteShortcutGroup.emit(this.data);
+    this.deleteShortcutGroup.emit(this.id);
     //console.log(this.data);
   }
 

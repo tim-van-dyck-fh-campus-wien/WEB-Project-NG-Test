@@ -61,13 +61,10 @@ export class WidgetService {
         return false;
     }
 
-    widgetID = { _id: ""};
-    public async deleteShortcutGroup(shortcutGroup:ShortcutGroup):Promise<boolean>{
-      this.widgetID._id = shortcutGroup._id;
-      let json  = JSON.stringify(this.widgetID);
-      console.log(json);
+    public async deleteWidget(widgetId:String):Promise<boolean>{
+      let json  = JSON.stringify({_id:widgetId});
+    
       //works bec isloggedin returns boolean promise too
-  /*
       if(await this.loginService.isLoggedIn()){
         const APIresponse = await fetch(environment.apiBaseUrl + "/user/widgets/id/", {
             method: 'delete',
@@ -80,11 +77,7 @@ export class WidgetService {
         if(APIresponse.ok){
           return true;
         }
-        return false;
-      }*/
-    
-
-
-      return true;
+      }
+      return false;
 }
 }

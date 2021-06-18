@@ -31,7 +31,7 @@
             <div *ngFor="let widget of widgetList">
              <div class='buttonDiv'>
                <button type="button" (click)="hideShortcutWidget()" id="hideButton">Hide Shortcuts</button></div>
-                <shortcut-group *ngIf="widget.type=='ShortcutGroup'"[data]=widget.data (deleteShortcutGroup)="deleteThisShortcutWidget($event)"></shortcut-group>
+                <shortcut-group *ngIf="widget.type=='ShortcutGroup'"[data]=widget.data [id]="widget._id" (deleteShortcutGroup)="deleteThisShortcutWidget($event)"></shortcut-group>
                 <!--TODO Add more widgets!-->
             </div>
           </div>

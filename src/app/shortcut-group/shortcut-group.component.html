@@ -14,7 +14,7 @@
 
 <!--Fancy UI version-->
 <div *ngIf='!lowBandwidth' class="bg-white shadow shortcutGroupContainer">
-    <h3 class="text-center">{{data.name}}  </h3> <!--<button id='deleteButton' (click)="onDeleteShortcutGroupClicked()">delete</button>-->
+    <h3 class="text-center">{{data.name}}  </h3> <button id='deleteButton' (click)="onDeleteShortcutGroupClicked()">delete</button>
     <div class="d-flex flex-wrap">
         <div *ngFor="let element of data.elements">
             <shortcut-element [lowBandwidthElement] = "lowBandwidth" [shortcutData]="element"></shortcut-element>

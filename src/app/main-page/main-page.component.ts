@@ -67,19 +67,20 @@ export class MainPageComponent implements OnInit {
 
     shortcutGroupID:string;
     //use event!!!
-    deleteThisShortcutWidget(shortcutGroup:ShortcutGroup){
+    deleteThisShortcutWidget(shortcutId:String){
      // alert("somethings happening");
-      console.log(shortcutGroup._id);
       //this.shortcutGroupID = "_id: "+shortcutGroup._id;
    //   console.log(this.shortcutGroupID)
-      this.widgetService.deleteShortcutGroup(shortcutGroup).then((success) =>{
+      this.widgetService.deleteWidget(shortcutId).then((success) =>{
         if(success){
           this.getWidgetList();
           console.log(this.widgetList);
         }
       }, error =>
         console.log(error));
-         
+      this.widgetService.getListOfWidgets().then((res)=>{
+        this.widgetList=res;
+      })
     
     }
 
