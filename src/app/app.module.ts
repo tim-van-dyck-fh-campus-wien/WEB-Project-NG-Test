@@ -1,3 +1,4 @@
+import { LogoutBtnComponent } from './logout-btn/logout-btn.component';
 import { WidgetService } from './widget.service';
 import { LogoRetrievalService } from './logo-retrieval.service';
 import { WeatherElementComponent } from './weather-element/weather-element.component';
@@ -50,6 +51,7 @@ import { TodoElementComponent } from './todo-element/todo-element.component';
     LowbandwidthComponent,
     LowMainpageComponent,
     TodoElementComponent
+    ,LogoutBtnComponent
   ],
   imports: [
     BrowserModule,
