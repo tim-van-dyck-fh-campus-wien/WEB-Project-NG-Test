@@ -30,6 +30,7 @@ import { AddWidgetComponent } from './add-widget/add-widget.component';
 import { LowbandwidthComponent } from './lowbandwidth/lowbandwidth.component';
 import { LowMainpageComponent } from './low-mainpage/low-mainpage.component';
 import { TodoElementComponent } from './todo-element/todo-element.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { TodoElementComponent } from './todo-element/todo-element.component';
     NgbModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FlexLayoutModule
   ],
   providers: [LoginService,LogoRetrievalService, WeatherService,WidgetService,JokeService],
   bootstrap: [AppComponent]
