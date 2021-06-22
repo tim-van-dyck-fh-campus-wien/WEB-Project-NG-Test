@@ -1,5 +1,4 @@
-/* Höhe ändert sich nach Inhaltsmenge, TODO: Höhe responsive aber fixiert gestalten.
-Breite responsive nach Größe des Display.*/
+
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
@@ -40,8 +39,6 @@ p {
     margin: 5px;
 }
 #weatherContainer{
-    //border: gray 2px solid;
-
     margin-top: 5px;
     border-radius: 5px;
     background-color: black;
@@ -50,7 +47,6 @@ p {
     width: 100%;
     display: block;
     text-align: center;
-    //padding-bottom: 2px;
     @include media-breakpoint-up(sm){
         width: 49%;
         float:left;
@@ -67,8 +63,10 @@ p {
     border-radius: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 100px;
-    filter: drop-shadow(white);
     margin-bottom:5px;
+}
+#cityButton:hover{
+    filter: drop-shadow(1px 1px 10px white);
 }
 .sun{
     margin-top: 10px;

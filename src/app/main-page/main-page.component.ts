@@ -66,11 +66,8 @@ export class MainPageComponent implements OnInit {
     }
 
     shortcutGroupID:string;
-    //use event!!!
     deleteThisShortcutWidget(shortcutId:String){
      // alert("somethings happening");
-      //this.shortcutGroupID = "_id: "+shortcutGroup._id;
-   //   console.log(this.shortcutGroupID)
       this.widgetService.deleteWidget(shortcutId).then((success) =>{
         if(success){
           this.getWidgetList();
@@ -88,28 +85,28 @@ export class MainPageComponent implements OnInit {
     //TODO - hide shortCutGroup based on title 
     visibleShortcut:boolean = true;
     hideShortcutWidget(){
-      this.visibleShortcut = this.visibleShortcut?false:true; 
+      this.visibleShortcut = false; 
     }
 
     visibleWeather:boolean = true;
     hideWeatherWidget(){
-      this.visibleWeather = this.visibleWeather?false:true; 
+      this.visibleWeather = false; 
     }
 
     
     visibleJoke:boolean = true;
     hideJokeWidget(){
-      this.visibleJoke = this.visibleJoke?false:true; 
+      this.visibleJoke =false; 
     }
 
 
     visibleAddWidget:boolean = true;
     hideAddWidget(){
-      this.visibleAddWidget = this.visibleAddWidget?false:true; 
+      this.visibleAddWidget = false; 
     }
 
     visibleToDoWidget:boolean = true;
     hideToDoWidget(){
-      this.visibleToDoWidget = this.visibleToDoWidget?false:true; 
+      this.visibleToDoWidget = false; 
     }
 }
