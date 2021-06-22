@@ -8,20 +8,20 @@
             </div>
         </div>
     
-        <div class="row justify-content-center align-items-center my-row" id="1">
+        <div class="row justify-content-center align-items-center my-row" *ngFor="let todo of _data.todos;let index = index;">
             <div class="col-1 my-col">
-                <input type="checkbox" class="big-checkbox" id="todo-checkbox">
+                <input type="checkbox" [checked]="_data.todos[index].isDone" class="big-checkbox" id="_data.todos[index]._id">
             </div>
             <div class="col-10 my-col">
-                <input type="text" class="todo-task" placeholder="Add ToDo...">
+                <input type="text"  [value]="todo.name"  class="todo-task" placeholder="Add ToDo...">
             </div>
             <div class="col-1 my-col">
-                <button type="button" class="btn btn-light" id="delete1">
-                    <i class="fas fa-1x fa-trash-alt trash"></i>
+                <button type="button" class="btn btn-light" (click)="onDeleteTodoClicked(index)"[id]="'deleteTodo_'+index">
+                    <i class="fas fa-1x fa-trash-alt trash" [id]="'deleteIcon_'+index"></i>
                 </button>
             </div>
         </div>
-    
+        <!--
         <div class="row justify-content-center align-items-center my-row" id="2">
             <div class="col-1 my-col">
                 <input type="checkbox" class="big-checkbox" id="todo-checkbox">
@@ -77,15 +77,15 @@
                 </button>
             </div>
         </div>
-    
+    -->
         <div class="row my-row" id="last-row">
             <div class="col-12">
-                <button type="button" class="btn btn-info add-new">
+                <button type="button" (click)="addNewTodo()" class="btn btn-info add-new">
                     <i class="fas fa-1x fa-plus plus"></i>
                     Add New Todo
                 </button>
             </div>
         </div>
-    
+        
     </div>
         

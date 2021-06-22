@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { TodoGroup } from './../models/TodoGroup.interface';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-todo-element',
@@ -8,8 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class TodoElementComponent implements OnInit {
 
   constructor() { }
+  @Input() data:TodoGroup;
+  _data:TodoGroup = {_id:"",todos:[{_id:"",name:"test",isDone:false},
+  {_id:"",name:"test1",isDone:true}]}
+
 
   ngOnInit(): void {
+  /*    
     document.getElementById("last-row")?.addEventListener("click", this.addNewTodoRow);
     document.getElementById("delete2")?.addEventListener("click", this.deleteRow2);
     document.getElementById("delete3")?.addEventListener("click", this.deleteRow3);
@@ -32,9 +38,9 @@ export class TodoElementComponent implements OnInit {
     }
     if(row5 != null){
       row5.style.visibility = "hidden";
-    }
+    }*/
   }
-
+  /*
   addNewTodoRow(){
     let row2 = document.getElementById("2");
     let row3 = document.getElementById("3");
@@ -79,5 +85,14 @@ export class TodoElementComponent implements OnInit {
       row5.style.visibility = "hidden";
     }
   }
+*/
+onDeleteTodoClicked(elementIndex){
+  alert(elementIndex);
+  this._data.todos.splice(elementIndex,1);
+//  alert(elementId);
 
+}
+addNewTodo(){
+  this._data.todos.push({_id:"",name:"",isDone:false});
+}
 }
