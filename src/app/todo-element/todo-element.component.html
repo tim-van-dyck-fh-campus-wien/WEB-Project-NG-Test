@@ -8,12 +8,12 @@
             </div>
         </div>
     
-        <div class="row justify-content-center align-items-center my-row" *ngFor="let todo of _data.todos;let index = index;">
+        <div class="row justify-content-center align-items-center my-row" *ngFor="let todo of _data;let index = index;">
             <div class="col-1 my-col">
-                <input type="checkbox" [checked]="_data.todos[index].isDone" class="big-checkbox" id="_data.todos[index]._id">
+                <input type="checkbox" [(ngModel)]="_data[index].isDone" class="big-checkbox" id="_data[index]._id">
             </div>
             <div class="col-10 my-col">
-                <input type="text"  [value]="todo.name"  class="todo-task" placeholder="Add ToDo...">
+                <input type="text"  [(ngModel)]="_data[index].name"  class="todo-task" placeholder="Add ToDo...">
             </div>
             <div class="col-1 my-col">
                 <button type="button" class="btn btn-light" (click)="onDeleteTodoClicked(index)"[id]="'deleteTodo_'+index">
@@ -79,10 +79,16 @@
         </div>
     -->
         <div class="row my-row" id="last-row">
-            <div class="col-12">
+            <div class="col-6">
                 <button type="button" (click)="addNewTodo()" class="btn btn-info add-new">
                     <i class="fas fa-1x fa-plus plus"></i>
                     Add New Todo
+                </button>
+            </div>
+            <div class="col-6">
+                <button type="button" (click)="saveClicked()" class="btn btn-info add-new">
+                    <i class="fas fa-1x fa-save save"></i>
+                    Save Todos
                 </button>
             </div>
         </div>

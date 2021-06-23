@@ -1,3 +1,5 @@
+import { TodoElement } from './models/TodoElement.interface';
+import { TodoGroup } from './models/TodoGroup.interface';
 import { ShortcutGroup } from './models/ShortcutGroup.interface';
 import { environment } from './../environments/environment';
 import { Widget } from './models/Widget.interface';
@@ -80,4 +82,50 @@ export class WidgetService {
       }
       return false;
 }
+public async getListOfTodos():Promise<TodoElement[]>{
+  if(await this.loginService.isLoggedIn()){
+    const response = await fetch(environment.apiBaseUrl + "/user/widgets/todos", {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+    });
+    if (response.ok) {
+      let res = await response.json();
+      return res.todos;
+    }else{
+        if(response.status==401){
+          throw "You may not be logged in,please log in!";
+        }else{
+          throw "An error was encountered!"
+        }
+    }
+  }
+  throw "You may not be logged in,please log in!";    
+}
+public async updateListOfTodos(todos:TodoElement[]):Promise<TodoElement[]>{
+  if(await this.loginService.isLoggedIn()){
+    const response = await fetch(environment.apiBaseUrl + "/user/widgets/todos", {
+      method: 'put',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body:JSON.stringify({todos:todos})
+    });
+    if (response.ok) {
+      let res = await response.json();
+      return res.todos;
+    }else{
+        if(response.status==401){
+          throw "You may not be logged in,please log in!";
+        }else{
+          throw "An error was encountered!"
+        }
+    }
+  }
+  throw "You may not be logged in,please log in!";    
+}
+
 }

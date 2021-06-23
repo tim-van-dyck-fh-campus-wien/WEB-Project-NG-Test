@@ -100,7 +100,7 @@
           <div class='buttonDiv' >
             <button type="button" (click)="hideToDoWidget()" id="hideButton" title='Hide items temporarily.'>Hide</button>
           </div>
-          <app-todo-element></app-todo-element>
+          <app-todo-element [data]="todoList" (saveTodos)="onSaveTodos($event)"></app-todo-element>
         </div>
 
       </div>
