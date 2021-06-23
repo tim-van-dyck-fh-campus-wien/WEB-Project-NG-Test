@@ -1,3 +1,5 @@
+import { TodoElement } from './../models/TodoElement.interface';
+import { TodoGroup } from './../models/TodoGroup.interface';
 import { Widget } from './../models/Widget.interface';
 import { WidgetService } from './../widget.service';
 import { Router } from '@angular/router';
@@ -21,7 +23,9 @@ export class MainPageComponent implements OnInit {
   
   widgetList:Widget[];
   userData: UserData = { firstname: "", lastname: "", email: "" };//Contains basic Userinfo
-  
+  todoList:TodoElement[];
+ 
+
   isCreatingShortcut:boolean=false;
   ngOnInit(): void {
     //Get Info of logged in user
@@ -34,6 +38,7 @@ export class MainPageComponent implements OnInit {
   
     //Get Widget List
     this.getWidgetList();
+    this.getTodos();
   }
   getWidgetList(){
     this.widgetService.getListOfWidgets().then((res)=>{
@@ -41,6 +46,28 @@ export class MainPageComponent implements OnInit {
       console.log("WIDGET LIST");
       console.log(this.widgetList);
     })
+  }
+  getTodos(){
+    this.widgetService.getListOfTodos().then((res)=>{
+      this.todoList = res;
+      console.log("TODO GROUP");
+      console.dir(this.todoList);
+    })
+  }
+  onSaveTodos(todoList:TodoElement[]){
+      this.widgetService.updateListOfTodos(todoList).then((res)=>{
+        this.todoList=res;
+      }).catch(err=>{
+        console.log(err);
+      })
+  }
+  onTodoIsDoneChanged(todo:TodoElement){
+    this.widgetService.changeIsDoneOfTodo(todo).catch(err=>{
+      console.log(err);
+    })
+  }
+  onTodoDeleted(todo:TodoElement){
+    this.widgetService.deleteTodo(todo).catch(err=>{console.log(err)});
   }
   logOutClicked(){
     this.loginService.logOut();

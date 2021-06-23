@@ -1,98 +1,60 @@
+import { TodoElement } from './../models/TodoElement.interface';
+import { WidgetService } from './../widget.service';
 import { TodoGroup } from './../models/TodoGroup.interface';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-todo-element',
   templateUrl: './todo-element.component.html',
   styleUrls: ['./todo-element.component.css']
 })
-export class TodoElementComponent implements OnInit {
+export class TodoElementComponent implements OnChanges {
 
-  constructor() { }
-  @Input() data:TodoGroup;
-  _data:TodoGroup = {_id:"",todos:[{_id:"",name:"test",isDone:false},
-  {_id:"",name:"test1",isDone:true}]}
+  constructor(private widgetService: WidgetService) { }
+  @Input() data: TodoElement[];
+
+  //Seperated so that Maaany api calls, for example on every change of a character at a todos name, are prohibited!
+  @Output() saveTodos = new EventEmitter<TodoElement[]>();//Called when a new todo was added to the list and save clicked
+  @Output() todoIsDoneChanged = new EventEmitter<TodoElement>();//Called on isDone of todo changed
+  @Output() todoDeleted = new EventEmitter<TodoElement>();
 
 
-  ngOnInit(): void {
-  /*    
-    document.getElementById("last-row")?.addEventListener("click", this.addNewTodoRow);
-    document.getElementById("delete2")?.addEventListener("click", this.deleteRow2);
-    document.getElementById("delete3")?.addEventListener("click", this.deleteRow3);
-    document.getElementById("delete4")?.addEventListener("click", this.deleteRow4);
-    document.getElementById("delete5")?.addEventListener("click", this.deleteRow5);
-    
-    let row2 = document.getElementById("2");
-    let row3 = document.getElementById("3");
-    let row4 = document.getElementById("4");
-    let row5 = document.getElementById("5");
+  _data: TodoElement[] = [];
 
-    if(row2 != null){
-        row2.style.visibility = "hidden";
-    }
-    if(row3 != null){
-      row3.style.visibility = "hidden";
-    }
-    if(row4 != null){
-      row4.style.visibility = "hidden";
-    }
-    if(row5 != null){
-      row5.style.visibility = "hidden";
-    }*/
-  }
-  /*
-  addNewTodoRow(){
-    let row2 = document.getElementById("2");
-    let row3 = document.getElementById("3");
-    let row4 = document.getElementById("4");
-    let row5 = document.getElementById("5");
+  saveNeeded:boolean=false;//used to indicate wether save needs to be clicked in order to save the state!
 
-    if(row2 != null && row2.style.visibility == "hidden"){
-      row2.style.visibility = "visible";
-    }
-    else if(row3 != null && row3.style.visibility == "hidden"){
-      row3.style.visibility = "visible";
-    }
-    else if(row4 != null && row4.style.visibility == "hidden"){
-      row4.style.visibility = "visible";
-      }
-    else if(row5 != null && row5.style.visibility == "hidden"){
-      row5.style.visibility = "visible";
+
+  ngOnChanges(): void {//On input property change...
+    if (this.data != undefined) {
+      this._data = this.data;
+      console.dir(this._data);
     }
   }
+  checkboxValueChanged(elementIndex){
+    if(this._data[elementIndex]._id!=""){//Check if this is a newly created todo... => if it is, it has to be saved first!
+      this.todoIsDoneChanged.emit(this._data[elementIndex]);
+    }
+  }
+  onDeleteTodoClicked(elementIndex) {
+    if(this._data[elementIndex]._id!=""){//Check if this is a newly created todo... => if it is, it has to be saved first!
+      this.todoDeleted.emit(this._data[elementIndex]);
+    }
+    this._data.splice(elementIndex, 1);
 
-  deleteRow2(){
-    let row2 = document.getElementById("2");
-    if(row2 != null){
-      row2.style.visibility = "hidden";
-    }
-  }
-  deleteRow3(){
-    let row3 = document.getElementById("3");
-    if(row3 != null){
-      row3.style.visibility = "hidden";
-    }
-  }
-  deleteRow4(){
-    let row4 = document.getElementById("4");
-    if(row4 != null){
-      row4.style.visibility = "hidden";
-    }
-  }
-  deleteRow5(){
-    let row5 = document.getElementById("5");
-    if(row5 != null){
-      row5.style.visibility = "hidden";
-    }
-  }
-*/
-onDeleteTodoClicked(elementIndex){
-  alert(elementIndex);
-  this._data.todos.splice(elementIndex,1);
-//  alert(elementId);
+    //  alert(elementId);
 
-}
-addNewTodo(){
-  this._data.todos.push({_id:"",name:"",isDone:false});
-}
+  }
+  onTextInputChanged(){
+    this.saveNeeded=true;
+  }
+  addNewTodo() {
+    this.saveNeeded=true;
+    this._data.push({ _id: "", name: "", isDone: false });
+
+  }
+  //Notify parent of major changes in todos (=> name change, new addition to todo...)
+  saveClicked() {
+      this.saveNeeded=false;
+      this.saveTodos.emit(this._data);
+  }
 }
