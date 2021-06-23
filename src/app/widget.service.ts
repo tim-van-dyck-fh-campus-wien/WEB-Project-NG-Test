@@ -127,5 +127,52 @@ public async updateListOfTodos(todos:TodoElement[]):Promise<TodoElement[]>{
   }
   throw "You may not be logged in,please log in!";    
 }
+public async changeIsDoneOfTodo(todo:TodoElement):Promise<Boolean>{
+  if(await this.loginService.isLoggedIn()){
+    const response = await fetch(environment.apiBaseUrl + "/user/widgets/todos/todo/isDone", {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body:JSON.stringify({_id:todo._id,isDone:todo.isDone})
+    });
+    if (response.ok) {
+      let res = await response.json();
+      return true;
+    }else{
+        if(response.status==401){
+          throw "You may not be logged in,please log in!";
+        }else{
+          throw "An error was encountered!"
+        }
+    }
+  }
+  throw "You may not be logged in,please log in!";    
+}
+public async deleteTodo(todo:TodoElement):Promise<void>{
+  if(await this.loginService.isLoggedIn()){
+    const response = await fetch(environment.apiBaseUrl + "/user/widgets/todos/todo", {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body:JSON.stringify({_id:todo._id})
+    });
+    if (response.ok) {
+      let res = await response.json();
+      return;
+    }else{
+        if(response.status==401){
+          throw "You may not be logged in,please log in!";
+        }else{
+          throw "An error was encountered!"
+        }
+    }
+  }
+  throw "You may not be logged in,please log in!";    
+}
+
 
 }

@@ -12,8 +12,16 @@ export class TodoElementComponent implements OnChanges {
 
   constructor(private widgetService: WidgetService) { }
   @Input() data: TodoElement[];
-  @Output() saveTodos = new EventEmitter<TodoElement[]>();
+
+  //Seperated so that Maaany api calls, for example on every change of a character at a todos name, are prohibited!
+  @Output() saveTodos = new EventEmitter<TodoElement[]>();//Called when a new todo was added to the list and save clicked
+  @Output() todoIsDoneChanged = new EventEmitter<TodoElement>();//Called on isDone of todo changed
+  @Output() todoDeleted = new EventEmitter<TodoElement>();
+
+
   _data: TodoElement[] = [];
+
+  saveNeeded:boolean=false;//used to indicate wether save needs to be clicked in order to save the state!
 
 
   ngOnChanges(): void {//On input property change...
@@ -22,18 +30,27 @@ export class TodoElementComponent implements OnChanges {
       console.dir(this._data);
     }
   }
+  checkboxValueChanged(elementIndex){
+    this.todoIsDoneChanged.emit(this._data[elementIndex]);
+  }
   onDeleteTodoClicked(elementIndex) {
-    alert(elementIndex);
+    this.todoDeleted.emit(this._data[elementIndex]);
     this._data.splice(elementIndex, 1);
+
     //  alert(elementId);
 
   }
+  onTextInputChanged(){
+    this.saveNeeded=true;
+  }
   addNewTodo() {
+    this.saveNeeded=true;
     this._data.push({ _id: "", name: "", isDone: false });
 
   }
   //Notify parent of major changes in todos (=> name change, new addition to todo...)
   saveClicked() {
+      this.saveNeeded=false;
       this.saveTodos.emit(this._data);
   }
 }
