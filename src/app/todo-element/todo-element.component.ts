@@ -31,10 +31,14 @@ export class TodoElementComponent implements OnChanges {
     }
   }
   checkboxValueChanged(elementIndex){
-    this.todoIsDoneChanged.emit(this._data[elementIndex]);
+    if(this._data[elementIndex]._id!=""){//Check if this is a newly created todo... => if it is, it has to be saved first!
+      this.todoIsDoneChanged.emit(this._data[elementIndex]);
+    }
   }
   onDeleteTodoClicked(elementIndex) {
-    this.todoDeleted.emit(this._data[elementIndex]);
+    if(this._data[elementIndex]._id!=""){//Check if this is a newly created todo... => if it is, it has to be saved first!
+      this.todoDeleted.emit(this._data[elementIndex]);
+    }
     this._data.splice(elementIndex, 1);
 
     //  alert(elementId);
