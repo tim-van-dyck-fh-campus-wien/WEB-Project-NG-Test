@@ -71,6 +71,31 @@ export class WeatherService {
       throw "You may not be logged in,please log in!";    
     }
 
+    public async setInitialCity(initialCity:String):Promise<boolean>{
+      if(await this.loginService.isLoggedIn()){
+        const response = await fetch(environment.apiBaseUrl + "/user/widgets/weather/city", {
+          method: 'put',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include',
+          body:JSON.stringify({city:initialCity})
+        });
+        if (response.ok) {
+          return true;
+        }else{
+            if(response.status==401){
+              throw "You may not be logged in,please log in!";
+            }else{
+              throw "An error was encountered!"
+            }
+        }
+      }
+      throw "You may not be logged in,please log in!";    
+    }
+
+
+
  //roughly map weatherID to a self defined weather description for the weather Icon/activity mapping   
 getWeatherType(weatherID: number){
   if (weatherID >= 200 && weatherID < 300) {

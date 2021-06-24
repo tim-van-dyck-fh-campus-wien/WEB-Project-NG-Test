@@ -26,14 +26,15 @@ failed: boolean = false;
 loading: boolean = false;
 
 //change initial city
-textfieldIsVisible:boolean = false;
+textfieldIsVisible:boolean;
 
 
   constructor(public weatherService: WeatherService) { 
   }
 
   ngOnInit() {
-   // this.getCity();
+   this.getCity();
+   this.textfieldIsVisible = false;
   }
 
    //makes a new API call for city entered
@@ -103,12 +104,29 @@ textfieldIsVisible:boolean = false;
   }
 
   showTextfield(){
-    this.textfieldIsVisible = true;
+    //this.textfieldIsVisible = true;
+    if (this.textfieldIsVisible == true){
+      this.textfieldIsVisible = false;
+    } else {
+      this.textfieldIsVisible = true;
+    }
   }  
 
-  onSubmit(f:NgForm){
+  /*onSubmit(f:NgForm){
+
     this.textfieldIsVisible = false;
+  }*/
+
+  changeInitialCityValue(initialCity:String){
+    this.weatherService.setInitialCity(initialCity).then((success) =>{
+      if(success){
+        console.log(success);
+      }
+    }, error =>
+      console.log(error));
+      this.textfieldIsVisible = false;
   }
+  
 
 }
 

@@ -2,21 +2,19 @@
  <app-activities-element [failedAPIcall]="failed" [weatherDescripForActivities] = "activitiesWeatherDescription" [currentCityForActivities] = "city"></app-activities-element>
 
    <div id='weatherContainer'>
-    <div class='changeCityDiv'>
+       
+    <div class="changeCityDiv">
         <button type="button" (click)="showTextfield()" id="changeCityButton" title='Change initial City here.'>
         <img class="buttPic" src='./assets/png/pencil.png'alt="pencil picture">
         </button>
-        <div *ngIf="textfieldIsVisible">
-        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-        <input id='textfieldCity' type="text"  class="form-control" name="lastname" ngModel required id="lastName">
-        <button type="submit" class='submit'> Submit </button>
-        </form>
+        <div *ngIf="textfieldIsVisible" class="textfieldDiv">
+           <!-- <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>-->
+                 <input class="initialCityTextfield" type="text" onfocus="this.value=''" placeholder="Change initial City here." id="initialCity" name="initialCity" #initialCity>
+                 <!--<input type="text"name="initialCity" #initialCity="ngModel" value="" ngModel/> show</div>-->
+                 <!--<button type="submit" class='submit'> Submit </button>-->
+                 <button type="submit" class="submit"  (click)="changeInitialCityValue(initialCity.value)">Submit</button>
+           <!-- </form>-->
         </div>
-
-
-
-
-
     </div>
         <div class="weatherWidgetRow" *ngIf="!failed"><h1>The weather in {{city}} right now:</h1></div>
         <div class="weatherWidgetRow" *ngIf="failed"><h1>Could not find the city. Maybe check the spelling?</h1></div>

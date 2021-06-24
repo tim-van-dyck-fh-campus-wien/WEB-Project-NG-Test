@@ -52,13 +52,8 @@ import { SettingsComponent } from './settings/settings.component';
     AddWidgetComponent,
     LowbandwidthComponent,
     LowMainpageComponent,
-<<<<<<< Updated upstream
-    TodoElementComponent,
-    LogoutBtnComponent
-=======
     TodoElementComponent
     ,LogoutBtnComponent, SettingsComponent
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
