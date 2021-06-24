@@ -1,10 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { environment } from './../environments/environment';
 import { Observable, of, Subject, throwError } from 'rxjs';
 import { map, delay, materialize, dematerialize } from 'rxjs/operators';
 import { WeatherData } from './../app/models/Weather.interface';
 import { WeatherElementComponent } from './weather-element/weather-element.component';
 import { Data } from '@angular/router';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ import { Data } from '@angular/router';
 @Injectable()
 export class WeatherService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private loginService:LoginService) { }
   //define my API Key which is used for the calls
   //apiKey = 'ffbb344287855685985d58e95dd1262f';
   apiKey = '5e3281564a5218651547aa65485f14c0';
@@ -46,12 +48,27 @@ export class WeatherService {
       }));
     }
 
-//work in progress to differentiate day/nighttime
-    calculateTime(timezone:any){
-      timezone = (timezone / 3600); 
-      let localTime = new Date();
-      //localTime = (localTime.getTime() + timezone.toLocaleTimeString()); 
-      return localTime;
+    public async getInitialCityFromDB():Promise<string>{
+      if(await this.loginService.isLoggedIn()){
+        const response = await fetch(environment.apiBaseUrl + "/user/widgets/weather/city", {
+          method: 'get',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include',
+        });
+        if (response.ok) {
+          let res = await response.json();
+          return res.city;
+        }else{
+            if(response.status==401){
+              throw "You may not be logged in,please log in!";
+            }else{
+              throw "An error was encountered!"
+            }
+        }
+      }
+      throw "You may not be logged in,please log in!";    
     }
 
  //roughly map weatherID to a self defined weather description for the weather Icon/activity mapping   
@@ -79,5 +96,29 @@ getWeatherType(weatherID: number){
   }
   return this.weatherdesc = "unknown";
 }
+
+ //with each API call, activities get updated & passed to activities-element
+ getActivities(temp:number, weatherDescription:string){
+  if (weatherDescription == 'unknown'){
+    return this.activitiesWeatherDescription = "notAvailable";
+  }
+  if (weatherDescription == 'snow'){
+   return this.activitiesWeatherDescription = "snow"; 
+  }
+  if(weatherDescription == 'rain' ||weatherDescription == 'lightning' ||weatherDescription == 'fog'){
+    return this.activitiesWeatherDescription = "insideActivities";
+  }
+  if (weatherDescription == 'clear'||weatherDescription == 'partialClear'||weatherDescription == 'cloud'){
+      if (temp <= 20){
+        return this.activitiesWeatherDescription = "outsideWarm"; 
+        }
+      if (temp > 20){
+        return this.activitiesWeatherDescription = "outsideHot";
+        }
+   }
+}
+
+
+
 
 }

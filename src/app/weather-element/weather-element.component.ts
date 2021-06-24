@@ -13,34 +13,40 @@ import {ActivitiesElementComponent} from '../activities-element/activities-eleme
 export class WeatherElementComponent implements OnInit {
 
 //initialize data that is updated by WeatherService
-city: string | null;
+city: any;
 temp:number = 0;
 weatherID:number=0;
 weatherDescription: string = 'none';
 temp_min: number;
 temp_max: number;
-timezone: number|Date;
-//to check whether city exists
-failed: boolean = false;
-//to not resend data on multiple clicks when already searching
-//searching: boolean = false; 
-//If the user input was not valid, the output will be error handled 
-failedToLoad: boolean = false;
-
 activitiesWeatherDescription: string;
+
+//error handling
+failed: boolean = false;
+loading: boolean = false;
+
 
 
   constructor(public weatherService: WeatherService) { 
   }
 
   ngOnInit() {
-    this.city = 'Vienna';
-   // this.makeAPIcall(this.city);
+    this.getCity();
   }
-  
+
    //makes a new API call for city entered
   clickme(myCity:string){
+    this.loading = true;
     this.makeAPIcall(myCity);
+  }
+
+  //called for initial loading with city from DB
+  getCity(){
+    this.weatherService.getInitialCityFromDB().then((response)=>{
+      this.city=response;
+      console.log(this.city);
+      this.makeAPIcall(this.city);
+    })
   }
 
    //takes care of API call itself
@@ -59,26 +65,26 @@ activitiesWeatherDescription: string;
       this.removeIcon();
     } 
      this.weatherDescription = this.weatherService.getWeatherType(this.weatherID);
-     this.activitiesWeatherDescription = this.getActivities(this.temp, this.weatherDescription);
+     this.activitiesWeatherDescription = this.weatherService.getActivities(this.temp, this.weatherDescription);
+     this.loading = false;
     },
     //error handling, if user input invalid, connected to HTML *ngIf 
       error => {
         console.log('error occured', error);
-       // this.failedToLoad = true;
         this.weatherDescription = "unknown";
         if (this.weatherDescription == this.weatherService.getWeatherType(this.weatherID)){
         } else {
           this.removeIcon();
         } 
-         this.activitiesWeatherDescription = this.getActivities(this.temp, this.weatherDescription);
+         this.activitiesWeatherDescription = this.weatherService.getActivities(this.temp, this.weatherDescription);
         this.failed = true;
+        this.loading = false; 
         this.reset();
       });
    }
 
    //reset in case of failure
   reset() {
-   // this.failedToLoad = false;
     this.temp_min = 0;
     this.temp_max = 0; 
     this.temp = 0;
@@ -93,27 +99,6 @@ activitiesWeatherDescription: string;
       currentIcon.remove();
     }
   }
-
-  //with each API call, activities get updated & passed to activities-element
-  getActivities(temp:number, weatherDescription:string){
-    if (weatherDescription == 'unknown'){
-      return this.activitiesWeatherDescription = "notAvailable";
-    }
-    if (weatherDescription == 'snow'){
-     return this.activitiesWeatherDescription = "snow"; 
-    }
-    if(weatherDescription == 'rain' ||weatherDescription == 'lightning' ||weatherDescription == 'fog'){
-      return this.activitiesWeatherDescription = "insideActivities";
-    }
-    if (weatherDescription == 'clear'||weatherDescription == 'partialClear'||weatherDescription == 'cloud'){
-        if (temp <= 20){
-          return this.activitiesWeatherDescription = "outsideWarm"; 
-          }
-        if (temp > 20){
-          return this.activitiesWeatherDescription = "outsideHot";
-          }
-     }
- }
 
 
 }

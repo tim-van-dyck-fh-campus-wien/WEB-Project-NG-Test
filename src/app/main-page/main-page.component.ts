@@ -61,6 +61,14 @@ export class MainPageComponent implements OnInit {
         console.log(err);
       })
   }
+  onTodoIsDoneChanged(todo:TodoElement){
+    this.widgetService.changeIsDoneOfTodo(todo).catch(err=>{
+      console.log(err);
+    })
+  }
+  onTodoDeleted(todo:TodoElement){
+    this.widgetService.deleteTodo(todo).catch(err=>{console.log(err)});
+  }
   logOutClicked(){
     this.loginService.logOut();
     this.router.navigate(['login-component']);
