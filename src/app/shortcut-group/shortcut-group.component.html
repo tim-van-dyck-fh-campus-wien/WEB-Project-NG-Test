@@ -14,9 +14,15 @@
 
 <!--Fancy UI version-->
 <div *ngIf='!lowBandwidth' class="bg-white shadow shortcutGroupContainer">
-   <div id='deleteButtonDiv'><button id='deleteButton' title='Careful, this item will be deleted entirely!' (click)="onDeleteShortcutGroupClicked()">
-       <i id="icon"class="fas fa-4x fa-trash-alt"></i></button></div>
-   <div><h3 class="text-center">{{data.name}}</h3> 
+   <div id='deleteButtonDiv'>
+       <button class='deleteButton' title='Careful, this item will be deleted entirely!' (click)="onDeleteShortcutGroupClicked()">
+       <img class="icon" src='./assets/png/delete.png'alt="picture of bin for delete button">
+       </button>
+     </div>
+  
+    <div>
+       <h3 class="text-center">{{data.name}}</h3> 
+       </div>
     <div class="d-flex flex-wrap">
         <div *ngFor="let element of data.elements">
             <shortcut-element [lowBandwidthElement] = "lowBandwidth" [shortcutData]="element"></shortcut-element>
@@ -24,4 +30,4 @@
     
     </div>    
    </div>    
-</div>
+

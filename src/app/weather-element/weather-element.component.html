@@ -2,9 +2,24 @@
  <app-activities-element [failedAPIcall]="failed" [weatherDescripForActivities] = "activitiesWeatherDescription" [currentCityForActivities] = "city"></app-activities-element>
 
    <div id='weatherContainer'>
+    <div class='changeCityDiv'>
+        <button type="button" (click)="showTextfield()" id="changeCityButton" title='Change initial City here.'>
+        <img class="buttPic" src='./assets/png/pencil.png'alt="pencil picture">
+        </button>
+        <div *ngIf="textfieldIsVisible">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+        <input id='textfieldCity' type="text"  class="form-control" name="lastname" ngModel required id="lastName">
+        <button type="submit" class='submit'> Submit </button>
+        </form>
+        </div>
+
+
+
+
+
+    </div>
         <div class="weatherWidgetRow" *ngIf="!failed"><h1>The weather in {{city}} right now:</h1></div>
         <div class="weatherWidgetRow" *ngIf="failed"><h1>Could not find the city. Maybe check the spelling?</h1></div>
-
     <div class="weatherWidgetRow"  [ngSwitch]="weatherDescription">
         <div class="weatherWidgetRow"><i id="icon"*ngSwitchCase ="'cloud'" class="fas fa-4x fa-cloud cloud"></i></div>
         <div class="weatherWidgetRow"><i id="icon"*ngSwitchCase="'fog'" class="fas fa-4x fa-smog smog"></i></div>

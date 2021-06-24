@@ -5,22 +5,27 @@
 .shortcutGroupContainerLow{
     border: black 1px solid;
 }
-#deleteButton{
-    padding: 1px 1px; 
-    border: 1px black;
-    border-radius: 2px;
-    text-align: center;
-}
+
 #deleteButtonDiv{
     text-align: left;
     height: 10px;
     padding: 0;
 }
-#deleteButton:hover{
-    cursor: pointer;
-    border: 1px purple;
+.deleteButton{
+    padding: 1px 1px; 
+    border: 1px black;
+    border-radius: 2px;
+    text-align: center;
+    width: 25px;
+    height: 30px;
 }
-#icon{
+.icon{
     width: 20px;
     height: 20px;
+}
+.deleteButton:hover{
+    cursor: pointer;
+    border: 3px #cf0553 solid;
+    border-radius: 5px;
+    filter: drop-shadow(1px 1px 2px  rgb(48, 2, 77));
 }

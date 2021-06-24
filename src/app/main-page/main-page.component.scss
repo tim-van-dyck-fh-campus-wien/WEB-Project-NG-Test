@@ -18,6 +18,32 @@
     padding:10px;
 }
 
+#changeVisibilityButtonDiv{
+    text-align: left;
+    height: 10px;
+    padding: 0;
+}
+.changeVisibilityButton{
+    padding: 1px 1px; 
+    border: 1px black;
+    border-radius: 2px;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+}
+.icon{
+    width: 20px;
+    height: 20px;
+}
+.changeVisibilityButton:hover{
+    cursor: pointer;
+    border: 3px #cf0553 solid;
+    border-radius: 5px;
+    filter: drop-shadow(1px 1px 2px  rgb(48, 2, 77));
+}
+
+
+/*
 .buttonDiv{
     text-align: right;
     margin-top: 5px; 
@@ -33,7 +59,7 @@
 }
 #hideButton:hover{
     cursor: pointer;
-}
+}*/
 
 .myCol{
     width: 100%;

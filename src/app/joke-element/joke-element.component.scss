@@ -65,7 +65,9 @@ p {
        // padding-bottom: 2px;
         margin-bottom:5px;
 }
-
+#punchlineButton:hover{
+filter: drop-shadow(1px 1px 10px white);
+}
 .smiley{
     width:65px;
     margin: 10px;

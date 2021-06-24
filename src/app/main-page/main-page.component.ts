@@ -8,6 +8,8 @@ import { UserData } from './../models/UserData.interface';
 import { LoginService } from './../login.service';
 import { ShortcutGroup } from './../models/ShortcutGroup.interface';
 import { Component, OnInit } from '@angular/core';
+import { Visibility } from '../models/Visibility.interface';
+import { SettingsService } from '../settings.service';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -18,13 +20,19 @@ export class MainPageComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private widgetService: WidgetService) { }
+    private widgetService: WidgetService,
+    private settings:SettingsService) { }
 
   
   widgetList:Widget[];
   userData: UserData = { firstname: "", lastname: "", email: "" };//Contains basic Userinfo
   todoList:TodoElement[];
- 
+  visibleWidgets:Visibility;
+
+  //these widgets can be customized 
+  weatherVisible:boolean=false;
+  todoVisible:boolean=false;
+  jokeVisible:boolean=false;
 
   isCreatingShortcut:boolean=false;
   ngOnInit(): void {
@@ -35,11 +43,50 @@ export class MainPageComponent implements OnInit {
       alert("You don't seem to be logged in!");
       this.router.navigate(['login-component']);
     })
+    this.getVisibleWidgetsSettings();
   
     //Get Widget List
     this.getWidgetList();
-    this.getTodos();
+    if (this.todoVisible == true){this.getTodos();}
+  
   }
+
+  visibilitySettings:boolean = false;
+  showSettingsForm(){
+    if(this.visibilitySettings == true){
+      this.visibilitySettings = false;
+    } else {
+    this.visibilitySettings = true;}
+  }
+
+  updateVisibility(visibility:Visibility){
+    if(visibility.weatherIsVisible == true){
+        this.weatherVisible = true;
+    } else {this.weatherVisible = false;}
+    if (visibility.todoIsVisible == true){
+        this.todoVisible = true;
+    } else{this.todoVisible=false}
+    if (visibility.dadJokeIsVisible == true){
+        this.jokeVisible = true;
+    } else {this.jokeVisible = false}
+  }
+
+  getVisibleWidgetsSettings(){
+    this.settings.getCurrentUserSettings().then((res)=>{
+      this.visibleWidgets=res;
+      console.log(this.visibleWidgets);
+      if(this.visibleWidgets.weatherIsVisible == true){
+        this.weatherVisible = true;
+    } else {this.weatherVisible = false;}
+    if (this.visibleWidgets.todoIsVisible == true){
+        this.todoVisible = true;
+    } else{this.todoVisible=false}
+    if (this.visibleWidgets.dadJokeIsVisible == true){
+        this.jokeVisible = true;
+    } else {this.jokeVisible = false}
+    })
+  }
+
   getWidgetList(){
     this.widgetService.getListOfWidgets().then((res)=>{
       this.widgetList=res;
@@ -105,9 +152,10 @@ export class MainPageComponent implements OnInit {
       this.widgetService.getListOfWidgets().then((res)=>{
         this.widgetList=res;
       })
-    
     }
 
+   
+    /*
     //hide a widget - deleted for User while in this session! 
     //TODO - hide shortCutGroup based on title 
     visibleShortcut:boolean = true;
@@ -135,5 +183,5 @@ export class MainPageComponent implements OnInit {
     visibleToDoWidget:boolean = true;
     hideToDoWidget(){
       this.visibleToDoWidget = false; 
-    }
+    }*/
 }

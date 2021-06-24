@@ -33,7 +33,9 @@
   margin-right: 15px;
   cursor: pointer;
 }
-
+.search_btn:hover{
+  filter: drop-shadow(1px 1px 10px white);
+}
 .search_box .input_search {
   outline: none;
   border: 0;

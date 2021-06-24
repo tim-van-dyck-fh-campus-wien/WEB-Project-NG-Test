@@ -1,0 +1,48 @@
+<div *ngIf="visible" class="settingsContainer">
+    <div class="row">
+        <div class="col align-center" id='textBox'>
+        <p>Change your Widget Settings here: </p>
+        </div>
+    </div>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <div class = row>
+        <div class="col-5 align-self-start">Weather/Activities:</div>
+            <div class="col-3 align-self-center">
+            <div><input type="radio" name="weatherIsVisible" #weatherIsVisible="ngModel" value="false" ngModel/>   hide</div>
+            </div>
+            <div class="col-3 align-self-end">
+            <div><input type="radio"name="weatherIsVisible" #weatherIsVisible="ngModel" value=true ngModel/>  show </div>
+            </div>
+        </div>
+    
+    <div class="row">
+        <div class="col-5 align-self-start">To Do List: </div>
+        <div class="col-3 align-self-center">
+            <div>
+                <input type="radio" name="todoIsVisible" #todoIsVisible="ngModel" value="false" ngModel/> hide </div>
+            </div>
+        <div class="col-3 align-self-end">
+            <div>
+                <input type="radio"name="todoIsVisible" #todoIsVisible="ngModel" value="true" ngModel/> show </div>
+            </div>
+    </div>
+
+    <div class="row">
+    <div class="col-5 align-self-start">Funny Jokes: </div>
+        <div class="col-3 align-self-center">
+            <div>
+                <input type="radio" name="dadJokeIsVisible" #dadJokeIsVisible="ngModel" value="false" ngModel/> hide  </div>
+        </div>
+        <div class="col-3 align-self-end">
+            <div>
+                <input type="radio"name="dadJokeIsVisible" #dadJokeIsVisible="ngModel" value="true" ngModel/> show</div>
+        </div>
+    </div>
+    <div  class="row">
+        <div class="col align-end" id='textBox'>
+         <button type="submit" class='submit'> Submit </button>
+        </div>
+    </div>
+    </form>
+</div>
+

@@ -25,13 +25,15 @@ activitiesWeatherDescription: string;
 failed: boolean = false;
 loading: boolean = false;
 
+//change initial city
+textfieldIsVisible:boolean = false;
 
 
   constructor(public weatherService: WeatherService) { 
   }
 
   ngOnInit() {
-    this.getCity();
+   // this.getCity();
   }
 
    //makes a new API call for city entered
@@ -100,6 +102,13 @@ loading: boolean = false;
     }
   }
 
+  showTextfield(){
+    this.textfieldIsVisible = true;
+  }  
+
+  onSubmit(f:NgForm){
+    this.textfieldIsVisible = false;
+  }
 
 }
 

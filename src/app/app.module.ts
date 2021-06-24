@@ -31,6 +31,7 @@ import { LowbandwidthComponent } from './lowbandwidth/lowbandwidth.component';
 import { LowMainpageComponent } from './low-mainpage/low-mainpage.component';
 import { TodoElementComponent } from './todo-element/todo-element.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
@@ -51,8 +52,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AddWidgetComponent,
     LowbandwidthComponent,
     LowMainpageComponent,
+<<<<<<< Updated upstream
     TodoElementComponent,
     LogoutBtnComponent
+=======
+    TodoElementComponent
+    ,LogoutBtnComponent, SettingsComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
