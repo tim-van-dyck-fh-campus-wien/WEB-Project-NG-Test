@@ -51,8 +51,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AddWidgetComponent,
     LowbandwidthComponent,
     LowMainpageComponent,
-    TodoElementComponent
-    ,LogoutBtnComponent
+    TodoElementComponent,
+    LogoutBtnComponent
   ],
   imports: [
     BrowserModule,
