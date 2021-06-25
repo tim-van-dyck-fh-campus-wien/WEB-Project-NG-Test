@@ -1,6 +1,6 @@
 
- <app-activities-element [failedAPIcall]="failed" [weatherDescripForActivities] = "activitiesWeatherDescription" [currentCityForActivities] = "city"></app-activities-element>
-
+ <app-activities-element [failedAPIcall]="failed" [weatherDescripForActivities] = "weatherData.activitiesWeatherDescription" [currentCityForActivities] = "weatherData.city"></app-activities-element>
+<!--[weatherDescripForActivities] = "activitiesWeatherDescription" [currentCityForActivities] = "city"-->
  <div id='weatherContainer'>
         <div class="changeCityDiv">
             <button type="button" (click)="showTextfield()" id="changeCityButton" title='Change initial City here.'>
@@ -15,14 +15,14 @@
         </div>
 
         <div class="weatherWidgetRow" *ngIf="!failed">
-            <h1>The weather in {{city}} right now:</h1>
+            <h1>The weather in {{weatherData.city}} right now:</h1>
         </div>
 
         <div class="weatherWidgetRow" *ngIf="failed">
             <h1>Could not find the city. Maybe check the spelling?</h1>
         </div>
 
-        <div class="weatherWidgetRow"  [ngSwitch]="weatherDescription">
+        <div class="weatherWidgetRow"  [ngSwitch]="weatherData.weatherDescription"> <!-- [ngSwitch]="weatherDescription"-->
             <div class="weatherWidgetRow">
                 <i *ngSwitchCase ="'cloud'" id ='cloud' class="fas fa-4x fa-cloud cloud icon"></i>
             </div>
@@ -52,11 +52,11 @@
     
         <div class="weatherWidgetRow" *ngIf="!failed">
             <div class="weatherWidgetRow">
-                <h2>{{temp}} °C</h2>
+                <h2>{{weatherData.temp}} °C</h2>
             </div>
             <div class="weatherWidgetRow">
-                <p>Minimum Temp: {{temp_min}} °C</p>
-                <p> Maximum Temp: {{temp_max}} °C </p>
+                <p>Minimum Temp: {{weatherData.temp_min}} °C</p>
+                <p> Maximum Temp: {{weatherData.temp_max}} °C </p>
             </div>
         </div> 
  
