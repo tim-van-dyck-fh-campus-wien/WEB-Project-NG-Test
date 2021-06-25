@@ -1,41 +1,39 @@
-
-
-    <div class="container" id="container-todo-list">
+<div class="container" id="container-todo-list">
     
-        <div class="row my-row" id="0">
-            <div class="col my-col">
-                <h1>ToDo List</h1>
-            </div>
+    <div class="row my-row" id="0">
+        <div class="col my-col">
+            <h1>ToDo List</h1>
         </div>
-    
-        <div class="row justify-content-center align-items-center my-row" *ngFor="let todo of _data;let index = index;">
-            <div class="col-1 my-col">
-                <input type="checkbox" [(ngModel)]="_data[index].isDone" (change)="checkboxValueChanged(index)" class="big-checkbox" id="_data[index]._id">
-            </div>
-            <div class="col-10 my-col">
-                <input type="text"  [(ngModel)]="_data[index].name" (keyup)="onTextInputChanged()" class="todo-task" placeholder="Add ToDo...">
-            </div>
-            <div class="col-1 my-col">
-                <button type="button" class="btn btn-light" (click)="onDeleteTodoClicked(index)" [id]="'deleteTodo_'+index" >
-                    <i class="fas fa-1x fa-trash-alt trash" [id]="'deleteIcon_'+index"></i>
-                </button>
-            </div>
-        </div>
-  
-        <div class="row my-row" id="last-row">
-            <div class="col-6">
-                <button type="button" (click)="addNewTodo()" class="btn btn-info add-new">
-                    <i class="fas fa-1x fa-plus plus"></i>
-                    Add New Todo
-                </button>
-            </div>
-            <div class="col-6">
-                <button type="button" (click)="saveClicked()" class="btn btn-info add-new" [disabled]="!saveNeeded">
-                    <i class="fas fa-1x fa-save save"></i>
-                    Save Todos
-                </button>
-            </div>
-        </div>
-        
     </div>
+
+    <div class="row justify-content-center align-items-center my-row" *ngFor="let todo of _data;let index = index;">
+        <div class="col-1 my-col">
+            <input type="checkbox" [(ngModel)]="_data[index].isDone" (change)="checkboxValueChanged(index)" class="big-checkbox" id="_data[index]._id">
+        </div>
+        <div class="col-10 my-col">
+            <input type="text"  [(ngModel)]="_data[index].name" (keyup)="onTextInputChanged()" class="todo-task" placeholder="Add ToDo...">
+        </div>
+        <div class="col-1 my-col">
+            <button type="button" class="btn btn-light" (click)="onDeleteTodoClicked(index)" [id]="'deleteTodo_'+index" >
+                <i class="fas fa-1x fa-trash-alt trash" [id]="'deleteIcon_'+index"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="row my-row" id="last-row">
+        <div class="col-6">
+            <button type="button" (click)="addNewTodo()" class="btn btn-info add-new">
+                <i class="fas fa-1x fa-plus plus"></i>
+                Add New Todo
+            </button>
+        </div>
+        <div class="col-6">
+            <button type="button" (click)="saveClicked()" class="btn btn-info add-new" [disabled]="!saveNeeded">
+                <i class="fas fa-1x fa-save save"></i>
+                Save Todos
+            </button>
+        </div>
+    </div>
+        
+</div>
         

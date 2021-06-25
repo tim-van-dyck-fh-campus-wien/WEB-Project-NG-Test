@@ -42,9 +42,8 @@ textfieldIsVisible:boolean;
     if (myCity == ""){
       alert("Please enter a city value.")
     } 
-    if (this.city != myCity){
+    else if (this.city != myCity){
     this.loading = true;
-   // this.removeIcon();
     this.makeAPIcall(myCity);
     }
   }
@@ -73,7 +72,6 @@ textfieldIsVisible:boolean;
     } else {
       this.removeIcon();
     } 
-   // this.removeIcon();
      this.weatherDescription = this.weatherService.getWeatherType(this.weatherID);
      console.log(this.weatherDescription)
      this.activitiesWeatherDescription = this.weatherService.getActivities(this.temp, this.weatherDescription);
@@ -117,11 +115,6 @@ textfieldIsVisible:boolean;
         break;
       }
     }
-    
-/*    = document.getElementById("cloud"); 
-   if (currentIcon != null){
-      currentIcon.remove();
-    }*/
   }
 
   showTextfield(){
@@ -131,7 +124,6 @@ textfieldIsVisible:boolean;
       this.textfieldIsVisible = true;
     }
   }  
-
 
   changeInitialCityValue(initialCity:String){
     if (initialCity === ""){

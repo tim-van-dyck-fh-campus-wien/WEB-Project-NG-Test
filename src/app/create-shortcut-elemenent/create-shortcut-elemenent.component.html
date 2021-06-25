@@ -9,10 +9,12 @@
         <form #form="ngForm" id="createShortcutForm" (ngSubmit)="onSubmit(form)">
             <div class="form-group">
                 <label for="shortcutTitle">Title</label>
-                  <input id="shortcutTitle" name="name" ngModel required [(ngModel)]="shortcutDat.name"  class="form-control" type="text">
+                  <input id="shortcutTitle" name="name" ngModel required [(ngModel)]="shortcutDat.name" 
+                   class="form-control" type="text">
                   <label for="shortcutUrl"  >Url</label>
-                  <input id="shortcutUrl" ngModel required  [(ngModel)]="shortcutDat.url" name="url" class="form-control" type="url" title="Please use the https:// format." placeholder="http:// or https:// form required">
-                </div>
+                  <input id="shortcutUrl" ngModel required  [(ngModel)]="shortcutDat.url" name="url" class="form-control" 
+                  type="url" title="Please use the https:// format." placeholder="http:// or https:// form required">
+            </div>
         </form>
     </div>
     <div class="modal-footer">

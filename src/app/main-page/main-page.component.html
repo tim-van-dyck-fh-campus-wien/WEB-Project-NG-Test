@@ -1,19 +1,21 @@
 <div class="fixedBackgroundContainer  ">
   <div class="bg-light whiteBackgroundContainer">
+    
     <div id='changeVisibilityButtonDiv' class='col-md-6'>
       <button class='changeVisibilityButton' title='Change visibility of some Widgets here.' (click)="showSettingsForm()">
-      <img class="icon" src='./assets/png/cogwheel.png' alt="settings picture">
+        <img class="icon" src='./assets/png/cogwheel.png' alt="settings picture">
       </button>
       <app-settings [visible]='visibilitySettings' (updateSettings)="updateVisibility($event)"></app-settings>
     </div>
+    
     <app-logout-btn></app-logout-btn>
    
     <div class="loginImage">
       <img class="img-fluid" src="assets/WebStartLogoEvenWider@2x.png" alt="Webstart Logo">
     </div> 
      
-    <div><app-searchbar></app-searchbar></div>
-        
+    <app-searchbar></app-searchbar>
+    
     <div style="overflow:hidden" *ngIf="weatherVisible">
       <app-weather-element></app-weather-element>
     </div>
