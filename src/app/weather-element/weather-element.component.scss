@@ -48,7 +48,6 @@ p {
     width: 100%;
     display: block;
     padding: 2px;
-   // text-align: center;
     @include media-breakpoint-up(sm){
         width: 49%;
         float:left;
@@ -73,7 +72,6 @@ p {
 }
 
 .changeCityDiv{
-    //position:fixed;
     margin: 2px;
     text-align: left;
     height: 1px;

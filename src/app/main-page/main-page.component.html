@@ -1,9 +1,6 @@
 <div class="fixedBackgroundContainer  ">
   <div class="bg-light whiteBackgroundContainer">
-    <!--<p>Hi {{userData.firstname}} {{userData.lastname}} with email {{userData.email}}! Nice to see you again!</p>
-    <button type="button" class="btn btn-secondary"(click)="logOutClicked()">log out</button>-->
     <div id='changeVisibilityButtonDiv' class='col-md-6'>
-     
       <button class='changeVisibilityButton' title='Change visibility of some Widgets here.' (click)="showSettingsForm()">
       <img class="icon" src='./assets/png/cogwheel.png'alt="settings picture">
       </button>
@@ -12,59 +9,15 @@
     <app-logout-btn></app-logout-btn>
    
     <div class="loginImage">
-      <img class="img-fluid" src="assets/WebStartLogoEvenWider@2x.png">
+      <img class="img-fluid" src="assets/WebStartLogoEvenWider@2x.png" alt="Webstart Logo">
     </div> 
      
     <div><app-searchbar></app-searchbar></div>
         
     <div style="overflow:hidden" *ngIf="weatherVisible">
-    <!-- *ngIf="visibleWeather"
-       <div class='buttonDiv'>
-        <button type="button" (click)="hideWeatherWidget()" id="hideButton" title='Hide Weather & Activities temporarily.'>Hide</button>
-      </div>-->
       <app-weather-element></app-weather-element>
     </div>
         
-        <!--DISPLAY ALL REMAINING WIDGETS
-
-        <div class="row">
-          Iterate over Widget List
-        <div *ngIf="visibleShortcut" class="col-xl-6 col-md-6 col-sm-12">
-            <div *ngFor="let widget of widgetList">
-             <div class='buttonDiv'>
-               <button type="button" (click)="hideShortcutWidget()" id="hideButton" title='Hide all Shortcuts temporarily.'>Hide</button>
-              </div>
-                <shortcut-group *ngIf="widget.type=='ShortcutGroup'"[data]=widget.data [id]="widget._id" (deleteShortcutGroup)="deleteThisShortcutWidget($event)"></shortcut-group>
-                TODO Add more widgets!
-            </div>
-          </div>
-
-            <div class="col-xl-6 col-md-6 col-sm-12" *ngIf="isCreatingShortcut">
-              <create-shortcut-group  (shortcutGroupCreated)="onShortcutGroupCreated($event)"></create-shortcut-group>
-            </div>
-            <div *ngIf="visibleAddWidget" class="col-xl-6 col-md-6 col-sm-12" >
-            <div *ngIf="!isCreatingShortcut">
-              <div class='buttonDiv'>
-                <button type="button" (click)="hideAddWidget()" id="hideButton" title='Hide item temporarily.'>Hide</button>
-              </div>
-              <add-widget  (widgetCreateRequest)="createWidget($event)"></add-widget>
-            </div>
-          </div>
-
-            <div class="col-xl-6 col-md-6 col-sm-12" *ngIf="visibleJoke">
-              <div class='buttonDiv'>
-                <button type="button" (click)="hideJokeWidget()" id="hideButton" title='Hide item temporarily.'>Hide</button>
-              </div>
-              <app-joke-element></app-joke-element>
-            </div>
-
-            <div class="col-xl-6 col-md-6 col-sm-12" *ngIf="visibleToDoWidget">
-              <div class='buttonDiv' >
-                <button type="button" (click)="hideToDoWidget()" id="hideButton" title='Hide items temporarily.'>Hide</button>
-              </div>
-              <app-todo-element></app-todo-element>
-            </div>
-        </div>-->
 
         <!--DISPLAY ALL REMAINING WIDGETS (Flexbox)-->
 
@@ -74,9 +27,6 @@
 
         <div class="myRow">
           <div *ngFor="let widget of widgetList">
-           <!-- <div class='buttonDiv'>
-              <button type="button" (click)="hideShortcutWidget()" id="hideButton" title='Hide all Shortcuts temporarily.'>Hide</button>
-            </div>-->
               <shortcut-group *ngIf="widget.type=='ShortcutGroup'"[data]=widget.data [id]="widget._id" (deleteShortcutGroup)="deleteThisShortcutWidget($event)"></shortcut-group>
           </div>
         </div>
@@ -87,9 +37,6 @@
 
         <div class="myRow" >
           <div *ngIf="!isCreatingShortcut">
-         <!--   <div class='buttonDiv'>
-              <button type="button" (click)="hideAddWidget()" id="hideButton" title='Hide item temporarily.'>Hide</button>
-            </div>-->
             <add-widget  (widgetCreateRequest)="createWidget($event)"></add-widget>
           </div>
         </div>
@@ -99,27 +46,19 @@
       <div class="myCol">
 
         <div class="myRow" *ngIf="jokeVisible">
-         <!-- *ngIf="visibleJoke" 
-           <div class='buttonDiv'>
-            <button type="button" (click)="hideJokeWidget()" id="hideButton" title='Hide item temporarily.'>Hide</button>
-          </div>-->
           <app-joke-element></app-joke-element>
         </div>
           
         <div class="myRow" *ngIf="todoVisible" >
-       <!-- *ngIf="visibleToDoWidget"  
-          <div class='buttonDiv' >
-            <button type="button" (click)="hideToDoWidget()" id="hideButton" title='Hide items temporarily.'>Hide</button>
-          </div>-->
           <app-todo-element [data]="todoList" (saveTodos)="onSaveTodos($event)" (todoDeleted)="onTodoDeleted($event)" (todoIsDoneChanged)="onTodoIsDoneChanged($event)"></app-todo-element>
         </div>
 
       </div>
 
     </div>
-
-      
+   
   </div>
+  
 </div>
 
 

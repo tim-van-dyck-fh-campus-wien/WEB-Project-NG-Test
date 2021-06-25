@@ -51,6 +51,7 @@ export class MainPageComponent implements OnInit {
   
   }
 
+  //show the settings form on main page
   visibilitySettings:boolean = false;
   showSettingsForm(){
     if(this.visibilitySettings == true){
@@ -59,6 +60,7 @@ export class MainPageComponent implements OnInit {
     this.visibilitySettings = true;}
   }
 
+  //update settings
   updateVisibility(visibility:Visibility){
     if(visibility.weatherIsVisible == true){
         this.weatherVisible = true;
@@ -71,6 +73,7 @@ export class MainPageComponent implements OnInit {
     } else {this.jokeVisible = false}
   }
 
+  //get current user settings
   getVisibleWidgetsSettings(){
     this.settings.getCurrentUserSettings().then((res)=>{
       this.visibleWidgets=res;
@@ -139,9 +142,9 @@ export class MainPageComponent implements OnInit {
     }
     }
 
+    //delete shortcuts completely
     shortcutGroupID:string;
     deleteThisShortcutWidget(shortcutId:String){
-     // alert("somethings happening");
       this.widgetService.deleteWidget(shortcutId).then((success) =>{
         if(success){
           this.getWidgetList();
@@ -153,35 +156,4 @@ export class MainPageComponent implements OnInit {
         this.widgetList=res;
       })
     }
-
-   
-    /*
-    //hide a widget - deleted for User while in this session! 
-    //TODO - hide shortCutGroup based on title 
-    visibleShortcut:boolean = true;
-    hideShortcutWidget(){
-      this.visibleShortcut = false; 
-    }
-
-    visibleWeather:boolean = true;
-    hideWeatherWidget(){
-      this.visibleWeather = false; 
-    }
-
-    
-    visibleJoke:boolean = true;
-    hideJokeWidget(){
-      this.visibleJoke =false; 
-    }
-
-
-    visibleAddWidget:boolean = true;
-    hideAddWidget(){
-      this.visibleAddWidget = false; 
-    }
-
-    visibleToDoWidget:boolean = true;
-    hideToDoWidget(){
-      this.visibleToDoWidget = false; 
-    }*/
 }

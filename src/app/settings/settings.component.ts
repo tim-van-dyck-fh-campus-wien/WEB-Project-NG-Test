@@ -12,14 +12,10 @@ export class SettingsComponent implements OnInit {
 
   @Input() visibilityWidgets:Visibility;
   @Input() visible:boolean; 
+  @Output() updateSettings = new EventEmitter<Visibility>();
 
   constructor(private settings:SettingsService) { }
-
-
-  /* "weatherIsVisible":false,
-    "todoIsVisible":false,
-    "dadJokeIsVisible":false*/
-    @Output() updateSettings = new EventEmitter<Visibility>();
+  
 
 
   ngOnInit(): void {
@@ -44,10 +40,6 @@ export class SettingsComponent implements OnInit {
        console.log(error));
    }
 
- /* changeSettings(){
-    this.updateSettings.emit(visibilityData);
-    alert("made it");
-  }*/
   convertToBoolean(visibilityData:Visibility){
     if (visibilityData.weatherIsVisible == "true"){
       visibilityData.weatherIsVisible = true;

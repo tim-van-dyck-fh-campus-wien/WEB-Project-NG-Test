@@ -11,13 +11,9 @@ h1 {
     @include media-breakpoint-up(sm){
         font-size: 20px;
     }
- /*   @include media-breakpoint-up(lg){
-        font-size: 25px;
-    }*/
 }
 
-#activitiesWidget{
-    //border: gray 2px solid;
+#activitiesWidget{   
     margin-top: 5px;
     border-radius: 5px;
     background-color: black;
@@ -30,7 +26,6 @@ h1 {
         width: 49%;
         float:right;
         height: 340px;
-     //   margin-bottom: 5px;
     }
     @include media-breakpoint-up(lg){ 
         height: 350px;

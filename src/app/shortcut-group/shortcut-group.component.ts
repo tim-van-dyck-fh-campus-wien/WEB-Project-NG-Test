@@ -26,7 +26,6 @@ export class ShortcutGroupComponent implements OnInit {
 
   onDeleteShortcutGroupClicked(){
     this.deleteShortcutGroup.emit(this.id);
-    //console.log(this.data);
   }
 
 }

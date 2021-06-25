@@ -48,10 +48,7 @@ export class LoginService {
       return false;
     }
   }
-  public getCookie(): void {
-    //this.httpClient.get(this.apiBaseUrl+'/user',{responseType:'text',withCredentials:true}).subscribe((res)=>{
-    // });
-  }
+ 
   //Check if session is still active and user is logged in
   public async isLoggedIn(): Promise<boolean> {
     const response = await fetch(environment.apiBaseUrl + "/auth/checkAuthentication", {
