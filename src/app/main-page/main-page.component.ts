@@ -48,7 +48,7 @@ export class MainPageComponent implements OnInit {
     //Get Widget List
     this.getWidgetList();
     if (this.todoVisible == true){this.getTodos();}
-  
+    this.getTodos();
   }
 
   //show the settings form on main page

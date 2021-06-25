@@ -27,6 +27,7 @@ export class TodoElementComponent implements OnChanges {
   ngOnChanges(): void {//On input property change...
     if (this.data != undefined) {
       this._data = this.data;
+      console.dir("TODO DATA")
       console.dir(this._data);
     }
   }
