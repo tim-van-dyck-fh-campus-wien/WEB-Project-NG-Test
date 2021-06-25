@@ -1,7 +1,5 @@
-import { Component,OnChanges, SimpleChanges, Input, OnInit, SimpleChange } from '@angular/core';
-import {WeatherElementComponent} from 'src/app/weather-element/weather-element.component';
-import { WeatherData } from '../models/Weather.interface';
-import { WeatherService } from '../weather.service';
+import { Component, Input, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-activities-element',

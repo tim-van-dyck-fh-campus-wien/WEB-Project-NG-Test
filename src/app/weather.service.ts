@@ -1,11 +1,8 @@
-import { Inject, Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient} from '@angular/common/http';
 import { environment } from './../environments/environment';
-import { Observable, of, Subject, throwError } from 'rxjs';
-import { map, delay, materialize, dematerialize } from 'rxjs/operators';
-import { WeatherData } from './../app/models/Weather.interface';
-import { WeatherElementComponent } from './weather-element/weather-element.component';
-import { Data } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { LoginService } from './login.service';
 
 @Injectable({
@@ -29,7 +26,7 @@ export class WeatherService {
   tempAct:number;
 
 
-  getCurrentWeather(city: string | null): Observable<any> {
+  public async getCurrentWeather(city: string | null): Promise<Observable<any>> {
     //do API call with current city
     const apiCall = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${this.unit}&APPID=${this.apiKey}`;
     console.log('apiCall', apiCall); //log API Call output to console

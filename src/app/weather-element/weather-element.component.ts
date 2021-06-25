@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
-import { ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { WeatherData } from './../models/Weather.interface';
-import {ActivitiesElementComponent} from '../activities-element/activities-element.component'
 
 @Component({
   selector: 'app-weather-element',
@@ -58,9 +54,9 @@ textfieldIsVisible:boolean;
   }
 
    //takes care of API call itself
-  makeAPIcall(myCity){
+  async makeAPIcall(myCity){
     this.city = myCity; 
-    let newData = this.weatherService.getCurrentWeather(this.city).subscribe
+    let newData = (await this.weatherService.getCurrentWeather(this.city)).subscribe
     (x => {
      this.failed = false;
      this.city = x.updatedCity;

@@ -1,7 +1,6 @@
 import { TodoElement } from './../models/TodoElement.interface';
 import { WidgetService } from './../widget.service';
-import { TodoGroup } from './../models/TodoGroup.interface';
-import { Component, Input, OnInit, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-todo-element',
