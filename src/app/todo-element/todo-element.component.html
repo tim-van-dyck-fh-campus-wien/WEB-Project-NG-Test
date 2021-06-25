@@ -16,7 +16,7 @@
                 <input type="text"  [(ngModel)]="_data[index].name" (keyup)="onTextInputChanged()" class="todo-task" placeholder="Add ToDo...">
             </div>
             <div class="col-1 my-col">
-                <button type="button" class="btn btn-light" (click)="onDeleteTodoClicked(index)"[id]="'deleteTodo_'+index" >
+                <button type="button" class="btn btn-light" (click)="onDeleteTodoClicked(index)" [id]="'deleteTodo_'+index" >
                     <i class="fas fa-1x fa-trash-alt trash" [id]="'deleteIcon_'+index"></i>
                 </button>
             </div>

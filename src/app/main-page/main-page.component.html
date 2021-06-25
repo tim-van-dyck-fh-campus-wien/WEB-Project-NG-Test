@@ -2,7 +2,7 @@
   <div class="bg-light whiteBackgroundContainer">
     <div id='changeVisibilityButtonDiv' class='col-md-6'>
       <button class='changeVisibilityButton' title='Change visibility of some Widgets here.' (click)="showSettingsForm()">
-      <img class="icon" src='./assets/png/cogwheel.png'alt="settings picture">
+      <img class="icon" src='./assets/png/cogwheel.png' alt="settings picture">
       </button>
       <app-settings [visible]='visibilitySettings' (updateSettings)="updateVisibility($event)"></app-settings>
     </div>
@@ -27,7 +27,7 @@
 
         <div class="myRow">
           <div *ngFor="let widget of widgetList">
-              <shortcut-group *ngIf="widget.type=='ShortcutGroup'"[data]=widget.data [id]="widget._id" (deleteShortcutGroup)="deleteThisShortcutWidget($event)"></shortcut-group>
+              <shortcut-group *ngIf="widget.type=='ShortcutGroup'" [data]=widget.data [id]="widget._id" (deleteShortcutGroup)="deleteThisShortcutWidget($event)"></shortcut-group>
           </div>
         </div>
 
