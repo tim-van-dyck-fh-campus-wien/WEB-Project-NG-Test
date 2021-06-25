@@ -39,8 +39,14 @@ textfieldIsVisible:boolean;
 
    //makes a new API call for city entered
   clickme(myCity:string){
+    if (myCity == ""){
+      alert("Please enter a city value.")
+    } 
+    if (this.city != myCity){
     this.loading = true;
+   // this.removeIcon();
     this.makeAPIcall(myCity);
+    }
   }
 
   //called for initial loading with city from DB
@@ -67,9 +73,12 @@ textfieldIsVisible:boolean;
     } else {
       this.removeIcon();
     } 
+   // this.removeIcon();
      this.weatherDescription = this.weatherService.getWeatherType(this.weatherID);
+     console.log(this.weatherDescription)
      this.activitiesWeatherDescription = this.weatherService.getActivities(this.temp, this.weatherDescription);
      this.loading = false;
+
     },
     //error handling, if user input invalid, connected to HTML *ngIf 
       error => {
@@ -95,12 +104,24 @@ textfieldIsVisible:boolean;
     this.weatherDescription = "unknown";
   }
 
+ 
   //with city update, new icon might be needed
   removeIcon(){
-    var currentIcon = document.getElementById("icon"); 
+    var iconIdArray: Array<string> = ["cloud", "smog", "snow", "bolt", "sun", "cloudsun", "rain", "confused"];
+    var curId = "";
+    for(let i = 0; i <= iconIdArray.length; i++){
+      curId = iconIdArray[i];
+      var curIcon = document.getElementById(curId);
+      if (curIcon != null){
+        curIcon.remove();
+        break;
+      }
+    }
+    
+/*    = document.getElementById("cloud"); 
    if (currentIcon != null){
       currentIcon.remove();
-    }
+    }*/
   }
 
   showTextfield(){
