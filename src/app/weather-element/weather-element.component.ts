@@ -104,7 +104,6 @@ textfieldIsVisible:boolean;
   }
 
   showTextfield(){
-    //this.textfieldIsVisible = true;
     if (this.textfieldIsVisible == true){
       this.textfieldIsVisible = false;
     } else {
@@ -112,12 +111,11 @@ textfieldIsVisible:boolean;
     }
   }  
 
-  /*onSubmit(f:NgForm){
-
-    this.textfieldIsVisible = false;
-  }*/
 
   changeInitialCityValue(initialCity:String){
+    if (initialCity === ""){
+      alert("Please enter a valid City!");
+    } else {
     this.weatherService.setInitialCity(initialCity).then((success) =>{
       if(success){
         console.log(success);
@@ -125,6 +123,7 @@ textfieldIsVisible:boolean;
     }, error =>
       console.log(error));
       this.textfieldIsVisible = false;
+    }
   }
   
 

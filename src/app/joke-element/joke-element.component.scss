@@ -46,13 +46,6 @@ p {
     width: 100%;
     display: block;
     text-align: center;
-  /*  @include media-breakpoint-up(sm){
-      
-       height: 250px;
-    }
-   /* @include media-breakpoint-up(lg){
-        width: 32%;
-    }*/
 }
 #punchlineButton{
         height: 35px;
@@ -61,12 +54,10 @@ p {
         border-radius: 20px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         width: 200px;
-        filter: drop-shadow(white);
-       // padding-bottom: 2px;
         margin-bottom:5px;
 }
 #punchlineButton:hover{
-filter: drop-shadow(1px 1px 10px white);
+    filter: drop-shadow(1px 1px 10px white);
 }
 .smiley{
     width:65px;
