@@ -3,12 +3,12 @@
       <h1>Todays suggestions for activities </h1>
       <h1>in {{currentCityForActivities}} are:</h1>
    </div>
-   <div *ngIf="failedAPIcall">
+   <div *ngIf="failedAPIcall" id='failedDivActivities'>
       <h1>Sorry, we couldn't find suggestions for the current city: {{currentCityForActivities}} </h1>
    </div>
 
    <div [ngSwitch]="weatherDescripForActivities">
-      <div *ngSwitchCase="'notAvailable'" class="confusedFace">
+      <div *ngSwitchCase="'notAvailable'" class="confusedFace" >
          <div><img class="confused" src='./assets/png/confused.png' alt="confused face"></div>
       </div>
       <div *ngSwitchCase="'outsideHot'" class="activity-Icon hot">

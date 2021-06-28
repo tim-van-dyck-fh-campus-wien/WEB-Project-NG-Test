@@ -35,10 +35,7 @@ p {
         font-size: 20px;
     }
 }
-.weatherWidgetRow {
-    margin: 5px;
-    text-align: center;
-}
+
 #weatherContainer{
     margin-top: 5px;
     border-radius: 5px;
@@ -57,7 +54,13 @@ p {
         height: 350px;
     }
 }
-
+.weatherWidgetRow {
+    margin: 5px;
+    text-align: center;
+}
+#failedDiv{
+    margin-top: 25px;
+}
 #cityButton{
     height: 35px;
     background-color: #cf0553;
