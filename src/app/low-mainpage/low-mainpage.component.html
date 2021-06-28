@@ -11,7 +11,7 @@
                   <app-searchbar [lowBandwidth] = "lowBandwidthSearchbar"></app-searchbar>
             </div>
             <div class="lowMainpageContainerRow"> 
-                  <div class="col-xl-6 col-md-6 col-sm-12" *ngFor="let widget of widgetList">
+                  <div class="col-12" *ngFor="let widget of widgetList">
                         <shortcut-group  [lowBandwidth] = "lowBandwidthSearchbar" *ngIf="widget.type=='ShortcutGroup'"[data]=widget.data></shortcut-group>
                   </div>
             </div>
