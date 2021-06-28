@@ -8,7 +8,7 @@
 
     <div class="row justify-content-center align-items-center my-row" *ngFor="let todo of _data;let index = index;">
         <div class="col-2 my-col">
-            <input type="checkbox" class="zoomShadow" [(ngModel)]="_data[index].isDone" (change)="checkboxValueChanged(index)" class="big-checkbox" id="_data[index]._id">
+            <input type="checkbox" class="zoomShadow" [(ngModel)]="_data[index].isDone" (change)="checkboxValueChanged(index)" class="big-checkbox" [id]="_data[index]._id">
         </div>
         <div class="col-8 my-col">
             <input type="text"  [(ngModel)]="_data[index].name" (keyup)="onTextInputChanged()" class="todo-task" placeholder="Add ToDo...">
