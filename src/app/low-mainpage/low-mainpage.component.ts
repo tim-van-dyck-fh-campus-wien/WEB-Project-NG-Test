@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
-import { ShortcutGroup } from '../models/ShortcutGroup.interface';
 import { UserData } from '../models/UserData.interface';
 import { Widget } from '../models/Widget.interface';
 import { WidgetService } from '../widget.service';

@@ -1,4 +1,3 @@
-import { LoginService } from './../login.service';
 import { LoginData } from './../models/LoginData.interface';
 import {  Component, OnInit , HostBinding } from '@angular/core';
 import {

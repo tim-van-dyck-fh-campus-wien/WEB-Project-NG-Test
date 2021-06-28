@@ -18,8 +18,8 @@ export class JokeElementComponent implements OnInit {
   jokeSetup:string;
   jokePunchline:string;
   answer:boolean;
-  makeJokeAPICall(){
-    let jokeData = this.jokeService.getFunnyJoke().subscribe
+  async makeJokeAPICall(){
+    let jokeData = (await this.jokeService.getFunnyJoke()).subscribe
     (y => {
      this.jokeSetup = y.body.setup;
      this.jokePunchline = y.body.punchline;
@@ -42,10 +42,13 @@ export class JokeElementComponent implements OnInit {
   }
 
   nextJoke(){
-   // this.makeJokeAPICall(); 
+    //this.makeJokeAPICall(); 
     this.answer = false;
+    this.dummyJoke();
+  }
+
+  dummyJoke(){
     this.jokeSetup ="What do you get from a pampered cow?";
     this.jokePunchline ="Spoiled milk."
-    
   }
 }

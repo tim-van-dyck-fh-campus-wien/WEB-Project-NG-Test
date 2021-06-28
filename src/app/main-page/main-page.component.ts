@@ -3,7 +3,6 @@ import { TodoGroup } from './../models/TodoGroup.interface';
 import { Widget } from './../models/Widget.interface';
 import { WidgetService } from './../widget.service';
 import { Router } from '@angular/router';
-import { User } from './../models/User.interface';
 import { UserData } from './../models/UserData.interface';
 import { LoginService } from './../login.service';
 import { ShortcutGroup } from './../models/ShortcutGroup.interface';

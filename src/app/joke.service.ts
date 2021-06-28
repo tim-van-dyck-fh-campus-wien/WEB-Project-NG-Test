@@ -13,7 +13,7 @@ export class JokeService {
 
   
 
-  getFunnyJoke(): Observable<any> {
+  public async getFunnyJoke(): Promise<any> {
     //do API call with current joke
     const jokeAPIcall = `https://dad-jokes.p.rapidapi.com/random/joke/?rapidapi-key=${this.apiKey}`;
     console.log('apiCall', jokeAPIcall); //log API Call output to console

@@ -1,43 +1,71 @@
 
- <app-activities-element [failedAPIcall]="failed" [weatherDescripForActivities] = "activitiesWeatherDescription" [currentCityForActivities] = "city"></app-activities-element>
+ <app-activities-element [failedAPIcall]="failed" [weatherDescripForActivities] = "weatherData.activitiesWeatherDescription" [currentCityForActivities] = "weatherData.city"></app-activities-element>
+<!--[weatherDescripForActivities] = "activitiesWeatherDescription" [currentCityForActivities] = "city"-->
+ <div id='weatherContainer'>
+        <div class="changeCityDiv">
+            <button type="button" (click)="showTextfield()" id="changeCityButton" title='Change initial City here.'>
+            <img class="buttPic" src='./assets/png/pencil.png'alt="pencil picture">
+            </button>
 
-   <div id='weatherContainer'>
-       
-    <div class="changeCityDiv">
-        <button type="button" (click)="showTextfield()" id="changeCityButton" title='Change initial City here.'>
-        <img class="buttPic" src='./assets/png/pencil.png'alt="pencil picture">
-        </button>
-        <div *ngIf="textfieldIsVisible" class="textfieldDiv">
-                 <input class="initialCityTextfield" type="text" onfocus="this.value=''" placeholder="Change initial City here." id="initialCity" name="initialCity" #initialCity>
+            <div *ngIf="textfieldIsVisible" class="textfieldDiv">
+                 <input class="initialCityTextfield" type="text" onfocus="this.value=''" placeholder="Change initial City here." 
+                 id="initialCity" name="initialCity" #initialCity>
                  <button type="submit" class="submit"  (click)="changeInitialCityValue(initialCity.value)">Submit</button>
+            </div>
         </div>
-    </div>
-        <div class="weatherWidgetRow" *ngIf="!failed"><h1>The weather in {{city}} right now:</h1></div>
-        <div class="weatherWidgetRow" *ngIf="failed"><h1>Could not find the city. Maybe check the spelling?</h1></div>
-    <div class="weatherWidgetRow"  [ngSwitch]="weatherDescription">
-        <div class="weatherWidgetRow"><i *ngSwitchCase ="'cloud'" class="fas fa-4x fa-cloud cloud icon"></i></div>
-        <div class="weatherWidgetRow"><i *ngSwitchCase="'fog'" class="fas fa-4x fa-smog smog icon"></i></div>
-        <div class="weatherWidgetRow"><i *ngSwitchCase="'snow'" class="fas fa-4x fa-snowflake snowflake icon"></i></div>
-        <div class="weatherWidgetRow"> <i *ngSwitchCase="'lightning'" class="fas fa-4x fa-bolt bolt icon"></i></div>
-        <div class="weatherWidgetRow"> <i *ngSwitchCase="'clear'" class="fas fa-4x fa-sun sun icon"></i></div>
-        <div class="weatherWidgetRow cloudDiv"*ngSwitchCase="'partialClear'"> 
-            <i  class="fas fa-4x fa-sun sun icon"></i>
-            <i  class="fas fa-4x fa-cloud cloud icon"></i></div> 
-        <div class="weatherWidgetRow"> <i id="icon"*ngSwitchCase="'rain'" class="fas fa-4x fa-cloud-rain cloud-rain icon"></i></div>
-        <div class="weatherWidgetRow"><img class="confusedFace"*ngSwitchCase="'unknown'" src='./assets/png/confused.png' alt="confused face"></div>
-    </div>
-    
-    <div class="weatherWidgetRow" *ngIf="!failed">
-    <div class="weatherWidgetRow"><h2>{{temp}} °C</h2></div>
-    <div class="weatherWidgetRow"><p>Minimum Temp: {{temp_min}} °C</p>
-        <p> Maximum Temp: {{temp_max}} °C </p></div>
-    </div> 
- 
-    <div  class="weatherWidgetRow"><input class="cityTextfield" type="text" onfocus="this.value=''" placeholder="Another city, please." id="myCity" name="myCity" #myCity></div>
-    <div class="weatherWidgetRow"><button type="button" id="cityButton"  (click)="clickme(myCity.value)"><i class="fas fa-search"></i></button></div>
-    <!--to do: loading machen, keine clicks machen  -->
 
+        <div class="weatherWidgetRow" *ngIf="!failed">
+            <h1>The weather in {{weatherData.city}} now:</h1>
+        </div>
+
+        <div class="weatherWidgetRow" *ngIf="failed">
+            <h1>Could not find the city. Maybe check the spelling?</h1>
+        </div>
+
+        <div class="weatherWidgetRow"  [ngSwitch]="weatherData.weatherDescription"> <!-- [ngSwitch]="weatherDescription"-->
+            <div class="weatherWidgetRow">
+                <i *ngSwitchCase ="'cloud'" id ='cloud' class="fas fa-4x fa-cloud cloud icon"></i>
+            </div>
+            <div class="weatherWidgetRow">
+                <i *ngSwitchCase="'fog'" id = 'smog' class="fas fa-4x fa-smog smog icon"></i>
+            </div>
+            <div class="weatherWidgetRow">
+                <i *ngSwitchCase="'snow'" id='snow' class="fas fa-4x fa-snowflake snowflake icon"></i>
+            </div>
+            <div class="weatherWidgetRow">
+                <i *ngSwitchCase="'lightning'" id='bolt' class="fas fa-4x fa-bolt bolt icon"></i>
+            </div>
+            <div class="weatherWidgetRow">
+                <i *ngSwitchCase="'clear'" id='sun' class="fas fa-4x fa-sun sun icon"></i>
+            </div>
+            <div class="weatherWidgetRow cloudDiv" id='cloudsun' *ngSwitchCase="'partialClear'"> 
+                <i  class="fas fa-4x fa-sun sun icon"></i>
+                <i  class="fas fa-4x fa-cloud cloud icon"></i>
+            </div> 
+            <div class="weatherWidgetRow">
+                <i *ngSwitchCase="'rain'" id='rain' class="fas fa-4x fa-cloud-rain cloud-rain icon"></i>
+            </div>
+            <div class="weatherWidgetRow">
+                <img class="confusedFace" id='confused' *ngSwitchCase="'unknown'" src='./assets/png/confused.png' alt="confused face">
+            </div>
+        </div>
     
+        <div class="weatherWidgetRow" *ngIf="!failed">
+            <div class="weatherWidgetRow">
+                <h2>{{weatherData.temp}} °C</h2>
+            </div>
+            <div class="weatherWidgetRow">
+                <p>Minimum Temp: {{weatherData.temp_min}} °C</p>
+                <p> Maximum Temp: {{weatherData.temp_max}} °C </p>
+            </div>
+        </div> 
+ 
+        <div  class="weatherWidgetRow">
+            <input class="cityTextfield" type="text" onfocus="this.value=''" placeholder="Another city, please." id="myCity" name="myCity" #myCity>
+        </div>
+        <div class="weatherWidgetRow">
+            <button type="button" id="cityButton" (click)="clickme(myCity.value)" [disabled] = "loading" ><i class="fas fa-search"></i></button>
+        </div>
 
 </div>
     

@@ -27,7 +27,7 @@ export class SettingsService {
           if(response.status==401){
             throw "You may not be logged in,please log in!";
           }else{
-            throw "An error was encountered!"
+            throw "Something went wrong while processing request."
           }
       }
     }

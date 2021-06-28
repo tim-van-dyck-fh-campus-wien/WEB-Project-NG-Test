@@ -1,8 +1,8 @@
 import { NgForm } from '@angular/forms';
 import { ShortcutElement } from './../models/ShortcutElement.interface';
 import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
-import {NgbModal,NgbModalRef,ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { isJSDocThisTag } from 'typescript';
+import {NgbModal,NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'create-shortcut-element',
