@@ -11,8 +11,8 @@ export class JokeElementComponent implements OnInit {
   constructor(public jokeService: JokeService) { }
 
   ngOnInit(): void {
-   // this.dummyForDeveloping();
-    this.makeJokeAPICall();
+    this.dummyForDeveloping();
+   // this.makeJokeAPICall();
   }
 
   jokeSetup:string;
@@ -42,9 +42,9 @@ export class JokeElementComponent implements OnInit {
   }
 
   nextJoke(){
-    this.makeJokeAPICall(); 
+    //this.makeJokeAPICall(); 
     this.answer = false;
-    //this.dummyJoke();
+    this.dummyJoke();
   }
 
   dummyJoke(){
