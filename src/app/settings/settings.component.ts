@@ -16,7 +16,7 @@ export class SettingsComponent implements OnInit {
 
   constructor(private settings:SettingsService) { }
   
-
+  valuesBoolean: boolean;
 
   ngOnInit(): void {
   }
@@ -24,31 +24,44 @@ export class SettingsComponent implements OnInit {
   onSubmit(f:NgForm){
     let visibilityData:Visibility = f.value as Visibility;
     this.convertToBoolean(visibilityData);
-    console.log(f);
-    console.log(visibilityData)
-    this.setUserSettings(visibilityData);
-    this.updateSettings.emit(visibilityData);
-    this.visible = false;
+  //  console.log(f);
+    //console.log(visibilityData)
+    if (this.valuesBoolean == true){
+      this.setUserSettings(visibilityData);
+      this.updateSettings.emit(visibilityData);
+      this.visible = false;
+    }
   }
 
   setUserSettings(visibilityData:Visibility){
      this.settings.setVisibilitySettings(visibilityData).then((success) =>{
        if(success){
-         console.log(success);
+       //  console.log(success);
        }
      }, error =>
        console.log(error));
    }
 
-  convertToBoolean(visibilityData:Visibility){
+ convertToBoolean(visibilityData:Visibility){
+    this.valuesBoolean = true;
     if (visibilityData.weatherIsVisible == "true"){
       visibilityData.weatherIsVisible = true;
-    } else {visibilityData.weatherIsVisible = false}
+    } else if (visibilityData.weatherIsVisible == "false") {
+      visibilityData.weatherIsVisible = false;
+    }
     if (visibilityData.todoIsVisible == "true"){
       visibilityData.todoIsVisible = true;
-    } else {visibilityData.todoIsVisible = false}
+    } else if (visibilityData.todoIsVisible == "false") {
+      visibilityData.todoIsVisible = false;
+    }
     if (visibilityData.dadJokeIsVisible == "true"){
       visibilityData.dadJokeIsVisible = true;
-    } else {visibilityData.dadJokeIsVisible = false}
+    } else if (visibilityData.dadJokeIsVisible == "false") {
+      visibilityData.dadJokeIsVisible = false
+    } 
+    else { 
+      alert("Please choose hide or show for each widget.");
+      this.valuesBoolean = false;
+    }
   }
 }

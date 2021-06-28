@@ -1,16 +1,16 @@
 <div id='jokeContainer'>
-    <div class="jokeRow"><h1>Your Joke of the day:</h1><img class="smiley" src='./assets/png/laughing.png' alt="funny joke face"></div>
+    <div class="jokeRow"><h1>Jokes:</h1><img class="smiley" src='./assets/png/laughing.png' alt="funny joke face"></div>
         <div class="jokeRow">
             <h2>{{jokeSetup}}</h2>
         </div>
         <div class="jokeRow" *ngIf="!answer">
-            <button type="button" id="punchlineButton"  (click)="showPunchline()" >Show Answer</button>
+            <button type="button" class="punchlineButton"  (click)="showPunchline()" >Show Answer</button>
         </div>
         <div class="jokeRow" *ngIf="answer">
             <p>{{jokePunchline}}</p>
         </div>
         <div class="jokeRow" *ngIf="answer">
-            <button type="button" id="punchlineButton1" class="newJoke" (click)="nextJoke()" >New Joke</button>
+            <button type="button" class="punchlineButton" (click)="nextJoke()" >New Joke</button>
         </div>
 </div>
 
