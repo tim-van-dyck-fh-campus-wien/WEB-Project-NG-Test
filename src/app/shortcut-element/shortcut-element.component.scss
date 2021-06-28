@@ -32,6 +32,8 @@
     padding:5px;
     margin:10px;
     background-color: white;
+    transition: 0.3s ease-in-out;
+    box-shadow: $box-shadow-sm;
     @include media-breakpoint-up(sm){
         width:70px;
     }
@@ -39,6 +41,10 @@
         width:85px;
     }
 
+}
+.shortcutParentContainer:hover{
+    transform:scale(1.1);
+    box-shadow: $box-shadow-lg;
 }
 .shortcutContainer{
     width:75px;

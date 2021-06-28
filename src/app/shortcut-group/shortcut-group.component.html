@@ -1,33 +1,34 @@
-
 <!--Low UI version-->
 
 <div *ngIf='lowBandwidth' class="shortcutGroupContainerLow">
-    <h3 >{{data.name}} </h3>
+    <h3>{{data.name}} </h3>
     <div class="d-flex flex-wrap">
         <div *ngFor="let element of data.elements">
-            <shortcut-element [lowBandwidthElement] = "lowBandwidth" [shortcutData]="element"></shortcut-element>
+            <shortcut-element [lowBandwidthElement]="lowBandwidth" [shortcutData]="element"></shortcut-element>
         </div>
-    </div>           
+    </div>
 </div>
 
 
 
 <!--Fancy UI version-->
 <div *ngIf='!lowBandwidth' class="bg-white shadow shortcutGroupContainer">
-   <div class='deleteButtonDiv'>
-       <button class='deleteButton' title='Careful, this item will be deleted entirely!' (click)="onDeleteShortcutGroupClicked()">
-       <img class="icon" src='./assets/png/delete.png' alt="picture of bin for delete button">
-       </button>
-     </div>
-  
+
+    <div class='deleteButtonDiv'>
+        <button class='deleteButton' title='Careful, this item will be deleted entirely!'
+            (click)="onDeleteShortcutGroupClicked()">
+            <img class="icon" src='./assets/png/delete.png' alt="picture of bin for delete button">
+        </button>
+    </div>
+
     <div>
-       <h3 class="text-center">{{data.name}}</h3> 
-       </div>
+        <h3 class="text-center">{{data.name}}</h3>
+    </div>
+
     <div class="d-flex flex-wrap">
         <div *ngFor="let element of data.elements">
-            <shortcut-element [lowBandwidthElement] = "lowBandwidth" [shortcutData]="element"></shortcut-element>
+            <shortcut-element [lowBandwidthElement]="lowBandwidth" [shortcutData]="element"></shortcut-element>
         </div>
-    
-    </div>    
-   </div>    
 
+    </div>
+</div>

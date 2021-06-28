@@ -36,4 +36,11 @@ body::before {
         width:490px;
     }
 }
-  
+.zoomShadow{
+    transition: 0.3s ease-in-out;
+    box-shadow: $box-shadow-sm;
+}
+.zoomShadow:hover{
+    transform:scale(1.1);
+    box-shadow: $box-shadow-lg;
+}

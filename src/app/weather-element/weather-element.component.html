@@ -1,7 +1,7 @@
 
  <app-activities-element [failedAPIcall]="failed" [weatherDescripForActivities] = "weatherData.activitiesWeatherDescription" [currentCityForActivities] = "weatherData.city"></app-activities-element>
 <!--[weatherDescripForActivities] = "activitiesWeatherDescription" [currentCityForActivities] = "city"-->
- <div id='weatherContainer'>
+ <div id='weatherContainer' class="shadow">
         <div class="changeCityDiv">
             <button type="button" (click)="showTextfield()" id="changeCityButton" title='Change initial City here.'>
             <img class="buttPic" src='./assets/png/pencil.png'alt="pencil picture">
