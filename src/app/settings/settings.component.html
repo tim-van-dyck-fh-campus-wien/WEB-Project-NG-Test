@@ -1,46 +1,51 @@
 <div *ngIf="visible" class="settingsContainer">
     <div class="row">
-        <div class="col align-center" id='textBox'>
-        <p>Change your Widget Settings here: </p>
+        <div class="col align-center textBox" >
+        <h5>Change your Widget Settings here: </h5>
         </div>
     </div>
+    <div class="row">
+        <div class="col-6 align-self-start"><p>Widget:</p></div>
+        <div class="col-3 align-self-center"><p>Hide</p></div>
+        <div class="col-3 align-self-end"><p>Show</p></div>
+    </div>
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-        <div class = row>
-            <div class="col-5 align-self-start">Weather:</div>
+        <div class ="row">
+            <div class="col-6  align-self-start">Weather/Activities:</div>
                 <div class="col-3 align-self-center">
-                <div><input type="radio" name="weatherIsVisible" #weatherIsVisible="ngModel" value="false" ngModel/>   hide</div>
+                <div><input type="radio" name="weatherIsVisible" #weatherIsVisible="ngModel" value="false" ngModel/></div>
                 </div>
                 <div class="col-3 align-self-end">
-                <div><input type="radio" name="weatherIsVisible" #weatherIsVisible="ngModel" value=true ngModel/>  show </div>
+                <div><input type="radio" name="weatherIsVisible" #weatherIsVisible="ngModel" value=true ngModel/></div>
                 </div>
             </div>
         
         <div class="row">
-            <div class="col-5 align-self-start">To Do List: </div>
+            <div class="col-6 align-self-start">To Do List: </div>
             <div class="col-3 align-self-center">
                 <div>
-                    <input type="radio" name="todoIsVisible" #todoIsVisible="ngModel" value="false" ngModel/> hide </div>
+                    <input type="radio" name="todoIsVisible" #todoIsVisible="ngModel" value="false" ngModel/></div>
                 </div>
             <div class="col-3 align-self-end">
                 <div>
-                    <input type="radio" name="todoIsVisible" #todoIsVisible="ngModel" value="true" ngModel/> show </div>
+                    <input type="radio" name="todoIsVisible" #todoIsVisible="ngModel" value="true" ngModel/></div>
                 </div>
         </div>
 
         <div class="row">
-        <div class="col-5 align-self-start">Funny Jokes: </div>
+        <div class="col-6 align-self-start">Funny Jokes: </div>
             <div class="col-3 align-self-center">
                 <div>
-                    <input type="radio" name="dadJokeIsVisible" #dadJokeIsVisible="ngModel" value="false" ngModel/> hide  </div>
+                    <input type="radio" name="dadJokeIsVisible" #dadJokeIsVisible="ngModel" value="false" ngModel/></div>
             </div>
             <div class="col-3 align-self-end">
                 <div>
-                    <input type="radio"name="dadJokeIsVisible" #dadJokeIsVisible="ngModel" value="true" ngModel/> show</div>
+                    <input type="radio"name="dadJokeIsVisible" #dadJokeIsVisible="ngModel" value="true" ngModel/></div>
             </div>
         </div>
-        <div  class="row">
-            <div class="col align-end" id='textBox1'>
-            <button type="submit" class='submit'> Submit </button>
+        <div  class="row textBox">
+            <div class="col" >
+            <button type="submit" class="submit"> Submit </button>
             </div>
         </div>
     </form>

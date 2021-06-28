@@ -1,5 +1,4 @@
 .settingsContainer{
-    background-color: lightgrey; 
     padding: 5px;
     border-radius: 5px;
     background: linear-gradient(180deg, #cf0553 0%,  rgb(48, 2, 77));
@@ -7,11 +6,19 @@
     filter: drop-shadow(1px 1px 2px  rgb(48, 2, 77));
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.h5{
+    font-style: oblique;
+}
 .row{
     padding:2px;
 }
-#textBox{
+.textBox{
     text-align: center;
+}
+p{
+    padding-bottom: 3px;
+    margin: 0;
+    text-decoration: underline;
 }
 
 
